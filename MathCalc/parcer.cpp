@@ -18,6 +18,7 @@ Parser::~Parser()
 
 ParseTree& Parser::parse(std::vector<Token*>& tks)
 {
+	check_expresion(tks);
 	eval(tks);
 	generate_parse_tree_it(mathexp);
 	//parse_tree.traverse("infix");
@@ -102,6 +103,11 @@ ParseTree& Parser::get_parse_tree(void)
 	return parse_tree;
 }
 
+int Parser::check_expresion(std::vector<Token*>& tks)
+{
+	return 0;
+}
+
 int Parser::eval(std::vector<Token*>& tks)
 {
 	//mathexp.push_back((char*)"((");
@@ -115,7 +121,9 @@ int Parser::eval(std::vector<Token*>& tks)
 			if (strcmp(tks[i]->value, "+") == 0)
 				mathexp.insert(mathexp.end(), { (char*)")", (char*)")", (char*)")", tks[i]->value, (char*)"(", (char*)"(", (char*)"(" });
 			else if (strcmp(tks[i]->value, "-") == 0) {
-				if (i == 0 || (strcmp(tks[i_prev]->type, "number") && (strcmp(tks[i_prev]->type, "parenr") != 0)))
+				if (strcmp(tks[i + 1]->type, "number") == 0) // Precedence: i.e. -5 ^ 2 -> (-1 * 5) ^ 2
+					mathexp.insert(mathexp.end(), { (char*)"(", (char*)"-1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[++i]->value, (char*)")" });
+				else if (i == 0 || (strcmp(tks[i_prev]->type, "number") && (strcmp(tks[i_prev]->type, "parenr") != 0)))
 					mathexp.insert(mathexp.end(), { (char*)"-1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(" });
 				else
 					mathexp.insert(mathexp.end(), { (char*)")", (char*)")", (char*)")", tks[i]->value, (char*)"(", (char*)"(", (char*)"(" });

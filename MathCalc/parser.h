@@ -20,6 +20,7 @@ private:
 	ParseTree parse_tree;
 	std::vector<char*> mathexp;
 	std::stack<Binop*> node_stack;
+	int check_expresion(std::vector<Token*>& tks);
 	int eval(std::vector<Token*>& tks);
 	//Binop* generate_parse_tree(Binop* root, std::vector<char*>::iterator ptr, std::vector<char*>::iterator end, std::vector<char*>*);
 	int generate_parse_tree_it(std::vector<char*> mvec);
