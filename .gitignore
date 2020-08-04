@@ -32,6 +32,7 @@
 *.app
 
 # Visual Studio Folders
+.gitattributes
 .vs/
 Debug/
 MathCalc/x32/
