@@ -25,6 +25,8 @@ private:
 	//Binop* generate_parse_tree(Binop* root, std::vector<char*>::iterator ptr, std::vector<char*>::iterator end, std::vector<char*>*);
 	int generate_parse_tree_it(std::vector<char*> mvec);
 	const char* getResult(std::vector<char*> mvtemp, int it);
+	void insert_data(int pcount, const char* val);
+	void insert_parens(int count, const char* paren);
 	bool is_operator(const char* c);
 };
 

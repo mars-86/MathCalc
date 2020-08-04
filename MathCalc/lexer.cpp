@@ -15,8 +15,8 @@ enum class Type {
 };
 
 enum {
-	PAREN_LEFT = ')',
-	PAREN_RIGHT = '(',
+	PAREN_LEFT = '(',
+	PAREN_RIGHT = ')',
 	BRACK_LEFT = '[',
 	BRACK_RIGHT = ']'
 };

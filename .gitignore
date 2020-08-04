@@ -33,7 +33,8 @@
 
 # Visual Studio Folders
 .vs/
-VTGraph/Debug/
 Debug/
-x64/
+MathCalc/x32/
+MathCalc/x64/
 x32/
+x64/

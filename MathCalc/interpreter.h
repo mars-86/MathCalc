@@ -12,7 +12,7 @@ public:
 
 	int interpret(ParseTree& tree);
 private:
-	void resolv(Binop* root);
+	void resolv(ParseTree& tree, Binop* root);
 	bool is_operator(const char* c);
 };
 

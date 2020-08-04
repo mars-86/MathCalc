@@ -7,6 +7,8 @@
 // float numbers
 // variables
 // functions
+// steps
+// malformed expressions
 
 int main(int argc, char* argv[])
 {
@@ -17,8 +19,18 @@ int main(int argc, char* argv[])
     //Lexer tknr("-(5^2)*(-5)!"); // FIX: Factorial 
     //Lexer tknr("-(5^2)+-5");
     //Lexer tknr("5.2+5.5");
-    Lexer tknr("5/5+5*5");
-    //Lexer tknr("0  +   3");
+    //Lexer tknr("5/5+5*5");
+    //Lexer tknr("(1+3x)");
+    /*if (argc < 2) {
+        fprintf(stderr, "%s\n", "Args missing");
+        return 1;
+    }
+    Lexer tknr(argv[1]);
+    */
+    //Lexer tknr("(6/(-2))");
+    Lexer tknr("6x+2x");
+    //Lexer tknr("5^2^2^2"); // FIX: This kind of expression or else 5^2^2^2 -> 625 BAD!
+    //Lexer tknr("(5^2)^(2^2))"); // -> Throws error
     std::vector<Token*> tk = tknr.get_tokens();
 
     for (auto i : tk)

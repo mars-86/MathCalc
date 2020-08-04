@@ -12,30 +12,36 @@ Interpreter::~Interpreter()
 
 int Interpreter::interpret(ParseTree& tree)
 {
-	resolv(tree.get_parse_tree());
-	// tree.traverse("infix");
-	std::cout << "Res: " << tree.get_parse_tree()->val << std::endl;
+	tree.traverse("infix");
+	resolv(tree, tree.get_parse_tree());
+	std::cout << "\nRes: ";
+	tree.traverse("infix");
 	return 0;
 }
 
-void Interpreter::resolv(Binop* root)
+// TODO
+// make function to format numbers (interger or float)
+
+void Interpreter::resolv(ParseTree& tree, Binop* root)
 {
 	if (root == nullptr) return;
-	resolv(root->left);
-	resolv(root->right);
+	resolv(tree, root->left);
+	resolv(tree, root->right);
+	//tree.traverse("infix");
+	std::cout << std::endl;
 	if (is_operator(root->val)) {
 		char buff_temp[128];
 		if (strcmp((char*)root->val, "+") == 0)
-			_itoa_s((atoi((char*)root->left->val) + atoi((char*)root->right->val)), buff_temp, 128, 10);
+			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) + atof((char*)root->right->val)));
 		else if (strcmp((char*)root->val, "-") == 0)
-			_itoa_s((atoi((char*)root->left->val) - atoi((char*)root->right->val)), buff_temp, 128, 10);
+			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) - atof((char*)root->right->val)));
 		else if (strcmp((char*)root->val, "*") == 0)
-			_itoa_s((atoi((char*)root->left->val) * atoi((char*)root->right->val)), buff_temp, 128, 10);
+			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) * atof((char*)root->right->val)));
 		else if (strcmp(root->val, "/") == 0)
-			_itoa_s((atoi((char*)root->left->val) / atoi((char*)root->right->val)), buff_temp, 128, 10);
+			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) / atof((char*)root->right->val)));
 		else
-			_itoa_s(pow(atoi((char*)root->left->val), atoi((char*)root->right->val)), buff_temp, 128, 10);
-		//std::cout << root->val << std::endl;
+			sprintf_s(buff_temp, 128, "%.2f", pow(atof((char*)root->left->val), atof((char*)root->right->val)));
+
 		free(root->left), free(root->right), free(root->val);
 		root->left = root->right = nullptr, root->val = nullptr;
 		size_t valen = strlen(buff_temp);

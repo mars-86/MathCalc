@@ -42,16 +42,16 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 					op = parse_tree.create_node(mvtemp[it]);
 					// _NODE_ +- _NODE_
 					if (strcmp(mvtemp[it - 1], "_NODE_") == 0 && strcmp(mvtemp[it + 1], "_NODE_") == 0) {
-						op->left = node_stack.top(), node_stack.pop();
 						op->right = node_stack.top(), node_stack.pop();
+						op->left = node_stack.top(), node_stack.pop();
 					}
 					else if (strcmp(mvtemp[it - 1], "_NODE_") == 0) { // _NODE_ +- num
-						op->left = node_stack.top(), node_stack.pop();
 						op->right = parse_tree.create_node((char*)mvtemp[it + 1]);
+						op->left = node_stack.top(), node_stack.pop();
 					}
 					else if (strcmp(mvtemp[it + 1], "_NODE_") == 0) { // num +- _NODE_
-						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 						op->right = node_stack.top(), node_stack.pop();
+						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 					}
 					else { // num +- num
 						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
@@ -67,7 +67,7 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 					if (op_count == 0) mvtemp.erase(mvtemp.begin() + it - 2);					
 					i = (it - 2) < 0 ? 0 : it - 2;
 					it = (it - 3) < 0 ? 0 : it - 3;
-					//std::cout << "OP: " << mvtemp[it] << std::endl;
+					// std::cout << "OP: " << mvtemp[it] << std::endl;
 					// store node in stack
 					node_stack.push(op);
 					++op_count;
@@ -80,9 +80,9 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 				mvtemp.erase(mvtemp.begin() + it);
 				i = it;
 			}
-			/*for (int i = 0; i < mvtemp.size(); ++i)
+			for (int i = 0; i < mvtemp.size(); ++i)
 				std::cout << mvtemp[i];
-			std::cout << std::endl;*/
+			std::cout << std::endl;
 		}
 		//if (mvtemp.size() == 1) break;
 	}
@@ -110,8 +110,7 @@ int Parser::check_expresion(std::vector<Token*>& tks)
 
 int Parser::eval(std::vector<Token*>& tks)
 {
-	//mathexp.push_back((char*)"((");
-	mathexp.insert(mathexp.end(), { (char*)"(", (char*)"(", (char*)"(", (char*)"(" });
+	insert_parens(4, "(");
 	int i_prev;
 	for (int i = 0; i < tks.size(); ++i) {
 		i_prev = i - 1;
@@ -119,19 +118,19 @@ int Parser::eval(std::vector<Token*>& tks)
 			mathexp.push_back((char*)tks[i]->value);
 		if (strcmp(tks[i]->type, "operator") == 0) {
 			if (strcmp(tks[i]->value, "+") == 0)
-				mathexp.insert(mathexp.end(), { (char*)")", (char*)")", (char*)")", tks[i]->value, (char*)"(", (char*)"(", (char*)"(" });
+				insert_data(3, tks[i]->value);
 			else if (strcmp(tks[i]->value, "-") == 0) {
 				if (strcmp(tks[i + 1]->type, "number") == 0) // Precedence: i.e. -5 ^ 2 -> (-1 * 5) ^ 2
 					mathexp.insert(mathexp.end(), { (char*)"(", (char*)"-1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[++i]->value, (char*)")" });
 				else if (i == 0 || (strcmp(tks[i_prev]->type, "number") && (strcmp(tks[i_prev]->type, "parenr") != 0)))
-					mathexp.insert(mathexp.end(), { (char*)"-1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(" });
+					mathexp.push_back((char*)"-1"), insert_data(2, "*");
 				else
-					mathexp.insert(mathexp.end(), { (char*)")", (char*)")", (char*)")", tks[i]->value, (char*)"(", (char*)"(", (char*)"(" });
+					insert_data(3, tks[i]->value);
 			}
 			else if (strcmp(tks[i]->value, "*") == 0 || strcmp(tks[i]->value, "/") == 0)
-				mathexp.insert(mathexp.end(), { (char*)")", (char*)")", tks[i]->value, (char*)"(", (char*)"(" });
+				insert_data(2, tks[i]->value);
 			else if (strcmp(tks[i]->value, "^") == 0)
-				mathexp.insert(mathexp.end(), { (char*)")", tks[i]->value, (char*)"(" });
+				insert_data(1, tks[i]->value);
 			/*else if (strcmp(tks[i]->value, "!") == 0) {
 				mathexp.pop_back();
 				mathexp.insert(mathexp.end(), { (char*)"fact(", tks[i_prev]->value, (char*)")" });
@@ -140,16 +139,26 @@ int Parser::eval(std::vector<Token*>& tks)
 				mathexp.push_back((char*)tks[i]->value);
 		}
 		if (strcmp(tks[i]->type, "parenl") == 0)
-			//mathexp.push_back((char*)"((");
-			mathexp.insert(mathexp.end(), { (char*)"(", (char*)"(", (char*)"(", (char*)"(" });
+			insert_parens(4, "(");
 		if (strcmp(tks[i]->type, "parenr") == 0)
-			//mathexp.push_back((char*)"))");
-			mathexp.insert(mathexp.end(), { (char*)")", (char*)")", (char*)")", (char*)")" });
+			insert_parens(4, ")");
 	}
-	//mathexp.push_back((char*)"))");
-	mathexp.insert(mathexp.end(), { (char*)")", (char*)")", (char*)")", (char*)")" });
+	insert_parens(4, ")");
 
 	return 1;
+}
+
+void Parser::insert_data(int pcount, const char* val)
+{
+	insert_parens(pcount, ")");
+	mathexp.push_back((char*)val);
+	insert_parens(pcount, "(");
+}
+
+void Parser::insert_parens(int count, const char *paren)
+{
+	for (int i = 0; i < count; ++i)
+		mathexp.push_back((char*)paren);
 }
 
 bool Parser::is_operator(const char *c)

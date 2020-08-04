@@ -56,7 +56,7 @@ void ParseTree::traverse(const char *mode) const
 void ParseTree::traverse_prefix(Binop* root) const
 {
 	if (root == nullptr) return;
-	std::cout << root->val << std::endl;
+	std::cout << root->val << ' ';
 	traverse_prefix(root->left);
 	traverse_prefix(root->right);
 }
@@ -65,7 +65,7 @@ void ParseTree::traverse_infix(Binop* root) const
 {
 	if (root == nullptr) return;
 	traverse_infix(root->left);
-	std::cout << root->val << std::endl;
+	std::cout << root->val << ' ';
 	traverse_infix(root->right);
 }
 
@@ -74,7 +74,7 @@ void ParseTree::traverse_postfix(Binop* root) const
 	if (root == nullptr) return;
 	traverse_postfix(root->left);
 	traverse_postfix(root->right);
-	std::cout << root->val << std::endl;
+	std::cout << root->val << ' ';
 }
 
 void ParseTree::prune(Binop* root)
