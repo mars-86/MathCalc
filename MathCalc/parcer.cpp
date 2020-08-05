@@ -145,7 +145,7 @@ int Parser::check_expresion(std::vector<Token*>& tks)
 int Parser::eval(std::vector<Token*>& tks)
 {
 	insert_parens(4, "(");
-	int i_prev;
+	int i_prev, extra_paren_cntr = 0; // extra_paren_cntr counts paren that we don't want to insert at index position but at end
 	for (int i = 0; i < tks.size(); ++i) {
 		i_prev = i - 1;
 		if (strcmp(tks[i]->type, "number") == 0)
@@ -164,8 +164,14 @@ int Parser::eval(std::vector<Token*>& tks)
 			if (strcmp(tks[i]->value, "+") == 0)
 				insert_data(3, tks[i]->value);
 			else if (strcmp(tks[i]->value, "-") == 0) {
-				if (strcmp(tks[i + 1]->type, "number") == 0) // Precedence: i.e. -5 ^ 2 -> (-1 * 5) ^ 2
-					mathexp.insert(mathexp.end(), { (char*)"(", (char*)"-1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[++i]->value, (char*)")" });
+				if (strcmp(tks[i + 1]->type, "number") == 0) { // Precedence: i.e. -5 ^ 2 -> -1 * (5 ^ 2)
+					// We need to insert rparen at end to balance.
+					// If we insert rparen behind the value we'll lost * level of precedence and
+					// in a case such as -5^2 where ^ presedence is higher than * the calculator
+					// result would be 25 instead of -25.
+					mathexp.insert(mathexp.end(), { (char*)"(", (char*)"-1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[++i]->value/*, (char*)")"*/ });
+					extra_paren_cntr++;
+				}
 				else if (i == 0 || (strcmp(tks[i_prev]->type, "number") && (strcmp(tks[i_prev]->type, "parenr") != 0)))
 					mathexp.push_back((char*)"-1"), insert_data(2, "*");
 				else
@@ -187,7 +193,7 @@ int Parser::eval(std::vector<Token*>& tks)
 		if (strcmp(tks[i]->type, "parenr") == 0)
 			insert_parens(4, ")");
 	}
-	insert_parens(4, ")");
+	insert_parens(4 + extra_paren_cntr, ")");
 
 	return 1;
 }
