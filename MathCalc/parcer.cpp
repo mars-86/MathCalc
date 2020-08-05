@@ -28,10 +28,10 @@ ParseTree& Parser::parse(std::vector<Token*>& tks)
 int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 {
 	for (int i = 0; i < mvtemp.size(); ++i) {
+		int it = i - 2;
 		if (mvtemp[i] == "(") continue;
 		if (mvtemp[i] == ")") {
 			mvtemp.erase(mvtemp.begin() + i);
-			int it = i - 2;
 			//std::cout << mvtemp[it] << std::endl;
 			if (is_operator(mvtemp[it])) {
 				// Don't want to remove lparen while successive operations (op_count > 0)
@@ -53,6 +53,10 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 						op->right = node_stack.top(), node_stack.pop();
 						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 					}
+					/*else if (strcmp(mvtemp[it + 1], "x") == 0) { // num +- var
+						op->val = (char*)mvtemp[it - 1];
+						op->variable = parse_tree.create_node((char*)mvtemp[it + 1]);
+					}*/
 					else { // num +- num
 						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 						op->right = parse_tree.create_node((char*)mvtemp[it + 1]);
@@ -64,13 +68,14 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 					mvtemp.insert(mvtemp.begin() + it - 1, (char*)"_NODE_"); //insert new value
 					mvtemp.erase(mvtemp.begin() + it, mvtemp.begin() + it + 3); // erase pre-operator operator post-operator
 
-					if (op_count == 0) mvtemp.erase(mvtemp.begin() + it - 2);					
+					if (op_count == 0/* && !is_operator((mvtemp[0 + it - 2]))*/) mvtemp.erase(mvtemp.begin() + it - 2);
 					i = (it - 2) < 0 ? 0 : it - 2;
 					it = (it - 3) < 0 ? 0 : it - 3;
 					// std::cout << "OP: " << mvtemp[it] << std::endl;
 					// store node in stack
 					node_stack.push(op);
 					++op_count;
+					std::cout << mvtemp[it] << std::endl;
 				} while (is_operator(mvtemp[it]));
 				// store node in stack
 				// node_stack.push(op);
@@ -83,6 +88,35 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 			for (int i = 0; i < mvtemp.size(); ++i)
 				std::cout << mvtemp[i];
 			std::cout << std::endl;
+		}
+		else if (is_operator(mvtemp[it + 2]) && is_operator(mvtemp[it])) { // i.e. 3*3* or 3+3+ resolves same precedence cases
+			Binop* op;
+			op = parse_tree.create_node(mvtemp[it]);
+			// _NODE_ +- _NODE_
+			if (strcmp(mvtemp[it - 1], "_NODE_") == 0 && strcmp(mvtemp[it + 1], "_NODE_") == 0) {
+				op->right = node_stack.top(), node_stack.pop();
+				op->left = node_stack.top(), node_stack.pop();
+			}
+			else if (strcmp(mvtemp[it - 1], "_NODE_") == 0) { // _NODE_ +- num
+				op->right = parse_tree.create_node((char*)mvtemp[it + 1]);
+				op->left = node_stack.top(), node_stack.pop();
+			}
+			else if (strcmp(mvtemp[it - 1], "_NODE_") == 0) { // num +- _NODE_
+				op->right = node_stack.top(), node_stack.pop();
+				op->left = parse_tree.create_node((char*)mvtemp[it + 1]);
+			}
+			/*else if (strcmp(mvtemp[it + 1], "x") == 0) { // num +- var
+				op->val = (char*)mvtemp[it - 1];
+				op->variable = parse_tree.create_node((char*)mvtemp[it + 1]);
+			}*/
+			else { // num +- num
+				op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
+				op->right = parse_tree.create_node((char*)mvtemp[it + 1]);
+			}
+			mvtemp.insert(mvtemp.begin() + it - 1, (char*)"_NODE_"); //insert new value
+			mvtemp.erase(mvtemp.begin() + it, mvtemp.begin() + it + 3);
+
+			node_stack.push(op);
 		}
 		//if (mvtemp.size() == 1) break;
 	}
@@ -116,6 +150,16 @@ int Parser::eval(std::vector<Token*>& tks)
 		i_prev = i - 1;
 		if (strcmp(tks[i]->type, "number") == 0)
 			mathexp.push_back((char*)tks[i]->value);
+		/*if (strcmp(tks[i]->type, "variable") == 0) {
+			if (i > 0 && (strcmp(tks[i_prev]->type, "number") == 0)) {
+				insert_data(2, "*");
+				mathexp.push_back((char*)tks[i]->value);
+			}
+			else { // if previous val is an operator, paren, etc
+				mathexp.insert(mathexp.end(), { (char*)"(", (char*)"1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[i]->value, (char*)")" });
+				//mathexp.push_back((char*)tks[i]->value);
+			}
+		}*/
 		if (strcmp(tks[i]->type, "operator") == 0) {
 			if (strcmp(tks[i]->value, "+") == 0)
 				insert_data(3, tks[i]->value);

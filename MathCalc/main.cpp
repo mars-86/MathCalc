@@ -28,9 +28,11 @@ int main(int argc, char* argv[])
     Lexer tknr(argv[1]);
     */
     //Lexer tknr("(6/(-2))");
-    Lexer tknr("6x+2x");
-    //Lexer tknr("5^2^2^2"); // FIX: This kind of expression or else 5^2^2^2 -> 625 BAD!
-    //Lexer tknr("(5^2)^(2^2))"); // -> Throws error
+    //Lexer tknr("(6(2+1))"); // FIX: Must add * before (
+    //Lexer tknr("1+1+2+3*5+4*1/1");
+    Lexer tknr("3*3*3+3*3");
+    //Lexer tknr("5^2^2^2");
+    //Lexer tknr("((5^2)^(2^2))");
     std::vector<Token*> tk = tknr.get_tokens();
 
     for (auto i : tk)
