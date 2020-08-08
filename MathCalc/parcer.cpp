@@ -53,10 +53,10 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 						op->right = node_stack.top(), node_stack.pop();
 						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 					}
-					/*else if (strcmp(mvtemp[it + 1], "x") == 0) { // num +- var
+					else if (strcmp(mvtemp[it + 1], "x") == 0) { // num +- var
 						op->val = (char*)mvtemp[it - 1];
 						op->variable = parse_tree.create_node((char*)mvtemp[it + 1]);
-					}*/
+					}
 					else { // num +- num
 						op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 						op->right = parse_tree.create_node((char*)mvtemp[it + 1]);
@@ -105,10 +105,10 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 				op->right = node_stack.top(), node_stack.pop();
 				op->left = parse_tree.create_node((char*)mvtemp[it + 1]);
 			}
-			/*else if (strcmp(mvtemp[it + 1], "x") == 0) { // num +- var
+			else if (strcmp(mvtemp[it + 1], "x") == 0) { // num +- var
 				op->val = (char*)mvtemp[it - 1];
 				op->variable = parse_tree.create_node((char*)mvtemp[it + 1]);
-			}*/
+			}
 			else { // num +- num
 				op->left = parse_tree.create_node((char*)mvtemp[it - 1]);
 				op->right = parse_tree.create_node((char*)mvtemp[it + 1]);
@@ -150,16 +150,16 @@ int Parser::eval(std::vector<Token*>& tks)
 		i_prev = i - 1;
 		if (strcmp(tks[i]->type, "number") == 0)
 			mathexp.push_back((char*)tks[i]->value);
-		/*if (strcmp(tks[i]->type, "variable") == 0) {
+		if (strcmp(tks[i]->type, "variable") == 0) {
 			if (i > 0 && (strcmp(tks[i_prev]->type, "number") == 0)) {
 				insert_data(2, "*");
 				mathexp.push_back((char*)tks[i]->value);
 			}
 			else { // if previous val is an operator, paren, etc
-				mathexp.insert(mathexp.end(), { (char*)"(", (char*)"1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[i]->value, (char*)")" });
-				//mathexp.push_back((char*)tks[i]->value);
+				mathexp.insert(mathexp.end(), { (char*)"(", (char*)"1", (char*)")", (char*)")", (char*)"*", (char*)"(", (char*)"(", (char*)tks[i]->value,/*, (char*)")"*/ });
+				extra_paren_cntr++;
 			}
-		}*/
+		}
 		if (strcmp(tks[i]->type, "operator") == 0) {
 			if (strcmp(tks[i]->value, "+") == 0)
 				insert_data(3, tks[i]->value);
