@@ -39,7 +39,7 @@ Binop* ParseTree::create_node(const char* val)
 	size_t valen = strlen(val);
 	rt->val = (char*)malloc((valen + 1) * sizeof(char));
 	memcpy_s(rt->val, (valen + 1), val, valen), rt->val[valen] = '\0';
-	rt->left = rt->right = nullptr;
+	rt->variable = rt->left = rt->right = nullptr;
 	return rt;
 }
 

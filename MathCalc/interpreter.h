@@ -14,6 +14,7 @@ public:
 private:
 	void resolv(ParseTree& tree, Binop* root);
 	bool is_operator(const char* c);
+	int check_variables(const Binop* root) const;
 };
 
 #endif // !_MATH_CALC_INTERPRETER_H_

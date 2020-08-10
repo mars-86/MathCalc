@@ -4,6 +4,7 @@
 
 typedef struct _Binop {
 	char* val;
+	_Binop* variable;
 	_Binop* left;
 	_Binop* right;
 } Binop;
