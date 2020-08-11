@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\nonlinear">
+      <UniqueIdentifier>{bdcb548e-325e-44aa-8b9d-6f33ef7ca836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\nonlinear">
+      <UniqueIdentifier>{cbda7980-8dfe-4d40-ba9c-2b26485a907e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,6 +35,15 @@
     </ClCompile>
     <ClCompile Include="interpreter.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="calculator.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\bisection.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\nonlinear.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +67,15 @@
     </ClInclude>
     <ClInclude Include="interpreter.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="calculator.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\bisection.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\nonlinear.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -147,18 +147,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="calculator.cpp" />
     <ClCompile Include="interpreter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="lexer.cpp" />
+    <ClCompile Include="nonlinear\bisection.cpp" />
+    <ClCompile Include="nonlinear\nonlinear.cpp" />
     <ClCompile Include="parcer.cpp" />
     <ClCompile Include="parse_tree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calculator.h" />
     <ClInclude Include="interpreter.h" />
     <ClInclude Include="mathconst.h" />
     <ClInclude Include="mathfunc.h" />
     <ClInclude Include="multilist.h" />
     <ClInclude Include="lexer.h" />
+    <ClInclude Include="nonlinear\bisection.h" />
+    <ClInclude Include="nonlinear\nonlinear.h" />
     <ClInclude Include="parser.h" />
     <ClInclude Include="parse_tree.h" />
   </ItemGroup>

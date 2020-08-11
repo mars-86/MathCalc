@@ -66,16 +66,19 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 					buff = (char*)malloc(len * sizeof(char));
 					memcpy(buff, buff_temp, len);*/
 					mvtemp.insert(mvtemp.begin() + it - 1, (char*)"_NODE_"); //insert new value
+					//std::cout << "ER: " << mvtemp[it] << mvtemp[it + 3] << std::endl;
 					mvtemp.erase(mvtemp.begin() + it, mvtemp.begin() + it + 3); // erase pre-operator operator post-operator
 
 					if (op_count == 0/* && !is_operator((mvtemp[0 + it - 2]))*/) mvtemp.erase(mvtemp.begin() + it - 2);
+
 					i = (it - 2) < 0 ? 0 : it - 2;
-					it = (it - 3) < 0 ? 0 : it - 3;
+					it = (it - 2) < 0 ? 0 : it - 2;
 					// std::cout << "OP: " << mvtemp[it] << std::endl;
 					// store node in stack
 					node_stack.push(op);
 					++op_count;
-					std::cout << mvtemp[it] << std::endl;
+
+					//getchar();
 				} while (is_operator(mvtemp[it]));
 				// store node in stack
 				// node_stack.push(op);
@@ -118,6 +121,7 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 
 			node_stack.push(op);
 		}
+		//getchar();
 		//if (mvtemp.size() == 1) break;
 	}
 	parse_tree.insert_node(node_stack.top());
