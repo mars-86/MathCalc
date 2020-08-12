@@ -7,8 +7,18 @@ Bisection::Bisection(int it)
 
 Bisection::~Bisection() {}
 
-void Bisection::apply(int xl, int xh)
+void Bisection::apply(std::string& equation, int xl, int xh)
 {
+	base_calc.resolv(equation.c_str());
+	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
+	return;
+	//base_calc.replace_v();
+	base_calc.resolv("-(5^2)+-5");
+	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
+	base_calc.resolv("2-1");
+	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
+	base_calc.resolv("3*8-10/2");
+	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
 	for (int i = 0; i < iterations; ++i) {
 		double xlt = (double)xl, xht = (double)xh, xr = (xlt + xht) / 2, fxl = 0, fxh = 0, fxr = 0;
 		std::vector<double> row = {
@@ -22,19 +32,4 @@ void Bisection::apply(int xl, int xh)
 		};
 		grid.push_back(row);
 	}
-}
-
-int Bisection::get_iterations(void) const
-{
-	return iterations;
-}
-
-void Bisection::set_iterations(int it)
-{
-	iterations = it;
-}
-
-std::vector<std::vector<double>> Bisection::get_grid(void) const
-{
-	return grid;
 }

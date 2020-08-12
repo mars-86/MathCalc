@@ -19,24 +19,15 @@
     <Filter Include="Archivos de encabezado\nonlinear">
       <UniqueIdentifier>{cbda7980-8dfe-4d40-ba9c-2b26485a907e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\base_calc">
+      <UniqueIdentifier>{2b1f68b8-1635-4eee-888f-db6e92711bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\base_calc">
+      <UniqueIdentifier>{55c87305-2da4-4df1-b65c-f3ab4aded446}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="lexer.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="parcer.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="parse_tree.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="interpreter.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="calculator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="nonlinear\bisection.cpp">
@@ -45,37 +36,70 @@
     <ClCompile Include="nonlinear\nonlinear.cpp">
       <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
+    <ClCompile Include="nonlinear\regula_falsi.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\base_calc.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\interpreter.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\lexer.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\parcer.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\parse_tree.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\tools.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="multilist.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="mathfunc.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="mathconst.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="lexer.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="parser.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="parse_tree.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="interpreter.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="calculator.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="nonlinear\bisection.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
     <ClInclude Include="nonlinear\nonlinear.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\strategy.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\context.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\regula_falsi.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\base_calc.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\interpreter.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\lexer.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\mathconst.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\mathfunc.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\multilist.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\parse_tree.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\parser.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\tools.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

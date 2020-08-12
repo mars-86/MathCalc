@@ -14,9 +14,16 @@ int Interpreter::interpret(ParseTree& tree)
 {
 	tree.traverse("infix");
 	resolv(tree, tree.get_parse_tree());
-	std::cout << "\nRes: ";
-	tree.traverse("infix");
+	//std::cout << "\nRes: ";
+	//tree.traverse("infix");
+	_result = tree.get_result_as_string();
+	tree.prune();
 	return 0;
+}
+
+const std::string Interpreter::get_result(void) const
+{
+	return _result;
 }
 
 // TODO

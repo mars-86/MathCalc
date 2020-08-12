@@ -147,26 +147,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="calculator.cpp" />
-    <ClCompile Include="interpreter.cpp" />
+    <ClCompile Include="base_calc\base_calc.cpp" />
+    <ClCompile Include="base_calc\interpreter.cpp" />
+    <ClCompile Include="base_calc\lexer.cpp" />
+    <ClCompile Include="base_calc\parcer.cpp" />
+    <ClCompile Include="base_calc\parse_tree.cpp" />
+    <ClCompile Include="base_calc\tools.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="lexer.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
     <ClCompile Include="nonlinear\nonlinear.cpp" />
-    <ClCompile Include="parcer.cpp" />
-    <ClCompile Include="parse_tree.cpp" />
+    <ClCompile Include="nonlinear\regula_falsi.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="calculator.h" />
-    <ClInclude Include="interpreter.h" />
-    <ClInclude Include="mathconst.h" />
-    <ClInclude Include="mathfunc.h" />
-    <ClInclude Include="multilist.h" />
-    <ClInclude Include="lexer.h" />
+    <ClInclude Include="base_calc\base_calc.h" />
+    <ClInclude Include="base_calc\interpreter.h" />
+    <ClInclude Include="base_calc\lexer.h" />
+    <ClInclude Include="base_calc\mathconst.h" />
+    <ClInclude Include="base_calc\mathfunc.h" />
+    <ClInclude Include="base_calc\multilist.h" />
+    <ClInclude Include="base_calc\parser.h" />
+    <ClInclude Include="base_calc\parse_tree.h" />
+    <ClInclude Include="base_calc\tools.h" />
     <ClInclude Include="nonlinear\bisection.h" />
+    <ClInclude Include="nonlinear\context.h" />
     <ClInclude Include="nonlinear\nonlinear.h" />
-    <ClInclude Include="parser.h" />
-    <ClInclude Include="parse_tree.h" />
+    <ClInclude Include="nonlinear\regula_falsi.h" />
+    <ClInclude Include="nonlinear\strategy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

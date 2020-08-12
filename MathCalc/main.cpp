@@ -1,9 +1,7 @@
 ﻿#include <iostream>
-#include "calculator.h"
-#include "nonlinear/bisection.h"
-#include "lexer.h"
-#include "parser.h"
-#include "interpreter.h"
+#include "base_calc/base_calc.h"
+#include "nonlinear/nonlinear.h"
+#include <string>
 
 // TODO
 // float numbers
@@ -12,19 +10,34 @@
 // steps
 // malformed expressions
 
-int replace_v(const char* src, char* dest, int var, int val)
+int replace_v(const char* src, char* dest, int var, const char* val)
 {
     while (*src != '\0') {
         if (*src == var) {
             *dest++ = '*';
-            *dest = val;
+            const char* tval = val;
+            while (*tval != '\0')
+                *dest++ = *tval++;
         }
         else
-            *dest = *src;
-        ++src, ++dest;
+            *dest++ = *src;
+        ++src;
     }
     *dest = '\0';
 
+    return 0;
+}
+
+int replace_v(const std::string& src, std::string& dest, int var, const std::string& val)
+{
+    for (auto i = src.begin(); i != src.end(); ++i) {
+        if (*i == var) {
+            dest.push_back('*');
+            for (auto i2 = val.begin(); i2 != val.end(); ++i2) dest.push_back(*i2);
+        }
+        else
+            dest.push_back(*i);
+    }
     return 0;
 }
 
@@ -63,28 +76,22 @@ int main(int argc, char* argv[])
     std::cout << "INTERPRETER" << std::endl;
     Interpreter interpreter;
     interpreter.interpret(parser.get_parse_tree());*/
-    
-    //Calculator calc;
-    //calc.resolv("5.2+5.5");
 
-    /*
-    char eq[20];
-    replace_v("6x+2x^2", eq, 'x', '5');
+    /*Calculator calc;
+    //calc.resolv("(6*5+2)^(5^2)");
+
+    std::string eq;
+    replace_v("6x+2x^2", eq, 'x', "12.654");
 
     std::cout << eq << std::endl;
 
-    calc.resolv("6*5+2*5^2");
+    calc.resolv(eq.c_str());
     */
-    /*Bisection bs(10);
+    Nonlinear nonlinear("2-1");
 
-    bs.apply(0, 1);
-    auto gd = bs.get_grid();
+    nonlinear.apply(0, 1);
 
-    for (auto i : gd) {
-        for (int j = 0; j < i.size(); ++j)
-            std::cout << i.at(j) << ' ';
-        std::cout << std::endl;
-    }*/
+    nonlinear.show_grid();
 
     return 0;
 }

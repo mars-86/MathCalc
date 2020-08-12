@@ -11,10 +11,12 @@ public:
 	~Interpreter();
 
 	int interpret(ParseTree& tree);
+	const std::string get_result(void) const;
 private:
 	void resolv(ParseTree& tree, Binop* root);
 	bool is_operator(const char* c);
 	int check_variables(const Binop* root) const;
+	std::string _result;
 };
 
 #endif // !_MATH_CALC_INTERPRETER_H_

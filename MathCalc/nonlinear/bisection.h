@@ -3,21 +3,14 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include "strategy.h"
 
-class Bisection {
+class Bisection : public Strategy {
 public:
 	Bisection(int it);
 	~Bisection();
 
-	int get_iterations(void) const;
-	void set_iterations(int it);
-	void apply(int xl, int xh);
-	std::vector<std::vector<double>> get_grid(void) const;
-private:
-	int iterations;
-	std::vector<std::vector<double>> grid; // grid holds iterations
-	
+	void apply(std::string& equation, int xl, int xh) override;
 };
 
 #endif // !_MATH_CALC_BISECTION_H_
