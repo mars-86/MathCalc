@@ -10,8 +10,16 @@ class Strategy {
 public:
 	virtual ~Strategy() {};
 	virtual void apply(std::string& equation, int xl, int xh) = 0;
+	virtual double get_xr(double xl, double xh, double fxl, double fxh) = 0;
 
 	std::vector<std::vector<double>> get_grid(void) const { return grid; }
+	double resolv_eq(const std::string& eq, double val)
+	{
+		std::string func;
+		base_calc.replace_v(eq, func, 'x', std::to_string(val));
+		base_calc.resolv(func.c_str()), func.clear();
+		return std::stod(base_calc.get_result());
+	}
 protected:
 	BaseCalc base_calc;
 	int iterations;

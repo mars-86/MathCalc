@@ -11,6 +11,7 @@ public:
 	~RegulaFalsi();
 
 	void apply(std::string& equation, int xl, int xh) override;
+	double get_xr(double xl, double xh, double fxl, double fxh) override;
 };
 
 #endif // !_MATH_CALC_REGULA_FALSI_H_

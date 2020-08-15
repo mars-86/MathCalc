@@ -105,7 +105,6 @@ void Lexer::free_token_vector(void)
 		_tokens.pop_back();
 	}
 	//_tokens.clear();
-	std::cout << _tokens.size();
 }
 
 int Lexer::add_token(const char* type, const char* value)

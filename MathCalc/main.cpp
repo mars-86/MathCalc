@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
 
     calc.resolv(eq.c_str());
     */
-    Nonlinear nonlinear("2-1");
+    Nonlinear nonlinear("2.718281^(-1x)-1x", "regula_falsi"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
 
     nonlinear.apply(0, 1);
 

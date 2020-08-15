@@ -9,18 +9,11 @@ Bisection::~Bisection() {}
 
 void Bisection::apply(std::string& equation, int xl, int xh)
 {
-	base_calc.resolv(equation.c_str());
-	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
-	return;
-	//base_calc.replace_v();
-	base_calc.resolv("-(5^2)+-5");
-	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
-	base_calc.resolv("2-1");
-	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
-	base_calc.resolv("3*8-10/2");
-	std::cout << "BISECTION RES: " << std::stod(base_calc.get_result()) << std::endl;
+	double xlt = (double)xl, xht = (double)xh, xr = get_xr(xlt, xht);
 	for (int i = 0; i < iterations; ++i) {
-		double xlt = (double)xl, xht = (double)xh, xr = (xlt + xht) / 2, fxl = 0, fxh = 0, fxr = 0;
+		double fxl = resolv_eq(equation, xlt);
+		double fxh = resolv_eq(equation, xht);
+		double fxr = resolv_eq(equation, xr);
 		std::vector<double> row = {
 			xlt, // xlo
 			xht, // xhi
@@ -31,5 +24,12 @@ void Bisection::apply(std::string& equation, int xl, int xh)
 			xht - xr // e (xhi - xr)
 		};
 		grid.push_back(row);
+		(fxr < 0) ? xht = xr : xlt = xr;
+		xr = get_xr(xlt, xht);
 	}
+}
+
+double Bisection::get_xr(double xl, double xh, double fxl, double fxh)
+{
+	return (xl + xh) / 2;
 }

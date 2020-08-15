@@ -7,14 +7,15 @@
 #include "bisection.h"
 #include "regula_falsi.h"
 
+// TODO -> delete _function prop
 class Context {
 private:
 	Strategy* _strategy;
 	std::string _function;
 
 public:
-	Context(const std::string& function, Strategy* strategy = nullptr)
-		: _function(function), _strategy(strategy) {}
+	Context(Strategy* strategy = nullptr)
+		: _strategy(strategy) {}
 	~Context() { delete _strategy; }
 
 	void set_strategy(Strategy* strategy)
@@ -23,9 +24,9 @@ public:
 	        _strategy = strategy;
 	}
 
-	void apply(int xl, int xh) // open method
+	void apply(std::string equation, int xl, int xh) // open method
 	{
-		_strategy->apply(_function, xl, xh);
+		_strategy->apply(equation, xl, xh);
 	}
 
 	std::vector<std::vector<double>> get_grid(void) const
