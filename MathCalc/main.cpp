@@ -77,9 +77,12 @@ int main(int argc, char* argv[])
     Interpreter interpreter;
     interpreter.interpret(parser.get_parse_tree());*/
 
-    /*Calculator calc;
+    //BaseCalc calc;
     //calc.resolv("(6*5+2)^(5^2)");
-
+    //std::cout << calc.gen_var_val_pair("x", "33").first << calc.gen_var_val_pair("x", "33").second << std::endl;
+    //calc.resolv("2x+3x", { calc.gen_var_val_pair("x", "33") });
+    //std::cout << calc.get_result() << std::endl;
+    /*
     std::string eq;
     replace_v("6x+2x^2", eq, 'x', "12.654");
 
@@ -87,7 +90,11 @@ int main(int argc, char* argv[])
 
     calc.resolv(eq.c_str());
     */
-    Nonlinear nonlinear("2.718281^(-1x)-1x", "regula_falsi"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
+    BaseCalc calc;
+    std::cout << calc.resolv("(6*5+2)^(5^2)").get_result() << std::endl;;
+    return 0;
+    Nonlinear nonlinear("2.718281^(-x)-x", "bisection", 20); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
+    // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
 
     nonlinear.apply(0, 1);
 

@@ -11,6 +11,7 @@ public:
 
 	int replace_v(const char* src, char* dest, int var, const char* val);
 	int replace_v(const std::string& src, std::string& dest, int var, const std::string& val);
+	std::pair<std::string, const char*> gen_var_val_pair(std::string var, const char* val);
 private:
 
 };

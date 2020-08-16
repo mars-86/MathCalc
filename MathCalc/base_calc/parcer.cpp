@@ -12,6 +12,12 @@ Parser::Parser(std::vector<Token*>& tks)
 	parse(tks);
 }
 
+Parser::Parser(std::vector<Token*>& tks, std::map<std::string, const char*>& var_val)
+	: _var_val(var_val)
+{
+	parse(tks);
+}
+
 Parser::~Parser()
 {
 }
@@ -89,9 +95,11 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 				mvtemp.erase(mvtemp.begin() + it);
 				i = it;
 			}
+			/*
 			for (int i = 0; i < mvtemp.size(); ++i)
 				std::cout << mvtemp[i];
 			std::cout << std::endl;
+			*/
 		}
 		else if (is_operator(mvtemp[it + 2]) && is_operator(mvtemp[it])) { // i.e. 3*3* or 3+3+ resolves same precedence cases
 			Binop* op;
@@ -142,9 +150,21 @@ ParseTree& Parser::get_parse_tree(void)
 	return parse_tree;
 }
 
+void Parser::set_var_val(std::map<std::string, const char*> var_val)
+{
+	_var_val = var_val;
+}
+
 int Parser::check_expresion(std::vector<Token*>& tks)
 {
 	return 0;
+}
+
+void replace_var(std::vector<char*>& m, const std::string& var, const char* val)
+{
+	for (int i = 0; i < m.size(); ++i)
+		if (m[i] == var)
+			m.insert(m.begin() + i,(char*)val), m.erase(m.begin() + i + 1);
 }
 
 int Parser::eval(std::vector<Token*>& tks)
@@ -201,6 +221,14 @@ int Parser::eval(std::vector<Token*>& tks)
 	}
 	insert_parens(4 + extra_paren_cntr, ")");
 
+	if (!_var_val.empty())
+		for (auto i : _var_val)
+			replace_var(mathexp, i.first, i.second);
+	/*
+	for (auto i : mathexp)
+		std::cout << i;
+	std::cout << std::endl;
+	*/
 	return 1;
 }
 

@@ -40,3 +40,9 @@ int Tools::replace_v(const std::string& src, std::string& dest, int var, const s
     }
     return 0;
 }
+
+// Generates a pair of values of the type {variable : value}
+std::pair<std::string, const char*> Tools::gen_var_val_pair(std::string var, const char* val)
+{
+    return std::pair<std::string, const char*>(var, val);
+}
