@@ -1,17 +1,17 @@
-#ifndef _MATH_CALC_NONLINEAR_H_
-#define _MATH_CALC_NONLINEAR_H_
+#ifndef _MATH_CALC_DIFFERENTIAL_H_
+#define _MATH_CALC_DIFFERENTIAL_H_
 #pragma once
 
 #include <iostream>
 #include <string>
 #include "context.h"
 
-class Nonlinear {
+class Differential {
 public:
-	Nonlinear(const std::string& equation, const std::string& method = "bisection", int iterations = 10); // bisection by default
-	~Nonlinear();
+	Differential(const std::string& equation, const std::string& method = "bisection", int iterations = 10); // bisection by default
+	~Differential();
 
-	void apply(int xl, int xh);
+	void apply(double val);
 	void set_method(const std::string& method);
 	const std::string& get_method(void) const;
 	void show_grid(void);
@@ -22,4 +22,4 @@ private:
 	std::string _equation;
 };
 
-#endif // !_MATH_CALC_NONLINEAR_H_
+#endif // !_MATH_CALC_DIFFERENTIAL_H_

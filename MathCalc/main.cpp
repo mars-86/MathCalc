@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "base_calc/base_calc.h"
 #include "nonlinear/nonlinear.h"
+#include "differential/differential.h"
 #include <string>
 
 // TODO
@@ -90,15 +91,23 @@ int main(int argc, char* argv[])
 
     calc.resolv(eq.c_str());
     */
-    BaseCalc calc;
+    /*BaseCalc calc;
     std::cout << calc.resolv("(6*5+2)^(5^2)").get_result() << std::endl;;
-    return 0;
-    Nonlinear nonlinear("2.718281^(-x)-x", "bisection", 20); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
+    return 0;*/
+    /*Nonlinear nonlinear("2.718281^(-x)-x"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
 
     nonlinear.apply(0, 1);
 
-    nonlinear.show_grid();
+    nonlinear.show_grid();*/
+    const char* cn = "0.00000001";
+    double n = 0.00000001;
+    double n2 = 0.00000001;
+    std::cout << std::stod(cn) << std::endl;
+
+    Differential dif("2.718281^(-x)-x");
+
+    dif.apply((long double)0);
 
     return 0;
 }

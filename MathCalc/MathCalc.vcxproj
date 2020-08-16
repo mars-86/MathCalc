@@ -153,6 +153,9 @@
     <ClCompile Include="base_calc\parcer.cpp" />
     <ClCompile Include="base_calc\parse_tree.cpp" />
     <ClCompile Include="base_calc\tools.cpp" />
+    <ClCompile Include="differential\differential.cpp" />
+    <ClCompile Include="differential\differentiation.cpp" />
+    <ClCompile Include="differential\regula_falsi.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
     <ClCompile Include="nonlinear\nonlinear.cpp" />
@@ -168,6 +171,11 @@
     <ClInclude Include="base_calc\parser.h" />
     <ClInclude Include="base_calc\parse_tree.h" />
     <ClInclude Include="base_calc\tools.h" />
+    <ClInclude Include="differential\context.h" />
+    <ClInclude Include="differential\differential.h" />
+    <ClInclude Include="differential\differentiation.h" />
+    <ClInclude Include="differential\regula_falsi.h" />
+    <ClInclude Include="differential\strategy.h" />
     <ClInclude Include="nonlinear\bisection.h" />
     <ClInclude Include="nonlinear\context.h" />
     <ClInclude Include="nonlinear\nonlinear.h" />

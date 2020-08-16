@@ -14,10 +14,10 @@ public:
 	virtual double get_xr(double xl, double xh, double fxl, double fxh) = 0;
 
 	std::vector<std::vector<double>> get_grid(void) const { return grid; }
-	double resolv_eq(const std::string& eq, const std::map<std::string, const char*> var_val)
+	double resolv_eq(const std::string& eq, const std::map<std::string, std::vector<char*>> var_val)
 	{
 		std::string f = eq;
-		base_calc.resolv(f.c_str(), var_val), f.clear();
+		base_calc.resolv(f, var_val), f.clear();
 		return std::stod(base_calc.get_result());
 	}
 protected:

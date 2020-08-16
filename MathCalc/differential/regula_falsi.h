@@ -10,7 +10,7 @@ public:
 	RegulaFalsi(int it);
 	~RegulaFalsi();
 
-	void apply(std::string& equation, int xl, int xh) override;
+	void apply(std::string& equation, double val) override;
 	double get_xr(double xl, double xh, double fxl, double fxh) override;
 };
 

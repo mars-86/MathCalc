@@ -25,6 +25,12 @@
     <Filter Include="Archivos de origen\base_calc">
       <UniqueIdentifier>{55c87305-2da4-4df1-b65c-f3ab4aded446}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\differential">
+      <UniqueIdentifier>{245f0e37-d898-4c08-86ba-69544fba2f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\differential">
+      <UniqueIdentifier>{e323f89b-7337-4865-8b1c-0318b334999a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,6 +62,15 @@
     </ClCompile>
     <ClCompile Include="base_calc\tools.cpp">
       <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\differential.cpp">
+      <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\differentiation.cpp">
+      <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\regula_falsi.cpp">
+      <Filter>Archivos de origen\differential</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +115,21 @@
     </ClInclude>
     <ClInclude Include="base_calc\tools.h">
       <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\context.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differential.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differentiation.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\regula_falsi.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\strategy.h">
+      <Filter>Archivos de encabezado\differential</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

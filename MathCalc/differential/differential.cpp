@@ -1,4 +1,4 @@
-#include "nonlinear.h"
+#include "differential.h"
 #include <iomanip>
 // TODO -> check structure of strategy, the context must save equation and then passed to method
 inline void print_line(void)
@@ -23,34 +23,34 @@ inline void print_head(void)
 	print_line();
 }
 
-Nonlinear::Nonlinear(const std::string& equation, const std::string& method, int iterations)
+Differential::Differential(const std::string& equation, const std::string& method, int iterations)
 	: _equation(equation), _method(method)
 {
 	if (_method == "regula_falsi")
-		_context = new Context(new RegulaFalsi(iterations));
+		_context = nullptr; // new Context(new RegulaFalsi(iterations));
 	else
-		_context = new Context(new Bisection(iterations));
+		_context = new Context(new Differentiation());
 }
 
-Nonlinear::~Nonlinear()
+Differential::~Differential()
 {
 	delete _context;
 }
 
-void Nonlinear::apply(int xl, int xh)
+void Differential::apply(double val)
 {
 	if (_method == "")
 		;
 	else
-		_context->apply(_equation, xl, xh);
+		_context->apply(_equation, val);
 }
 
-std::vector<std::vector<double>> Nonlinear::get_grid() const
+std::vector<std::vector<double>> Differential::get_grid() const
 {
 	return _context->get_grid();
 }
 
-void Nonlinear::show_grid(void)
+void Differential::show_grid(void)
 {
 	auto gd = get_grid();
 
@@ -63,12 +63,12 @@ void Nonlinear::show_grid(void)
 	}
 }
 
-void Nonlinear::set_method(const std::string& method)
+void Differential::set_method(const std::string& method)
 {
 	_method = method;
 }
 
-const std::string& Nonlinear::get_method(void) const
+const std::string& Differential::get_method(void) const
 {
 	return _method;
 }

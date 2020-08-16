@@ -41,8 +41,23 @@ int Tools::replace_v(const std::string& src, std::string& dest, int var, const s
     return 0;
 }
 
-// Generates a pair of values of the type {variable : value}
-std::pair<std::string, const char*> Tools::gen_var_val_pair(std::string var, const char* val)
+void Tools::replace_var(std::string& m, const char var, std::vector<char*>& val)
 {
-    return std::pair<std::string, const char*>(var, val);
+    for (int i = 0; i < m.size(); ++i)
+        if (m[i] == var) {
+            int len = 0;
+            for (auto j : val) {
+                // this way we insert in correct order, otherwise vals are inserted backwards
+                m.insert((int)(i + len), (char*)j);
+                len += strlen(j);
+            }
+            i += len;
+            m.erase(m.begin() + i); // remove var
+        }
+}
+
+// Generates a pair of values of the type {variable : value}
+std::pair<std::string, std::vector<char*>> Tools::gen_var_val_pair(std::string var, std::vector<char*>& val)
+{
+    return std::pair<std::string, std::vector<char*>>(var, val);
 }

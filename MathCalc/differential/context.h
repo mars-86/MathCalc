@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "strategy.h"
-#include "bisection.h"
+#include "differentiation.h"
 #include "regula_falsi.h"
 
 // TODO -> delete _function prop
@@ -24,9 +24,9 @@ public:
 	        _strategy = strategy;
 	}
 
-	void apply(std::string equation, int xl, int xh) // open method
+	void apply(std::string equation, double val)
 	{
-		_strategy->apply(equation, xl, xh);
+		_strategy->apply(equation, val);
 	}
 
 	std::vector<std::vector<double>> get_grid(void) const

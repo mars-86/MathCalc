@@ -11,9 +11,16 @@ void Bisection::apply(std::string& equation, int xl, int xh)
 {
 	double xlt = (double)xl, xht = (double)xh, xr = get_xr(xlt, xht);
 	for (int i = 0; i < iterations; ++i) {
-		double fxl = resolv_eq(equation, { base_calc.gen_var_val_pair("x", std::to_string(xlt).c_str()) });
-		double fxh = resolv_eq(equation, { base_calc.gen_var_val_pair("x", std::to_string(xht).c_str()) });
-		double fxr = resolv_eq(equation, { base_calc.gen_var_val_pair("x", std::to_string(xr).c_str()) });
+		std::string s1 = std::to_string(xlt);
+		std::vector<char*> fxls{ (char*)s1.c_str() };
+		std::string s2 = std::to_string(xht);
+		std::vector<char*> fxhs{ (char*)s2.c_str() };
+		std::string s3 = std::to_string(xr);
+		std::vector<char*> fxrs{ (char*)s3.c_str() };
+
+		double fxl = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxls) });
+		double fxh = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxhs) });
+		double fxr = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxrs) });
 		std::vector<double> row = {
 			xlt, // xlo
 			xht, // xhi
