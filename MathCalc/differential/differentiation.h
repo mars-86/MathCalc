@@ -7,7 +7,7 @@
 
 class Differentiation : public Strategy {
 public:
-	Differentiation(std::string h = "0.1");
+	Differentiation(std::string h = "0.001");
 	~Differentiation();
 
 	void apply(std::string& equation, double xh) override;

@@ -29,10 +29,16 @@ public:
 		_strategy->apply(equation, val);
 	}
 
-	std::vector<std::vector<double>> get_grid(void) const
+	std::vector<std::vector<std::string>> get_grid(void) const
 	{
 		return _strategy->get_grid();
 	}
+
+	std::string get_result(void) const
+	{
+		return _strategy->get_result();
+	}
+
 	/*void apply(int x) // close method
 	{
 		//_strategy->apply(x);

@@ -42,19 +42,19 @@ void Interpreter::resolv(ParseTree& tree, Binop* root)
 		if (strcmp((char*)root->val, "+") == 0) {
 			if (check_variables(root) > 0)
 				release = false;
-			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) + atof((char*)root->right->val)));
+			sprintf_s(buff_temp, 128, "%.6f", (atof((char*)root->left->val) + atof((char*)root->right->val)));
 		}
 		else if (strcmp((char*)root->val, "-") == 0) {
-			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) - atof((char*)root->right->val)));
+			sprintf_s(buff_temp, 128, "%.6f", (atof((char*)root->left->val) - atof((char*)root->right->val)));
 		}
 		else if (strcmp((char*)root->val, "*") == 0) {
-			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) * atof((char*)root->right->val)));
+			sprintf_s(buff_temp, 128, "%.6f", (atof((char*)root->left->val) * atof((char*)root->right->val)));
 		}
 		else if (strcmp(root->val, "/") == 0) {
-			sprintf_s(buff_temp, 128, "%.2f", (atof((char*)root->left->val) / atof((char*)root->right->val)));
+			sprintf_s(buff_temp, 128, "%.6f", (atof((char*)root->left->val) / atof((char*)root->right->val)));
 		}
 		else
-			sprintf_s(buff_temp, 128, "%.2f", pow(atof((char*)root->left->val), atof((char*)root->right->val)));
+			sprintf_s(buff_temp, 128, "%.6f", pow(atof((char*)root->left->val), atof((char*)root->right->val)));
 
 		if (release) {
 			free(root->left), free(root->right), free(root->val);

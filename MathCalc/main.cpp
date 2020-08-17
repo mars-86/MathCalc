@@ -91,15 +91,17 @@ int main(int argc, char* argv[])
 
     calc.resolv(eq.c_str());
     */
-    /*BaseCalc calc;
-    std::cout << calc.resolv("(6*5+2)^(5^2)").get_result() << std::endl;;
-    return 0;*/
+    BaseCalc calc;
+    // FIX: bad resuts with so much decimals i.e. 0.00000001 -> 0
+    //std::cout << calc.resolv("((2.718281^(-(0.000000+0.00000001))-(0.000000+0.00000001))-(2.718281^(-0.000000)-0.000000))/0.00000001").get_result() << std::endl;
+    //return 0;
     /*Nonlinear nonlinear("2.718281^(-x)-x"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
 
     nonlinear.apply(0, 1);
 
     nonlinear.show_grid();*/
+    //return 0;
     const char* cn = "0.00000001";
     double n = 0.00000001;
     double n2 = 0.00000001;
@@ -107,7 +109,9 @@ int main(int argc, char* argv[])
 
     Differential dif("2.718281^(-x)-x");
 
-    dif.apply((long double)0);
+    dif.apply(0.56714329);
+
+    std::cout << dif.get_result() << std::endl;
 
     return 0;
 }

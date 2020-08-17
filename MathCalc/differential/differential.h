@@ -15,7 +15,8 @@ public:
 	void set_method(const std::string& method);
 	const std::string& get_method(void) const;
 	void show_grid(void);
-	std::vector<std::vector<double>> get_grid() const;
+	std::vector<std::vector<std::string>> get_grid() const;
+	std::string get_result(void) const;
 private:
 	Context* _context;
 	std::string _method;

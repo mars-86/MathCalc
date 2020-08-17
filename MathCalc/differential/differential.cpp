@@ -45,9 +45,14 @@ void Differential::apply(double val)
 		_context->apply(_equation, val);
 }
 
-std::vector<std::vector<double>> Differential::get_grid() const
+std::vector<std::vector<std::string>> Differential::get_grid() const
 {
 	return _context->get_grid();
+}
+
+std::string Differential::get_result(void) const
+{
+	return _context->get_result();
 }
 
 void Differential::show_grid(void)
