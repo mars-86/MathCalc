@@ -11,7 +11,7 @@ void Simpson1_3::apply(std::string& equation, double a, double b, int n)
 {
 	double a_ = 0, h = (b - a) / n;
 	std::vector<double> fa_acc;
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i <= n; ++i) {
 		std::string sa_ = std::to_string(a_ = a + (h * i)); // a + (h * n)
 		std::vector<char*> v = { (char*)sa_.c_str() };
 		fa_acc.push_back(resolv_eq(equation, { base_calc.gen_var_val_pair("x", v) }));
@@ -29,7 +29,6 @@ void Simpson1_3::apply(std::string& equation, double a, double b, int n)
 	_result = std::to_string(
 		(1.0 / 3.0) * h * (fa_acc.front() + ( 4 * sum_odd ) + ( 2 * sum_even ) + fa_acc.back())
 	);
-	std::cout << "RES: " << _result << std::endl;
 }
 
 /*

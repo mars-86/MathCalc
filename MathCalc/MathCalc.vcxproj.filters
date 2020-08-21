@@ -78,6 +78,9 @@
     <ClCompile Include="differential\simpson1_3.cpp">
       <Filter>Archivos de origen\differential</Filter>
     </ClCompile>
+    <ClCompile Include="differential\simpson3_8.cpp">
+      <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nonlinear\bisection.h">
@@ -141,6 +144,9 @@
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
     <ClInclude Include="differential\simpson1_3.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\simpson3_8.h">
       <Filter>Archivos de encabezado\differential</Filter>
     </ClInclude>
   </ItemGroup>

@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
     */
 
     // FIX: decimal length
-    Differential dif("(-1/3)*(x)^2+(8/3)*(x)+4", "simpson1_3");
+    Differential dif("(-1/3)*(x)^2+(8/3)*(x)+4", "simpson3_8");
 
     dif.apply(-2, 5, 16);
 

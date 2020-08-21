@@ -6,6 +6,7 @@
 #include "differential_strategy.h"
 #include "differentiation.h"
 #include "simpson1_3.h"
+#include "simpson3_8.h"
 
 // TODO -> delete _function prop
 class DifferentialContext {

@@ -28,6 +28,8 @@ Differential::Differential(const std::string& equation, const std::string& metho
 {
 	if (_method == "simpson1_3")
 		_context = new DifferentialContext(new Simpson1_3(1));
+	else if (_method == "simpson3_8")
+		_context = new DifferentialContext(new Simpson3_8(1));
 	else
 		_context = new DifferentialContext(new Differentiation());
 }
