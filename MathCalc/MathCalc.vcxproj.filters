@@ -13,45 +13,135 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\nonlinear">
+      <UniqueIdentifier>{bdcb548e-325e-44aa-8b9d-6f33ef7ca836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\nonlinear">
+      <UniqueIdentifier>{cbda7980-8dfe-4d40-ba9c-2b26485a907e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\base_calc">
+      <UniqueIdentifier>{2b1f68b8-1635-4eee-888f-db6e92711bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\base_calc">
+      <UniqueIdentifier>{55c87305-2da4-4df1-b65c-f3ab4aded446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\differential">
+      <UniqueIdentifier>{245f0e37-d898-4c08-86ba-69544fba2f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\differential">
+      <UniqueIdentifier>{e323f89b-7337-4865-8b1c-0318b334999a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="lexer.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="nonlinear\bisection.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
-    <ClCompile Include="parcer.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="nonlinear\nonlinear.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
-    <ClCompile Include="parse_tree.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="nonlinear\regula_falsi.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
-    <ClCompile Include="interpreter.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="base_calc\base_calc.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\interpreter.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\lexer.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\parcer.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\parse_tree.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="base_calc\tools.cpp">
+      <Filter>Archivos de origen\base_calc</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\differential.cpp">
+      <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\differentiation.cpp">
+      <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\newton_raphson.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\simpson1_4.cpp">
+      <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\secant.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="multilist.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="nonlinear\bisection.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="mathfunc.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="nonlinear\nonlinear.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="mathconst.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="nonlinear\context.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="lexer.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="nonlinear\regula_falsi.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="parser.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="base_calc\base_calc.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
     </ClInclude>
-    <ClInclude Include="parse_tree.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="base_calc\interpreter.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
     </ClInclude>
-    <ClInclude Include="interpreter.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="base_calc\lexer.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\mathconst.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\mathfunc.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\multilist.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\parse_tree.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\parser.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="base_calc\tools.h">
+      <Filter>Archivos de encabezado\base_calc</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differential.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differentiation.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\newton_raphson.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\simpson1_4.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\nonlinear_strategy.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differential_strategy.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differential_context.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\secant.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

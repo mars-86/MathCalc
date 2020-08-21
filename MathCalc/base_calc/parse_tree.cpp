@@ -53,6 +53,27 @@ void ParseTree::traverse(const char *mode) const
 		traverse_postfix(root);
 }
 
+void traverse_and_get_res(Binop *root, std::string& s)
+{
+	if (root == nullptr) return;
+	traverse_and_get_res(root->left, s);
+	s += root->val;
+	traverse_and_get_res(root->right, s);
+}
+
+const std::string ParseTree::get_result_as_string(void)
+{
+	std::string res;
+	traverse_and_get_res(root, res);
+	return res;
+}
+
+void ParseTree::prune(void)
+{
+	prune(root);
+	root = nullptr;
+}
+
 void ParseTree::traverse_prefix(Binop* root) const
 {
 	if (root == nullptr) return;

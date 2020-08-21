@@ -35,16 +35,15 @@ Lexer::Lexer(const char* str)
 
 Lexer::~Lexer()
 {
-	for (int i = 0; i < tokens.size(); ++i) {
-		free(tokens[i]->value);
-		free(tokens[i]);
-	}
+	free_token_vector();
 }
 
 int Lexer::tokenize(const char* str)
 {
+	std::cout << str << std::endl;
 	const char* s = str;
 	char buff[128];
+	free_token_vector(); // clean token vector
 	while (*s != NULL) {
 		memset(buff, 0, sizeof(buff[0]));
 		if (*s == ' ');
@@ -91,13 +90,28 @@ int Lexer::tokenize(const char* str)
 
 const std::vector<Token*>& Lexer::get_tokens(void) const
 {
-	return tokens;
+	return _tokens;
+}
+
+void Lexer::free_token_vector(void)
+{
+	/*for (int i = 0; i < _tokens.size(); ++i) {
+		free(_tokens[i]->value);
+		free(_tokens[i]);
+	}*/
+	while (!_tokens.empty()) {
+		free(_tokens[_tokens.size() - 1]->value);
+		free(_tokens[_tokens.size() - 1]);
+		_tokens.pop_back();
+	}
+	//_tokens.clear();
 }
 
 int Lexer::add_token(const char* type, const char* value)
 {
 	int len = strlen(value) + 1; // len + \0
 	Token* tk = (Token*)malloc(sizeof(Token));
+	if (!tk) return -1;
 	tk->value = (char*)malloc(len * sizeof(char));
 	tk->type = (char*)type;
 #ifdef _WIN32
@@ -105,7 +119,7 @@ int Lexer::add_token(const char* type, const char* value)
 #else
 	sprintf(tk->value, "%s", value);
 #endif // _WIN32
-	tokens.push_back(tk);
+	_tokens.push_back(tk);
 	return 0;
 }
 

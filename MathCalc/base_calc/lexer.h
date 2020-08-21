@@ -18,7 +18,8 @@ public:
 	int tokenize(const char* str);
 	const std::vector<Token*>& get_tokens(void) const;
 private:
-	std::vector<Token*> tokens;
+	std::vector<Token*> _tokens;
+	void free_token_vector(void);
 	int add_token(const char* type, const char* value);
 	const char* check_symbol(const char* sym);
 	int is_constant(const char* c);

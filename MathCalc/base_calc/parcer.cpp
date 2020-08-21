@@ -12,12 +12,19 @@ Parser::Parser(std::vector<Token*>& tks)
 	parse(tks);
 }
 
+Parser::Parser(std::vector<Token*>& tks, std::map<std::string, std::vector<char*>>& var_val)
+	: _var_val(var_val)
+{
+	parse(tks);
+}
+
 Parser::~Parser()
 {
 }
 
 ParseTree& Parser::parse(std::vector<Token*>& tks)
 {
+	mathexp.clear();
 	check_expresion(tks);
 	eval(tks);
 	generate_parse_tree_it(mathexp);
@@ -66,16 +73,19 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 					buff = (char*)malloc(len * sizeof(char));
 					memcpy(buff, buff_temp, len);*/
 					mvtemp.insert(mvtemp.begin() + it - 1, (char*)"_NODE_"); //insert new value
+					//std::cout << "ER: " << mvtemp[it] << mvtemp[it + 3] << std::endl;
 					mvtemp.erase(mvtemp.begin() + it, mvtemp.begin() + it + 3); // erase pre-operator operator post-operator
 
 					if (op_count == 0/* && !is_operator((mvtemp[0 + it - 2]))*/) mvtemp.erase(mvtemp.begin() + it - 2);
+
 					i = (it - 2) < 0 ? 0 : it - 2;
-					it = (it - 3) < 0 ? 0 : it - 3;
+					it = (it - 2) < 0 ? 0 : it - 2;
 					// std::cout << "OP: " << mvtemp[it] << std::endl;
 					// store node in stack
 					node_stack.push(op);
 					++op_count;
-					std::cout << mvtemp[it] << std::endl;
+
+					//getchar();
 				} while (is_operator(mvtemp[it]));
 				// store node in stack
 				// node_stack.push(op);
@@ -85,9 +95,12 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 				mvtemp.erase(mvtemp.begin() + it);
 				i = it;
 			}
+			/*
 			for (int i = 0; i < mvtemp.size(); ++i)
 				std::cout << mvtemp[i];
 			std::cout << std::endl;
+			*/
+			
 		}
 		else if (is_operator(mvtemp[it + 2]) && is_operator(mvtemp[it])) { // i.e. 3*3* or 3+3+ resolves same precedence cases
 			Binop* op;
@@ -118,6 +131,7 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 
 			node_stack.push(op);
 		}
+		//getchar();
 		//if (mvtemp.size() == 1) break;
 	}
 	parse_tree.insert_node(node_stack.top());
@@ -137,9 +151,31 @@ ParseTree& Parser::get_parse_tree(void)
 	return parse_tree;
 }
 
+void Parser::set_var_val(std::map<std::string, std::vector<char*>> var_val)
+{
+	_var_val = var_val;
+}
+
 int Parser::check_expresion(std::vector<Token*>& tks)
 {
 	return 0;
+}
+
+void replace_var(std::vector<char*>& m, const std::string& var, const char* val)
+{
+	for (int i = 0; i < m.size(); ++i)
+		if (m[i] == var)
+			m.insert(m.begin() + i,(char*)val), m.erase(m.begin() + i + 1);
+}
+
+void replace_var(std::vector<char*>& m, const std::string& var, std::vector<char*>& val)
+{
+	for (int i = 0; i < m.size(); ++i)
+		if (m[i] == var) {
+			for (auto j : val)
+				m.insert(m.begin() + i, (char*)j);
+			m.erase(m.begin() + i + val.size()); // remove var
+		}
 }
 
 int Parser::eval(std::vector<Token*>& tks)
@@ -164,7 +200,8 @@ int Parser::eval(std::vector<Token*>& tks)
 			if (strcmp(tks[i]->value, "+") == 0)
 				insert_data(3, tks[i]->value);
 			else if (strcmp(tks[i]->value, "-") == 0) {
-				if (strcmp(tks[i + 1]->type, "number") == 0) { // Precedence: i.e. -5 ^ 2 -> -1 * (5 ^ 2)
+				//if (strcmp(tks[i + 1]->type, "number") == 0) { // Precedence: i.e. -5 ^ 2 -> -1 * (5 ^ 2)
+				if (i > 0 && (strcmp(tks[i - 1]->type, "operator") == 0 || strcmp(tks[i - 1]->type, "lparen") == 0)) { // Precedence: i.e. -5 ^ 2 -> -1 * (5 ^ 2)
 					// We need to insert rparen at end to balance.
 					// If we insert rparen behind the value we'll lost * level of precedence and
 					// in a case such as -5^2 where ^ presedence is higher than * the calculator
@@ -173,7 +210,7 @@ int Parser::eval(std::vector<Token*>& tks)
 					extra_paren_cntr++;
 				}
 				else if (i == 0 || (strcmp(tks[i_prev]->type, "number") && (strcmp(tks[i_prev]->type, "parenr") != 0)))
-					mathexp.push_back((char*)"-1"), insert_data(2, "*");
+					mathexp.push_back((char*)"("), mathexp.push_back((char*)"-1"), insert_data(2, "*"), mathexp.push_back((char*)")");
 				else
 					insert_data(3, tks[i]->value);
 			}
@@ -194,7 +231,11 @@ int Parser::eval(std::vector<Token*>& tks)
 			insert_parens(4, ")");
 	}
 	insert_parens(4 + extra_paren_cntr, ")");
-
+	/*
+	for (auto i : mathexp)
+		std::cout << i;
+	std::cout << std::endl;
+	*/
 	return 1;
 }
 

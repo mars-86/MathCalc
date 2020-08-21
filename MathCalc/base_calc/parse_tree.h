@@ -2,6 +2,8 @@
 #define _MATH_CALC_PARSE_TREE_H
 #pragma once
 
+#include <string>
+
 typedef struct _Binop {
 	char* val;
 	_Binop* variable;
@@ -18,6 +20,8 @@ public:
 	Binop* create_node(const char *val);
 	void traverse(const char* mode) const;
 	Binop* get_parse_tree(void);
+	const std::string get_result_as_string(void);
+	void prune(void);
 private:
 	Binop* root = nullptr;
 	void traverse_prefix(Binop* root) const;

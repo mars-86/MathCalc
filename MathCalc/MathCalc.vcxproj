@@ -147,20 +147,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="interpreter.cpp" />
+    <ClCompile Include="base_calc\base_calc.cpp" />
+    <ClCompile Include="base_calc\interpreter.cpp" />
+    <ClCompile Include="base_calc\lexer.cpp" />
+    <ClCompile Include="base_calc\parcer.cpp" />
+    <ClCompile Include="base_calc\parse_tree.cpp" />
+    <ClCompile Include="base_calc\tools.cpp" />
+    <ClCompile Include="differential\differential.cpp" />
+    <ClCompile Include="differential\differentiation.cpp" />
+    <ClCompile Include="differential\simpson1_4.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="lexer.cpp" />
-    <ClCompile Include="parcer.cpp" />
-    <ClCompile Include="parse_tree.cpp" />
+    <ClCompile Include="nonlinear\bisection.cpp" />
+    <ClCompile Include="nonlinear\newton_raphson.cpp" />
+    <ClCompile Include="nonlinear\nonlinear.cpp" />
+    <ClCompile Include="nonlinear\regula_falsi.cpp" />
+    <ClCompile Include="nonlinear\secant.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="interpreter.h" />
-    <ClInclude Include="mathconst.h" />
-    <ClInclude Include="mathfunc.h" />
-    <ClInclude Include="multilist.h" />
-    <ClInclude Include="lexer.h" />
-    <ClInclude Include="parser.h" />
-    <ClInclude Include="parse_tree.h" />
+    <ClInclude Include="base_calc\base_calc.h" />
+    <ClInclude Include="base_calc\interpreter.h" />
+    <ClInclude Include="base_calc\lexer.h" />
+    <ClInclude Include="base_calc\mathconst.h" />
+    <ClInclude Include="base_calc\mathfunc.h" />
+    <ClInclude Include="base_calc\multilist.h" />
+    <ClInclude Include="base_calc\parser.h" />
+    <ClInclude Include="base_calc\parse_tree.h" />
+    <ClInclude Include="base_calc\tools.h" />
+    <ClInclude Include="differential\differential_context.h" />
+    <ClInclude Include="differential\differential.h" />
+    <ClInclude Include="differential\differentiation.h" />
+    <ClInclude Include="differential\simpson1_4.h" />
+    <ClInclude Include="differential\differential_strategy.h" />
+    <ClInclude Include="nonlinear\bisection.h" />
+    <ClInclude Include="nonlinear\context.h" />
+    <ClInclude Include="nonlinear\newton_raphson.h" />
+    <ClInclude Include="nonlinear\nonlinear.h" />
+    <ClInclude Include="nonlinear\regula_falsi.h" />
+    <ClInclude Include="nonlinear\nonlinear_strategy.h" />
+    <ClInclude Include="nonlinear\secant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
