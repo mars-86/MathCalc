@@ -1,18 +1,19 @@
-#include "regula_falsi.h"
+#include "simpson1_4.h"
 
-RegulaFalsi::RegulaFalsi(int it)
+Simpson1_4::Simpson1_4(int it)
 {
 	set_iterations(it);
 }
 
-RegulaFalsi::~RegulaFalsi() {}
+Simpson1_4::~Simpson1_4() {}
 
-void RegulaFalsi::apply(std::string& equation, double val)
+void Simpson1_4::apply(std::string& equation, double val)
 {
 
 }
-
+/*
 double RegulaFalsi::get_xr(double xl, double xh, double fxl, double fxh)
 {
 	return ((xh * fxl - xl * fxh) / (fxl - fxh));
 }
+*/

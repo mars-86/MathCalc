@@ -3,9 +3,9 @@
 #pragma once
 
 #include <iostream>
-#include "strategy.h"
+#include "nonlinear_strategy.h"
 
-class Bisection : public Strategy {
+class Bisection : public NonlinearStrategy {
 public:
 	Bisection(int it);
 	~Bisection();

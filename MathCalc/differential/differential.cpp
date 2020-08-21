@@ -26,10 +26,10 @@ inline void print_head(void)
 Differential::Differential(const std::string& equation, const std::string& method, int iterations)
 	: _equation(equation), _method(method)
 {
-	if (_method == "regula_falsi")
-		_context = nullptr; // new Context(new RegulaFalsi(iterations));
+	if (_method == "simpson1_4")
+		_context = new DifferentialContext(new Simpson1_4(1));
 	else
-		_context = new Context(new Differentiation());
+		_context = new DifferentialContext(new Differentiation());
 }
 
 Differential::~Differential()
@@ -42,17 +42,17 @@ void Differential::apply(double val)
 	if (_method == "")
 		;
 	else
-		_context->apply(_equation, val);
+		_context->apply(_equation, val);	
 }
 
 std::vector<std::vector<std::string>> Differential::get_grid() const
 {
-	return _context->get_grid();
+	return  _context->get_grid();
 }
 
 std::string Differential::get_result(void) const
 {
-	return _context->get_result();
+	return  _context->get_result();
 }
 
 void Differential::show_grid(void)
@@ -66,6 +66,11 @@ void Differential::show_grid(void)
 		std::cout << "|" << std::endl;
 		print_line();
 	}
+}
+
+void Differential::set_equation(const std::string& equation)
+{
+	_equation = equation;
 }
 
 void Differential::set_method(const std::string& method)

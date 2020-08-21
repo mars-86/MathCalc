@@ -7,12 +7,11 @@
 #include <map>
 #include "../base_calc/base_calc.h"
 
-class Strategy {
+class DifferentialStrategy {
 public:
-	virtual ~Strategy() {};
+	virtual ~DifferentialStrategy() {};
 	virtual void apply(std::string& equation, double xh) = 0;
-	virtual double get_xr(double xl, double xh, double fxl, double fxh) = 0;
-
+	
 	std::vector<std::vector<std::string>> get_grid(void) const
 	{
 		return _grid;

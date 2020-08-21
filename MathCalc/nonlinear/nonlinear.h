@@ -17,7 +17,7 @@ public:
 	void show_grid(void);
 	std::vector<std::vector<double>> get_grid() const;
 private:
-	Context* _context;
+	NonlinearContext* _context;
 	std::string _method;
 	std::string _equation;
 };

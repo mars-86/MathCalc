@@ -155,11 +155,13 @@
     <ClCompile Include="base_calc\tools.cpp" />
     <ClCompile Include="differential\differential.cpp" />
     <ClCompile Include="differential\differentiation.cpp" />
-    <ClCompile Include="differential\regula_falsi.cpp" />
+    <ClCompile Include="differential\simpson1_4.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
+    <ClCompile Include="nonlinear\newton_raphson.cpp" />
     <ClCompile Include="nonlinear\nonlinear.cpp" />
     <ClCompile Include="nonlinear\regula_falsi.cpp" />
+    <ClCompile Include="nonlinear\secant.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base_calc\base_calc.h" />
@@ -171,16 +173,18 @@
     <ClInclude Include="base_calc\parser.h" />
     <ClInclude Include="base_calc\parse_tree.h" />
     <ClInclude Include="base_calc\tools.h" />
-    <ClInclude Include="differential\context.h" />
+    <ClInclude Include="differential\differential_context.h" />
     <ClInclude Include="differential\differential.h" />
     <ClInclude Include="differential\differentiation.h" />
-    <ClInclude Include="differential\regula_falsi.h" />
-    <ClInclude Include="differential\strategy.h" />
+    <ClInclude Include="differential\simpson1_4.h" />
+    <ClInclude Include="differential\differential_strategy.h" />
     <ClInclude Include="nonlinear\bisection.h" />
     <ClInclude Include="nonlinear\context.h" />
+    <ClInclude Include="nonlinear\newton_raphson.h" />
     <ClInclude Include="nonlinear\nonlinear.h" />
     <ClInclude Include="nonlinear\regula_falsi.h" />
-    <ClInclude Include="nonlinear\strategy.h" />
+    <ClInclude Include="nonlinear\nonlinear_strategy.h" />
+    <ClInclude Include="nonlinear\secant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

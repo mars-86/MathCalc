@@ -1,24 +1,24 @@
-#ifndef _MATH_CALC_NONLINEAR_CONTEXT_H_
-#define _MATH_CALC_NONLINEAR_CONTEXT_H_
+#ifndef _MATH_CALC__CONTEXT_H_
+#define _MATH_CALC__CONTEXT_H_
 #pragma once
 
 #include <iostream>
-#include "strategy.h"
+#include "differential_strategy.h"
 #include "differentiation.h"
-#include "regula_falsi.h"
+#include "simpson1_4.h"
 
 // TODO -> delete _function prop
-class Context {
+class DifferentialContext {
 private:
-	Strategy* _strategy;
+	DifferentialStrategy* _strategy;
 	std::string _function;
 
 public:
-	Context(Strategy* strategy = nullptr)
+	DifferentialContext(DifferentialStrategy* strategy = nullptr)
 		: _strategy(strategy) {}
-	~Context() { delete _strategy; }
+	~DifferentialContext() { delete _strategy; }
 
-	void set_strategy(Strategy* strategy)
+	void set_strategy(DifferentialStrategy* strategy)
 	{
         	delete _strategy;
 	        _strategy = strategy;
@@ -39,10 +39,10 @@ public:
 		return _strategy->get_result();
 	}
 
-	/*void apply(int x) // close method
+	void apply(int x) // close method
 	{
 		//_strategy->apply(x);
-	}*/
+	}
 };
 
 #endif // !_MATH_CALC_NONLINEAR_CONTEXT_H_

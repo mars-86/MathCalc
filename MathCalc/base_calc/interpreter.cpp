@@ -12,7 +12,7 @@ Interpreter::~Interpreter()
 
 int Interpreter::interpret(ParseTree& tree)
 {
-	tree.traverse("infix");
+	//tree.traverse("infix");
 	resolv(tree, tree.get_parse_tree());
 	//std::cout << "\nRes: ";
 	//tree.traverse("infix");
@@ -35,7 +35,7 @@ void Interpreter::resolv(ParseTree& tree, Binop* root)
 	resolv(tree, root->left);
 	resolv(tree, root->right);
 	//tree.traverse("infix");
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	if (is_operator(root->val)) {
 		int release = true; // check if we must release binop nodes
 		char buff_temp[128];

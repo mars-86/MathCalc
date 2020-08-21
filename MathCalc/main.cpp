@@ -11,37 +11,6 @@
 // steps
 // malformed expressions
 
-int replace_v(const char* src, char* dest, int var, const char* val)
-{
-    while (*src != '\0') {
-        if (*src == var) {
-            *dest++ = '*';
-            const char* tval = val;
-            while (*tval != '\0')
-                *dest++ = *tval++;
-        }
-        else
-            *dest++ = *src;
-        ++src;
-    }
-    *dest = '\0';
-
-    return 0;
-}
-
-int replace_v(const std::string& src, std::string& dest, int var, const std::string& val)
-{
-    for (auto i = src.begin(); i != src.end(); ++i) {
-        if (*i == var) {
-            dest.push_back('*');
-            for (auto i2 = val.begin(); i2 != val.end(); ++i2) dest.push_back(*i2);
-        }
-        else
-            dest.push_back(*i);
-    }
-    return 0;
-}
-
 int main(int argc, char* argv[])
 {
     //Lexer tknr("(1432 + 50x (3.4^2) - 112) / sin90xy * pi/2");
@@ -95,23 +64,29 @@ int main(int argc, char* argv[])
     // FIX: bad resuts with so much decimals i.e. 0.00000001 -> 0
     //std::cout << calc.resolv("((2.718281^(-(0.000000+0.00000001))-(0.000000+0.00000001))-(2.718281^(-0.000000)-0.000000))/0.00000001").get_result() << std::endl;
     //return 0;
-    /*Nonlinear nonlinear("2.718281^(-x)-x"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
+    // Nonlinear nonlinear("2.718281^(-x)-x", "newton_raphson"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
+    Nonlinear nonlinear("(-1/3)*(x)^2+(8/3)*(x)+4", "secant");
 
-    nonlinear.apply(0, 1);
+    nonlinear.apply(-2, -1);
 
-    nonlinear.show_grid();*/
-    //return 0;
+    nonlinear.show_grid();
+
+    return 0;
+    /*
     const char* cn = "0.00000001";
     double n = 0.00000001;
     double n2 = 0.00000001;
     std::cout << std::stod(cn) << std::endl;
+    */
 
-    Differential dif("2.718281^(-x)-x");
+    // Differential dif("2.718281^(-x)-x");
 
-    dif.apply(0.56714329);
+    // Differential dif;
 
-    std::cout << dif.get_result() << std::endl;
+    // dif.apply(0.56714329);
+
+    // std::cout << dif.get_result() << std::endl;
 
     return 0;
 }

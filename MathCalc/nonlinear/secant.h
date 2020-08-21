@@ -1,17 +1,17 @@
-#ifndef _MATH_CALC_REGULA_FALSI_H_
-#define _MATH_CALC_REGULA_FALSI_H_
+#ifndef _MATH_CALC_SECANT_H_
+#define _MATH_CALC_SECANT_H_
 #pragma once
 
 #include <iostream>
 #include "nonlinear_strategy.h"
 
-class RegulaFalsi : public NonlinearStrategy {
+class Secant : public NonlinearStrategy {
 public:
-	RegulaFalsi(int it);
-	~RegulaFalsi();
+	Secant(int it);
+	~Secant();
 
 	void apply(std::string& equation, int xl, int xh) override;
 	double get_xr(double xl, double xh, double fxl, double fxh) override;
 };
 
-#endif // !_MATH_CALC_REGULA_FALSI_H_
+#endif // !_MATH_CALC_SECANT_H_

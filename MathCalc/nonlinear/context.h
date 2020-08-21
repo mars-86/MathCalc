@@ -3,28 +3,29 @@
 #pragma once
 
 #include <iostream>
-#include "strategy.h"
+#include "nonlinear_strategy.h"
 #include "bisection.h"
 #include "regula_falsi.h"
+#include "newton_raphson.h"
+#include "secant.h"
 
 // TODO -> delete _function prop
-class Context {
+class NonlinearContext {
 private:
-	Strategy* _strategy;
+	NonlinearStrategy* _strategy;
 	std::string _function;
-
 public:
-	Context(Strategy* strategy = nullptr)
+	NonlinearContext(NonlinearStrategy* strategy = nullptr)
 		: _strategy(strategy) {}
-	~Context() { delete _strategy; }
+	~NonlinearContext() { delete _strategy; }
 
-	void set_strategy(Strategy* strategy)
+	void set_strategy(NonlinearStrategy* strategy)
 	{
         	delete _strategy;
 	        _strategy = strategy;
 	}
 
-	void apply(std::string equation, int xl, int xh) // open method
+	void apply(std::string equation, int xl, int xh)
 	{
 		_strategy->apply(equation, xl, xh);
 	}

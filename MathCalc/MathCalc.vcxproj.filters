@@ -69,8 +69,14 @@
     <ClCompile Include="differential\differentiation.cpp">
       <Filter>Archivos de origen\differential</Filter>
     </ClCompile>
-    <ClCompile Include="differential\regula_falsi.cpp">
+    <ClCompile Include="nonlinear\newton_raphson.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\simpson1_4.cpp">
       <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\secant.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +84,6 @@
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
     <ClInclude Include="nonlinear\nonlinear.h">
-      <Filter>Archivos de encabezado\nonlinear</Filter>
-    </ClInclude>
-    <ClInclude Include="nonlinear\strategy.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
     <ClInclude Include="nonlinear\context.h">
@@ -116,20 +119,29 @@
     <ClInclude Include="base_calc\tools.h">
       <Filter>Archivos de encabezado\base_calc</Filter>
     </ClInclude>
-    <ClInclude Include="differential\context.h">
-      <Filter>Archivos de encabezado\differential</Filter>
-    </ClInclude>
     <ClInclude Include="differential\differential.h">
       <Filter>Archivos de encabezado\differential</Filter>
     </ClInclude>
     <ClInclude Include="differential\differentiation.h">
       <Filter>Archivos de encabezado\differential</Filter>
     </ClInclude>
-    <ClInclude Include="differential\regula_falsi.h">
+    <ClInclude Include="nonlinear\newton_raphson.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\simpson1_4.h">
       <Filter>Archivos de encabezado\differential</Filter>
     </ClInclude>
-    <ClInclude Include="differential\strategy.h">
+    <ClInclude Include="nonlinear\nonlinear_strategy.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differential_strategy.h">
       <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\differential_context.h">
+      <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\secant.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

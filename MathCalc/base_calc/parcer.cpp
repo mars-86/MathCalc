@@ -95,10 +95,11 @@ int Parser::generate_parse_tree_it(std::vector<char*> mvtemp)
 				mvtemp.erase(mvtemp.begin() + it);
 				i = it;
 			}
-			
+			/*
 			for (int i = 0; i < mvtemp.size(); ++i)
 				std::cout << mvtemp[i];
 			std::cout << std::endl;
+			*/
 			
 		}
 		else if (is_operator(mvtemp[it + 2]) && is_operator(mvtemp[it])) { // i.e. 3*3* or 3+3+ resolves same precedence cases
@@ -209,7 +210,7 @@ int Parser::eval(std::vector<Token*>& tks)
 					extra_paren_cntr++;
 				}
 				else if (i == 0 || (strcmp(tks[i_prev]->type, "number") && (strcmp(tks[i_prev]->type, "parenr") != 0)))
-					mathexp.push_back((char*)"-1"), insert_data(2, "*");
+					mathexp.push_back((char*)"("), mathexp.push_back((char*)"-1"), insert_data(2, "*"), mathexp.push_back((char*)")");
 				else
 					insert_data(3, tks[i]->value);
 			}
