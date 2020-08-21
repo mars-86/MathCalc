@@ -72,11 +72,11 @@
     <ClCompile Include="nonlinear\newton_raphson.cpp">
       <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
-    <ClCompile Include="differential\simpson1_4.cpp">
-      <Filter>Archivos de origen\differential</Filter>
-    </ClCompile>
     <ClCompile Include="nonlinear\secant.cpp">
       <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
+    <ClCompile Include="differential\simpson1_3.cpp">
+      <Filter>Archivos de origen\differential</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +128,6 @@
     <ClInclude Include="nonlinear\newton_raphson.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="differential\simpson1_4.h">
-      <Filter>Archivos de encabezado\differential</Filter>
-    </ClInclude>
     <ClInclude Include="nonlinear\nonlinear_strategy.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
@@ -142,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="nonlinear\secant.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="differential\simpson1_3.h">
+      <Filter>Archivos de encabezado\differential</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

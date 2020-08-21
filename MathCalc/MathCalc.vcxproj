@@ -155,7 +155,7 @@
     <ClCompile Include="base_calc\tools.cpp" />
     <ClCompile Include="differential\differential.cpp" />
     <ClCompile Include="differential\differentiation.cpp" />
-    <ClCompile Include="differential\simpson1_4.cpp" />
+    <ClCompile Include="differential\simpson1_3.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
     <ClCompile Include="nonlinear\newton_raphson.cpp" />
@@ -176,7 +176,7 @@
     <ClInclude Include="differential\differential_context.h" />
     <ClInclude Include="differential\differential.h" />
     <ClInclude Include="differential\differentiation.h" />
-    <ClInclude Include="differential\simpson1_4.h" />
+    <ClInclude Include="differential\simpson1_3.h" />
     <ClInclude Include="differential\differential_strategy.h" />
     <ClInclude Include="nonlinear\bisection.h" />
     <ClInclude Include="nonlinear\context.h" />

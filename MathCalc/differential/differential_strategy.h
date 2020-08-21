@@ -10,7 +10,7 @@
 class DifferentialStrategy {
 public:
 	virtual ~DifferentialStrategy() {};
-	virtual void apply(std::string& equation, double xh) = 0;
+	virtual void apply(std::string& equation, double , double , int ) = 0;
 	
 	std::vector<std::vector<std::string>> get_grid(void) const
 	{

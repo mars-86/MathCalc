@@ -66,13 +66,13 @@ int main(int argc, char* argv[])
     //return 0;
     // Nonlinear nonlinear("2.718281^(-x)-x", "newton_raphson"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
-    Nonlinear nonlinear("(-1/3)*(x)^2+(8/3)*(x)+4", "secant");
+    //Nonlinear nonlinear("(-1/3)*(x)^2+(8/3)*(x)+4", "secant");
 
-    nonlinear.apply(-2, -1);
+    //nonlinear.apply(-2, -1);
 
-    nonlinear.show_grid();
+    //nonlinear.show_grid();
 
-    return 0;
+    //return 0;
     /*
     const char* cn = "0.00000001";
     double n = 0.00000001;
@@ -80,13 +80,12 @@ int main(int argc, char* argv[])
     std::cout << std::stod(cn) << std::endl;
     */
 
-    // Differential dif("2.718281^(-x)-x");
+    // FIX: decimal length
+    Differential dif("(-1/3)*(x)^2+(8/3)*(x)+4", "simpson1_3");
 
-    // Differential dif;
+    dif.apply(-2, 5, 16);
 
-    // dif.apply(0.56714329);
-
-    // std::cout << dif.get_result() << std::endl;
+    std::cout << dif.get_result() << std::endl;
 
     return 0;
 }
