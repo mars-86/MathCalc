@@ -3,6 +3,7 @@
 Trapezoidal::Trapezoidal(int n)
 	: _n(n)
 {
+	if (_n < 1) _n = 1;
 	set_iterations(n);
 }
 

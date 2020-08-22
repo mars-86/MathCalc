@@ -45,9 +45,9 @@ int main(int argc, char* argv[])
     // FIX: if x is replaced by a negative value calculus is wrong build (i.e. --2)
     // Differential dif("2.718281^(-x)-3x", "trapezoidal", 1); 
     // dif.apply(-2, 5, 16);
-    Differential dif("2.718281^(x)-3*(x)", "trapezoidal", 1);
+    Differential dif("2.718281^((x)^2)", "romberg", 4);
 
-    dif.apply(0, 2, 16);
+    dif.apply(0, 1, 16);
 
     std::cout << std::stod(dif.get_result()) << std::endl;
 

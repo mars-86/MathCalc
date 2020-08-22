@@ -1,30 +1,31 @@
 #include "romberg.h"
+#include "trapezoidal.h"
 
-Romberg::Romberg(int it)
+Romberg::Romberg(int n)
+	:_n(n)
 {
-	set_iterations(it);
+	set_iterations(n);
 }
 
 Romberg::~Romberg() {}
 
 void Romberg::apply(std::string& equation, double a, double b, int _)
 {
-	double a_ = 0, h = (b - a) / _n;
-	std::vector<double> fa_acc;
-	for (int i = 0; i <= _n; ++i) {
-		std::string sa_ = std::to_string(a_ = a + (h * i)); // a + (h * n)
-		std::vector<char*> v = { (char*)sa_.c_str() };
-		fa_acc.push_back(resolv_eq(equation, { base_calc.gen_var_val_pair("x", v) }));
-		_grid.push_back({
-			std::to_string(_n),				// it
-			sa_,							// a
-			std::to_string(fa_acc.back())	// fa
-		});
+	std::vector<double> lvl_acc;
+	for (int i = 0, j = 1; i < _n; i++, j *= 2) {
+		// TODO: make Trapezoidal a fixed var when the method set_iterations can be used
+		Trapezoidal trapezoidal(j);
+		trapezoidal.apply(equation, a, b, 1);
+		lvl_acc.push_back(std::stod(trapezoidal.get_result()));
 	}
-	// 3/8 * h * (fa_i0 + 3 * fa_i1 + 3 * fa_i2 + fa_i3)
-	_result = std::to_string(
-		(3.0 / 8.0) * h * (fa_acc[0] + 3 * fa_acc[1] + 3 * fa_acc[2] + fa_acc[3])
-	);
+	double lvl = 4;
+	while (lvl_acc.size() > 1) {
+		for (auto i = lvl_acc.begin(); i < lvl_acc.end() - 1; i++)
+			*i = ( ( lvl / (lvl - 1) ) * ( *(i + 1) ) ) - ( ( 1 / (lvl - 1) ) * ( *i ) );
+		lvl_acc.pop_back(); // pop_last
+		lvl *= lvl; // pow
+	}
+	_result = std::to_string(lvl_acc[0]);
 }
 
 /*

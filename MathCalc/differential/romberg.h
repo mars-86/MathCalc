@@ -13,7 +13,7 @@ public:
 	void apply(std::string& equation, double a, double b, int = 0) override;
 	//double get_xr(double xl, double xh, double fxl, double fxh) override;
 private:
-	const int _n = 3;
+	const int _n;
 };
 
 #endif // !_MATH_CALC_ROMBERG_H_

@@ -32,6 +32,8 @@ Differential::Differential(const std::string& equation, const std::string& metho
 		_context = new DifferentialContext(new Simpson1_3(iterations));
 	else if (_method == "simpson3_8")
 		_context = new DifferentialContext(new Simpson3_8(iterations));
+	else if (_method == "romberg")
+		_context = new DifferentialContext(new Romberg(iterations));
 	else
 		_context = new DifferentialContext(new Differentiation());
 }
