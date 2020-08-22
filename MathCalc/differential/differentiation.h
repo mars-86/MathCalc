@@ -10,7 +10,7 @@ public:
 	Differentiation(std::string h = "0.001");
 	~Differentiation();
 
-	void apply(std::string& equation, double xh) override;
+	void apply(std::string& equation, double xh, double = 0, int = 0) override;
 	//double get_xr(double xl, double xh, double fxl = 0, double fxh = 0) override;
 private:
 	std::string _h;

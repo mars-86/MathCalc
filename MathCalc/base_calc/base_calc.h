@@ -15,7 +15,8 @@ public:
 	~BaseCalc();
 
 	BaseCalc& resolv(const char* equation);
-	BaseCalc& resolv(std::string& equation, std::map<std::string, std::vector<char*>> var_val);
+	BaseCalc& resolv(std::string& equation, std::map<std::string, std::vector<std::string>> var_val);
+	BaseCalc& resolv(std::string& equation, const std::map<std::string, std::vector<char*>> var_val);
 	const std::string& get_result(void) const;
 private:
 	Lexer _lexer;

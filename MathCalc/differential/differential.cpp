@@ -26,8 +26,14 @@ inline void print_head(void)
 Differential::Differential(const std::string& equation, const std::string& method, int iterations)
 	: _equation(equation), _method(method)
 {
-	if (_method == "simpson1_4")
-		_context = new DifferentialContext(new Simpson1_4(1));
+	if (_method == "trapezoidal")
+		_context = new DifferentialContext(new Trapezoidal(iterations));
+	else if (_method == "simpson1_3")
+		_context = new DifferentialContext(new Simpson1_3(iterations));
+	else if (_method == "simpson3_8")
+		_context = new DifferentialContext(new Simpson3_8(iterations));
+	else if (_method == "romberg")
+		_context = new DifferentialContext(new Romberg(iterations));
 	else
 		_context = new DifferentialContext(new Differentiation());
 }
@@ -37,12 +43,12 @@ Differential::~Differential()
 	delete _context;
 }
 
-void Differential::apply(double val)
+void Differential::apply(double v1, double v2, int v3)
 {
 	if (_method == "")
 		;
 	else
-		_context->apply(_equation, val);	
+		_context->apply(_equation, v1, v2, v3);	
 }
 
 std::vector<std::vector<std::string>> Differential::get_grid() const

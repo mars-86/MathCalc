@@ -15,7 +15,7 @@ const std::string Differentiation::get_equation(std::string& equation, double va
 	return "((" + equation + ")-(" + eq_temp + "))/" + _h;
 }
 
-void Differentiation::apply(std::string& equation, double val)
+void Differentiation::apply(std::string& equation, double val, double _, int __)
 {
 	std::string sv = std::to_string(val);
 	std::vector<char*> v = { (char*)sv.c_str() };

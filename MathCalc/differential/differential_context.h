@@ -5,7 +5,10 @@
 #include <iostream>
 #include "differential_strategy.h"
 #include "differentiation.h"
-#include "simpson1_4.h"
+#include "trapezoidal.h"
+#include "simpson1_3.h"
+#include "simpson3_8.h"
+#include "romberg.h"
 
 // TODO -> delete _function prop
 class DifferentialContext {
@@ -24,9 +27,9 @@ public:
 	        _strategy = strategy;
 	}
 
-	void apply(std::string equation, double val)
+	void apply(std::string equation, double v1, double v2, int v3)
 	{
-		_strategy->apply(equation, val);
+		_strategy->apply(equation, v1, v2, v3);
 	}
 
 	std::vector<std::vector<std::string>> get_grid(void) const
