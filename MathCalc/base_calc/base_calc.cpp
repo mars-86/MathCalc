@@ -49,6 +49,18 @@ void replace_var(std::string& m, const char var, std::vector<char*>& val)
 		}
 }
 */
+BaseCalc& BaseCalc::resolv(std::string& equation, const std::map<std::string, std::vector<std::string>> var_val)
+{
+	if (!var_val.empty())
+		for (auto i : var_val)
+			replace_var(equation, i.first[0], i.second);
+	_lexer.tokenize(equation.c_str());
+	_parser.parse((std::vector<Token*>&)_lexer.get_tokens());
+	_interpreter.interpret(_parser.get_parse_tree());
+	_result = _interpreter.get_result();
+	return *this;
+}
+
 BaseCalc& BaseCalc::resolv(std::string& equation, const std::map<std::string, std::vector<char*>> var_val)
 {
 	if (!var_val.empty())

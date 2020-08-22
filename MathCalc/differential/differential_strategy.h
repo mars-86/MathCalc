@@ -22,6 +22,13 @@ public:
 		return _result;
 	}
 
+	double resolv_eq(const std::string& eq, const std::map<std::string, std::vector<std::string>> var_val)
+	{
+		std::string f = eq;
+		base_calc.resolv(f, var_val), f.clear();
+		return std::stod(base_calc.get_result());
+	}
+
 	double resolv_eq(const std::string& eq, const std::map<std::string, std::vector<char*>> var_val)
 	{
 		std::string f = eq;

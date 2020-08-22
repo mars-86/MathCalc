@@ -26,10 +26,12 @@ inline void print_head(void)
 Differential::Differential(const std::string& equation, const std::string& method, int iterations)
 	: _equation(equation), _method(method)
 {
-	if (_method == "simpson1_3")
-		_context = new DifferentialContext(new Simpson1_3(1));
+	if (_method == "trapezoidal")
+		_context = new DifferentialContext(new Trapezoidal(iterations));
+	else if (_method == "simpson1_3")
+		_context = new DifferentialContext(new Simpson1_3(iterations));
 	else if (_method == "simpson3_8")
-		_context = new DifferentialContext(new Simpson3_8(1));
+		_context = new DifferentialContext(new Simpson3_8(iterations));
 	else
 		_context = new DifferentialContext(new Differentiation());
 }

@@ -41,6 +41,21 @@ int Tools::replace_v(const std::string& src, std::string& dest, int var, const s
     return 0;
 }
 
+void Tools::replace_var(std::string& m, const char var, std::vector<std::string>& val)
+{
+    for (int i = 0; i < m.size(); ++i)
+        if (m[i] == var) {
+            int len = 0;
+            for (auto j : val) {
+                // this way we insert in correct order, otherwise vals are inserted backwards
+                m.insert((int)(i + len), j);
+                len += j.size();
+            }
+            i += len;
+            m.erase(m.begin() + i); // remove var
+        }
+}
+
 void Tools::replace_var(std::string& m, const char var, std::vector<char*>& val)
 {
     for (int i = 0; i < m.size(); ++i)
@@ -56,8 +71,52 @@ void Tools::replace_var(std::string& m, const char var, std::vector<char*>& val)
         }
 }
 
+int Tools::shift(int num, int bits_count, const std::string type)
+{
+    if (type == ">>")
+        return num >> bits_count;
+    else
+        return num << bits_count;
+}
+
+int Tools::dec_to_hex(double num)
+{
+    return 0;
+}
+
+int Tools::hex_to_dec(double num)
+{
+    return 0;
+}
+
+const std::string Tools::dec_to_bin(double num)
+{
+    return "";
+}
+
+int Tools::bin_to_dec(std::string num)
+{
+    return 0;
+}
+
+int Tools::dec_to_oct(double num)
+{
+    return 0;
+}
+
+int Tools::oct_to_dec(double num)
+{
+    return 0;
+}
+
 // Generates a pair of values of the type {variable : value}
-std::pair<std::string, std::vector<char*>> Tools::gen_var_val_pair(std::string var, std::vector<char*>& val)
+std::pair<std::string, std::vector<std::string>> Tools::gen_var_val_pair(std::string var, const std::vector<std::string>& val) const
+{
+    return std::pair<std::string, std::vector<std::string>>(var, val);
+}
+
+std::pair<std::string, std::vector<char*>> Tools::gen_var_val_pair(std::string var, const std::vector<char*>& val) const
 {
     return std::pair<std::string, std::vector<char*>>(var, val);
 }
+

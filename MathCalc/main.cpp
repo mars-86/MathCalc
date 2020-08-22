@@ -35,13 +35,21 @@ int main(int argc, char* argv[])
     // Nonlinear nonlinear("(-1/3)*(x)^2+(8/3)*(x)+4", "secant");
     // nonlinear.apply(-2, -1);
     // nonlinear.show_grid();
+    
+    // BaseCalc bc;
+    // FIX: pass only a number throws error
+    // std::cout << bc.resolv("2").get_result();
 
     // FIX: decimal length
-    Differential dif("(-1/3)*(x)^2+(8/3)*(x)+4", "simpson3_8");
+    // Differential dif("(-1/3)*(x)^2+(8/3)*(x)+4", "trapezoidal", 1);
+    // FIX: if x is replaced by a negative value calculus is wrong build (i.e. --2)
+    // Differential dif("2.718281^(-x)-3x", "trapezoidal", 1); 
+    // dif.apply(-2, 5, 16);
+    Differential dif("2.718281^(x)-3*(x)", "trapezoidal", 1);
 
-    dif.apply(-2, 5, 16);
+    dif.apply(0, 2, 16);
 
-    std::cout << dif.get_result() << std::endl;
+    std::cout << std::stod(dif.get_result()) << std::endl;
 
     return 0;
 }
