@@ -160,6 +160,7 @@
     <ClCompile Include="differential\simpson3_8.cpp" />
     <ClCompile Include="differential\trapezoidal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="misc\arithmetic_geometric_mean.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
     <ClCompile Include="nonlinear\newton_raphson.cpp" />
     <ClCompile Include="nonlinear\nonlinear.cpp" />
@@ -184,6 +185,9 @@
     <ClInclude Include="differential\differential_strategy.h" />
     <ClInclude Include="differential\simpson3_8.h" />
     <ClInclude Include="differential\trapezoidal.h" />
+    <ClInclude Include="misc\arithmetic_geometric_mean.h" />
+    <ClInclude Include="misc\misc.h" />
+    <ClInclude Include="misc\misc_common.h" />
     <ClInclude Include="nonlinear\bisection.h" />
     <ClInclude Include="nonlinear\context.h" />
     <ClInclude Include="nonlinear\newton_raphson.h" />

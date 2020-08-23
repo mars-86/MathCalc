@@ -31,6 +31,12 @@
     <Filter Include="Archivos de origen\differential">
       <UniqueIdentifier>{e323f89b-7337-4865-8b1c-0318b334999a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\misc">
+      <UniqueIdentifier>{1f2d36bf-18cc-4157-be95-b6bce454c713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\misc">
+      <UniqueIdentifier>{3522853e-9408-4756-b64d-3e3c9b113dfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="differential\trapezoidal.cpp">
       <Filter>Archivos de origen\differential</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\arithmetic_geometric_mean.cpp">
+      <Filter>Archivos de origen\misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,15 @@
     </ClInclude>
     <ClInclude Include="differential\trapezoidal.h">
       <Filter>Archivos de encabezado\differential</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\misc.h">
+      <Filter>Archivos de encabezado\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\misc_common.h">
+      <Filter>Archivos de encabezado\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\arithmetic_geometric_mean.h">
+      <Filter>Archivos de encabezado\misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
