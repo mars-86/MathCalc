@@ -27,6 +27,11 @@ void ArithmeticGeometricMean::apply(void)
 	_result = std::to_string(x);
 }
 
+void ArithmeticGeometricMean::set_x_y(double x, double y)
+{
+	_x = x, _y = y;
+}
+
 void ArithmeticGeometricMean::set_x(double x)
 {
 	_x = x;

@@ -147,6 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="approximation\approximation.cpp" />
+    <ClCompile Include="approximation\exponential.cpp" />
+    <ClCompile Include="approximation\logarithmic.cpp" />
+    <ClCompile Include="approximation\trigonometric.cpp" />
     <ClCompile Include="base_calc\base_calc.cpp" />
     <ClCompile Include="base_calc\interpreter.cpp" />
     <ClCompile Include="base_calc\lexer.cpp" />
@@ -168,6 +172,11 @@
     <ClCompile Include="nonlinear\secant.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="approximation\approximation.h" />
+    <ClInclude Include="approximation\approximation_strategy.h" />
+    <ClInclude Include="approximation\exponential.h" />
+    <ClInclude Include="approximation\logarithmic.h" />
+    <ClInclude Include="approximation\trigonometric.h" />
     <ClInclude Include="base_calc\base_calc.h" />
     <ClInclude Include="base_calc\interpreter.h" />
     <ClInclude Include="base_calc\lexer.h" />
@@ -177,6 +186,7 @@
     <ClInclude Include="base_calc\parser.h" />
     <ClInclude Include="base_calc\parse_tree.h" />
     <ClInclude Include="base_calc\tools.h" />
+    <ClInclude Include="common\common_strategy.h" />
     <ClInclude Include="differential\differential_context.h" />
     <ClInclude Include="differential\differential.h" />
     <ClInclude Include="differential\differentiation.h" />
@@ -185,6 +195,7 @@
     <ClInclude Include="differential\differential_strategy.h" />
     <ClInclude Include="differential\simpson3_8.h" />
     <ClInclude Include="differential\trapezoidal.h" />
+    <ClInclude Include="math_calc.h" />
     <ClInclude Include="misc\arithmetic_geometric_mean.h" />
     <ClInclude Include="misc\misc.h" />
     <ClInclude Include="misc\misc_common.h" />

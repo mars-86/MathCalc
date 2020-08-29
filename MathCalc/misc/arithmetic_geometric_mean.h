@@ -12,6 +12,7 @@ public:
 	~ArithmeticGeometricMean();
 
 	void apply(void);
+	void set_x_y(double x, double y);
 	void set_x(double x);
 	void set_y(double y);
 	double get_x(void);

@@ -2,6 +2,7 @@
 #define _MATH_CALC_BASE_CALC_H
 #pragma once
 
+#include <iostream>
 #include "lexer.h"
 #include "parser.h"
 #include "interpreter.h"

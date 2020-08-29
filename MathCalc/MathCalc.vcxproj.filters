@@ -37,6 +37,15 @@
     <Filter Include="Archivos de origen\misc">
       <UniqueIdentifier>{3522853e-9408-4756-b64d-3e3c9b113dfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\common">
+      <UniqueIdentifier>{f1c4a945-f0f7-4546-8ecb-4343cba8913f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\approximation">
+      <UniqueIdentifier>{b32a8e39-a273-4cff-b8a3-155977a90992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\approximation">
+      <UniqueIdentifier>{a5e18820-40e8-4f79-9a57-81a049650903}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +104,18 @@
     </ClCompile>
     <ClCompile Include="misc\arithmetic_geometric_mean.cpp">
       <Filter>Archivos de origen\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="approximation\approximation.cpp">
+      <Filter>Archivos de origen\approximation</Filter>
+    </ClCompile>
+    <ClCompile Include="approximation\logarithmic.cpp">
+      <Filter>Archivos de origen\approximation</Filter>
+    </ClCompile>
+    <ClCompile Include="approximation\trigonometric.cpp">
+      <Filter>Archivos de origen\approximation</Filter>
+    </ClCompile>
+    <ClCompile Include="approximation\exponential.cpp">
+      <Filter>Archivos de origen\approximation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +199,27 @@
     </ClInclude>
     <ClInclude Include="misc\arithmetic_geometric_mean.h">
       <Filter>Archivos de encabezado\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="common\common_strategy.h">
+      <Filter>Archivos de encabezado\common</Filter>
+    </ClInclude>
+    <ClInclude Include="approximation\approximation.h">
+      <Filter>Archivos de encabezado\approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="approximation\approximation_strategy.h">
+      <Filter>Archivos de encabezado\approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="approximation\logarithmic.h">
+      <Filter>Archivos de encabezado\approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="approximation\trigonometric.h">
+      <Filter>Archivos de encabezado\approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="math_calc.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="approximation\exponential.h">
+      <Filter>Archivos de encabezado\approximation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

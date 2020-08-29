@@ -1,10 +1,10 @@
 ﻿#include "lexer.h"
-#include "mathfunc.h"
-#include "mathconst.h"
 #include <cstdlib>
 #include <cctype>
 #include <string>
 #include <iostream>
+#include "mathfunc.h"
+#include "mathconst.h"
 
 enum class Type {
 	FUNCTION,
