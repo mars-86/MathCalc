@@ -29,9 +29,9 @@ Nonlinear::Nonlinear(const std::string& equation, const std::string& method, int
 {
 	if (_method == "regula_falsi")
 		_context = new NonlinearContext(new RegulaFalsi(iterations));
-	if (_method == "newton_raphson")
+	else if (_method == "newton_raphson")
 		_context = new NonlinearContext(new NewtonRaphson(iterations));
-	if (_method == "secant")
+	else if (_method == "secant")
 		_context = new NonlinearContext(new Secant(iterations));
 	else
 		_context = new NonlinearContext(new Bisection(iterations));

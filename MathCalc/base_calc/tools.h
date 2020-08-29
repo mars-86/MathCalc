@@ -2,6 +2,7 @@
 #define _MATH_CALC_BASE_CALC_TOOLS_H
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -9,6 +10,15 @@ class Tools {
 public:
 	Tools();
 	~Tools();
+
+	// FIX: FACTORIAL CRASHES > 20
+	inline unsigned long long int factorial(int x)
+	{
+		unsigned long long int x_ = x;
+		if (x_ == 0) return 1;
+		for (int i = x - 1; i > 0; --i) x_ *= i;
+		return x_;
+	}
 
 	int replace_v(const char* src, char* dest, int var, const char* val);
 	int replace_v(const std::string& src, std::string& dest, int var, const std::string& val);
