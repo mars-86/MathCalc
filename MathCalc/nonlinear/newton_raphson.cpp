@@ -1,4 +1,5 @@
 #include "newton_raphson.h"
+using namespace NonLinear::Open;
 
 NewtonRaphson::NewtonRaphson(int it)
 	: _differential(nullptr)
@@ -15,11 +16,8 @@ void NewtonRaphson::apply(std::string& equation, int x, int xh)
 {
 	_differential = new Differential(equation);
 	double xt = (double)x;
-	for (int i = 0; i < iterations; ++i) {
-		std::string s1 = std::to_string(xt);
-		std::vector<char*> fxs{ (char*)s1.c_str() };
-
-		double fx = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxs) });
+	for (int i = 0; i < get_iterations(); ++i) {
+		double fx = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xt));
 		_differential->apply(xt);
 		double fx_d = std::stod(_differential->get_result());
 		double xr = get_xr(xt, fx, fx_d);
@@ -30,7 +28,7 @@ void NewtonRaphson::apply(std::string& equation, int x, int xh)
 			xr  // (x - (f(x) / f'(x)))
 			// e // xht - xr // e (xhi - xr)
 		};
-		grid.push_back(row);
+		grid_insert_row(row);
 		xt = xr;
 	}
 }

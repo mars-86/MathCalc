@@ -12,12 +12,11 @@ void Simpson3_8::apply(std::string& equation, double a, double b, int _)
 	double a_ = 0, h = (b - a) / _n;
 	std::vector<double> fa_acc;
 	for (int i = 0; i <= _n; ++i) {
-		std::string sa_ = std::to_string(a_ = a + (h * i)); // a + (h * n)
-		std::vector<char*> v = { (char*)sa_.c_str() };
-		fa_acc.push_back(resolv_eq(equation, { base_calc.gen_var_val_pair("x", v) }));
+		a_ = a + (h * i); // a + (h * n)
+		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_) ));
 		_grid.push_back({
 			std::to_string(_n),				// it
-			sa_,							// a
+			std::to_string(a_),							// a
 			std::to_string(fa_acc.back())	// fa
 		});
 	}

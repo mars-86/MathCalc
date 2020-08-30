@@ -6,6 +6,10 @@
 #include "nonlinear_strategy.h"
 #include "../differential/differential.h"
 
+namespace NonLinear {
+
+namespace Open {
+
 class NewtonRaphson : public NonlinearStrategy {
 public:
 	NewtonRaphson(int it);
@@ -14,7 +18,11 @@ public:
 	void apply(std::string& equation, int xl, int xh) override;
 	double get_xr(double x, double fx, double fx_d, double = 0) override;
 private:
-	Differential *_differential;
+	Differential* _differential;
 };
+
+} // namespace Close
+
+} // namespace NonLinear
 
 #endif // !_MATH_CALC_NEWTON_RAPHSON_H_

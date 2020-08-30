@@ -125,9 +125,6 @@
     <ClInclude Include="nonlinear\nonlinear.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="nonlinear\context.h">
-      <Filter>Archivos de encabezado\nonlinear</Filter>
-    </ClInclude>
     <ClInclude Include="nonlinear\regula_falsi.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>

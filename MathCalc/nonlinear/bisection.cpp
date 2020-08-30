@@ -1,4 +1,5 @@
 #include "bisection.h"
+using namespace NonLinear::Close;
 
 Bisection::Bisection(int it)
 {
@@ -10,17 +11,10 @@ Bisection::~Bisection() {}
 void Bisection::apply(std::string& equation, int xl, int xh)
 {
 	double xlt = (double)xl, xht = (double)xh, xr = get_xr(xlt, xht);
-	for (int i = 0; i < iterations; ++i) {
-		std::string s1 = std::to_string(xlt);
-		std::vector<char*> fxls{ (char*)s1.c_str() };
-		std::string s2 = std::to_string(xht);
-		std::vector<char*> fxhs{ (char*)s2.c_str() };
-		std::string s3 = std::to_string(xr);
-		std::vector<char*> fxrs{ (char*)s3.c_str() };
-
-		double fxl = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxls) });
-		double fxh = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxhs) });
-		double fxr = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxrs) });
+	for (int i = 0; i < get_iterations(); ++i) {
+		double fxl = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xlt));
+		double fxh = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xht));
+		double fxr = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xr));
 		std::vector<double> row = {
 			xlt, // xlo
 			xht, // xhi
@@ -30,7 +24,7 @@ void Bisection::apply(std::string& equation, int xl, int xh)
 			fxr, // f(xr)
 			xht - xr // e (xhi - xr)
 		};
-		grid.push_back(row);
+		grid_insert_row(row);
 		(fxr < 0) ? xht = xr : xlt = xr;
 		xr = get_xr(xlt, xht);
 	}

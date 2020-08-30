@@ -108,15 +108,3 @@ int Tools::oct_to_dec(double num)
 {
     return 0;
 }
-
-// Generates a pair of values of the type {variable : value}
-std::pair<std::string, std::vector<std::string>> Tools::gen_var_val_pair(std::string var, const std::vector<std::string>& val) const
-{
-    return std::pair<std::string, std::vector<std::string>>(var, val);
-}
-
-std::pair<std::string, std::vector<char*>> Tools::gen_var_val_pair(std::string var, const std::vector<char*>& val) const
-{
-    return std::pair<std::string, std::vector<char*>>(var, val);
-}
-

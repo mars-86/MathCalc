@@ -37,10 +37,13 @@ int main(int argc, char* argv[])
     // Nonlinear nonlinear("2.718281^(-x)-x", "newton_raphson"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
 
-    // Nonlinear nonlinear("(-1/3)*(x)^2+(8/3)*(x)+4", "bisection");
-    // nonlinear.apply(-2, -1);
-    // nonlinear.show_grid();
-    // return 0;
+    Nonlinear nonlinear;
+    // FIX: bisecction must throw exception because doesn't satisfy f(xi)*f(xs) < 0
+    nonlinear.set_strategy(NonLinearType::Bisection);
+    nonlinear.set_equation("(-1/3)*(x)^2+(8/3)*(x)+4");
+    nonlinear.apply(-2, -1);
+    nonlinear.show_grid();
+    return 0;
     // BaseCalc bc;
     // FIX: pass only a number throws error
     // std::cout << bc.resolv("2").get_result();

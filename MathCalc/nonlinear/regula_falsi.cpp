@@ -1,4 +1,5 @@
 #include "regula_falsi.h"
+using namespace NonLinear::Close;
 
 RegulaFalsi::RegulaFalsi(int it)
 {
@@ -10,17 +11,11 @@ RegulaFalsi::~RegulaFalsi() {}
 void RegulaFalsi::apply(std::string& equation, int xl, int xh)
 {
 	double xlt = (double)xl, xht = (double)xh;
-	for (int i = 0; i < iterations; ++i) {
-		std::string s1 = std::to_string(xlt);
-		std::vector<char*> fxls{ (char*)s1.c_str() };
-		std::string s2 = std::to_string(xht);
-		std::vector<char*> fxhs{ (char*)s1.c_str() };
-		double fxl = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxls) });
-		double fxh = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxhs) });
+	for (int i = 0; i < get_iterations(); ++i) {
+		double fxl = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xlt));
+		double fxh = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xht));
 		double xr = get_xr(xlt, xht, fxl, fxh);
-		std::string s3 = std::to_string(xht);
-		std::vector<char*> fxrs{ (char*)s1.c_str() };
-		double fxr = resolv_eq(equation, { base_calc.gen_var_val_pair("x", fxrs) });
+		double fxr = resolv_eq(equation, _base_calc.gen_var_val_tab("x", xr));
 		std::vector<double> row = {
 			xlt, // xlo
 			xht, // xhi
@@ -30,7 +25,7 @@ void RegulaFalsi::apply(std::string& equation, int xl, int xh)
 			fxr, // f(xr)
 			xht - xr // e (xhi - xr)
 		};
-		grid.push_back(row);
+		grid_insert_row(row);
 		xht = xr;
 		xr = get_xr(xlt, xht, fxl, fxh);
 	}

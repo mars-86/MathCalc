@@ -200,7 +200,6 @@
     <ClInclude Include="misc\misc.h" />
     <ClInclude Include="misc\misc_common.h" />
     <ClInclude Include="nonlinear\bisection.h" />
-    <ClInclude Include="nonlinear\context.h" />
     <ClInclude Include="nonlinear\newton_raphson.h" />
     <ClInclude Include="nonlinear\nonlinear.h" />
     <ClInclude Include="nonlinear\regula_falsi.h" />

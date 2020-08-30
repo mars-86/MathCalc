@@ -24,35 +24,46 @@ inline void print_head(void)
 	print_line();
 }
 
-Nonlinear::Nonlinear(const std::string& equation, const std::string& method, int iterations)
-	: _equation(equation), _method(method)
+Nonlinear::Nonlinear(NonlinearStrategy* strategy)
+	: _strategy(strategy), _type(NonLinearType::Secant)
 {
-	if (_method == "regula_falsi")
-		_context = new NonlinearContext(new RegulaFalsi(iterations));
-	else if (_method == "newton_raphson")
-		_context = new NonlinearContext(new NewtonRaphson(iterations));
-	else if (_method == "secant")
-		_context = new NonlinearContext(new Secant(iterations));
-	else
-		_context = new NonlinearContext(new Bisection(iterations));
+	set_strategy(get_type());
 }
 
 Nonlinear::~Nonlinear()
 {
-	delete _context;
+	delete _strategy;
+}
+
+void Nonlinear::set_strategy(const NonLinearType& type)
+{
+	delete _strategy;
+	switch (type) {
+	case NonLinearType::Bisection:
+		_strategy = new NonLinear::Close::Bisection(10);
+		break;
+	case NonLinearType::RegulaFalsi:
+		_strategy = new NonLinear::Close::RegulaFalsi(10);
+		break;
+	case NonLinearType::NewtonRaphson:
+		_strategy = new NonLinear::Open::NewtonRaphson(10);
+		break;
+	case NonLinearType::Secant:
+		_strategy = new NonLinear::Open::Secant(10);
+		break;
+	default:
+		;
+	}
 }
 
 void Nonlinear::apply(int xl, int xh)
 {
-	if (_method == "")
-		;
-	else
-		_context->apply(_equation, xl, xh);
+	_strategy->apply(_equation, xl, xh);
 }
 
 std::vector<std::vector<double>> Nonlinear::get_grid() const
 {
-	return _context->get_grid();
+	return _strategy->get_gridd();
 }
 
 void Nonlinear::show_grid(void)
@@ -68,12 +79,17 @@ void Nonlinear::show_grid(void)
 	}
 }
 
-void Nonlinear::set_method(const std::string& method)
+void Nonlinear::set_equation(const std::string& equation)
 {
-	_method = method;
+	_equation = equation;
 }
 
-const std::string& Nonlinear::get_method(void) const
+void Nonlinear::set_type(const NonLinearType& type)
 {
-	return _method;
+	_type = type;
+}
+
+const NonLinearType Nonlinear::get_type(void) const
+{
+	return _type;
 }
