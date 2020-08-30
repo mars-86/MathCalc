@@ -2,32 +2,27 @@
 #include <iomanip>
 
 // TODO -> check structure of strategy, the context must save equation and then passed to method
-inline void print_line(void)
+inline void print_line(int columns)
 {
-	for (int i = 0; i < 16 * 7; ++i)
+	for (int i = 0; i < 16 * columns; ++i)
 		std::cout << '-';
 	std::cout << std::endl;
 }
 
-inline void print_head(void)
+inline void print_head(const std::vector<std::vector<std::string>>& head)
 {
-	print_line();
-	std::cout <<
-		std::left << std::setw(16) << "| xlo" <<
-		std::left << std::setw(16) << "| xhi" <<
-		std::left << std::setw(16) << "| f(xlo)" <<
-		std::left << std::setw(16) << "| f(xhi)" <<
-		std::left << std::setw(16) << "| xr" <<
-		std::left << std::setw(16) << "| f(xr)" <<
-		std::left << std::setw(16) << "| E" <<
-		"|" << std::endl;
-	print_line();
+	print_line(head[0].size());
+	for (auto i : head)
+		for (auto j : i)
+			std::cout << std::left << std::setw(16) << j;
+	std::cout << "|" << std::endl;
+	print_line(head[0].size());
 }
 
 Nonlinear::Nonlinear(NonlinearStrategy* strategy)
 	: _strategy(strategy), _type(NonLinearType::Secant)
 {
-	set_strategy(get_type());
+	// set_strategy(get_type());
 }
 
 Nonlinear::~Nonlinear()
@@ -61,6 +56,11 @@ void Nonlinear::apply(int xl, int xh)
 	_strategy->apply(_equation, xl, xh);
 }
 
+std::vector<std::vector<std::string>> Nonlinear::get_grid_header() const
+{
+	return _strategy->get_grid_header();
+}
+
 std::vector<std::vector<double>> Nonlinear::get_grid() const
 {
 	return _strategy->get_gridd();
@@ -68,14 +68,15 @@ std::vector<std::vector<double>> Nonlinear::get_grid() const
 
 void Nonlinear::show_grid(void)
 {
+	auto hd = get_grid_header();
 	auto gd = get_grid();
 
-	print_head();
+	print_head(hd);
 	for (auto i : gd) {
 		for (int j = 0; j < i.size(); ++j)
 			std::cout << "| " << std::left << std::setw(14) << i.at(j);
 		std::cout << "|" << std::endl;
-		print_line();
+		print_line(hd[0].size());
 	}
 }
 

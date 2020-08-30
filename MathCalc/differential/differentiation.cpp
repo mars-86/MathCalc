@@ -17,7 +17,9 @@ const std::string Differentiation::get_equation(std::string& equation, double va
 
 void Differentiation::apply(std::string& equation, double val, double _, int __)
 {
-	_result = std::to_string(resolv_eq(get_equation(equation, val), _base_calc.gen_var_val_tab("x", val) ));
+	set_result(
+		std::to_string(resolv_eq(get_equation(equation, val), _base_calc.gen_var_val_tab("x", val) ))
+	);
 }
 
 //double Differentiation::get_xr(double xl, double xh, double fxl, double fxh) { return 0.0; }

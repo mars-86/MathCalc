@@ -32,6 +32,7 @@ public:
 	const NonLinearType get_type(void) const;
 	void show_grid(void);
 	void set_equation(const std::string& equation);
+	std::vector<std::vector<std::string>> get_grid_header() const;
 	std::vector<std::vector<double>> get_grid() const;
 private:
 	NonLinearType _type;

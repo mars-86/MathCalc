@@ -25,7 +25,7 @@ void Romberg::apply(std::string& equation, double a, double b, int _)
 		lvl_acc.pop_back(); // pop_last
 		lvl *= lvl; // pow
 	}
-	_result = std::to_string(lvl_acc[0]);
+	set_result(std::to_string(lvl_acc[0]));
 }
 
 /*

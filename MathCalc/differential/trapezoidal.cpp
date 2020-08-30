@@ -8,12 +8,7 @@ Trapezoidal::Trapezoidal(int n)
 }
 
 Trapezoidal::~Trapezoidal() {}
-/*
-const std::vector<std::string> get_val_as_vec(double val)
-{
-	return { std::to_string(val) };
-}
-*/
+
 void Trapezoidal::apply(std::string& equation, double a, double b, int n)
 {
 	double a_ = a, h = (b - a) / _n;
@@ -21,7 +16,7 @@ void Trapezoidal::apply(std::string& equation, double a, double b, int n)
 	fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a) ));
 	for (int i = 1; i < _n; ++i) {
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_ += h) ));
-		_grid.push_back({
+		grid_insert_row({
 			std::to_string(_n),				// it
 			std::to_string(i / _n),			// a
 			std::to_string(fa_acc.back())	// fa

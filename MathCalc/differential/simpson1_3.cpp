@@ -14,9 +14,9 @@ void Simpson1_3::apply(std::string& equation, double a, double b, int n)
 	for (int i = 0; i <= n; ++i) {
 		a_ = a + (h * i); // a + (h * n)
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_) ));
-		_grid.push_back({
+		grid_insert_row({
 			std::to_string(n),				// it
-			std::to_string(a_),							// a
+			std::to_string(a_),				// a
 			std::to_string(fa_acc.back())	// fa
 		});
 	}
@@ -25,7 +25,7 @@ void Simpson1_3::apply(std::string& equation, double a, double b, int n)
 	for (int i = 0; i < fa_acc.size(); ++i)
 		(i % 2) == 0 ? sum_even += fa_acc[i] : sum_odd += fa_acc[i];
 
-	_result = std::to_string(
+	set_result(
 		(1.0 / 3.0) * h * (fa_acc.front() + ( 4 * sum_odd ) + ( 2 * sum_even ) + fa_acc.back())
 	);
 }
