@@ -1,4 +1,5 @@
-#include "simpson3_8.h"
+#include "simpson_3_8.h"
+using namespace IntegrationMethods;
 
 Simpson3_8::Simpson3_8(int it)
 {
@@ -7,7 +8,7 @@ Simpson3_8::Simpson3_8(int it)
 
 Simpson3_8::~Simpson3_8() {}
 
-void Simpson3_8::apply(std::string& equation, double a, double b, int _)
+void Simpson3_8::apply(std::string& equation, double a, double b)
 {
 	double a_ = 0, h = (b - a) / _n;
 	std::vector<double> fa_acc;
@@ -15,7 +16,7 @@ void Simpson3_8::apply(std::string& equation, double a, double b, int _)
 		a_ = a + (h * i); // a + (h * n)
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_) ));
 		grid_insert_row({
-			std::to_string(_n),				// it
+			std::to_string(i),				// it
 			std::to_string(a_),							// a
 			std::to_string(fa_acc.back())	// fa
 		});

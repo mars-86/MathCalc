@@ -5,10 +5,6 @@
 #include <iostream>
 #include "differential_strategy.h"
 #include "differentiation.h"
-#include "trapezoidal.h"
-#include "simpson1_3.h"
-#include "simpson3_8.h"
-#include "romberg.h"
 
 // TODO -> delete _function prop
 class DifferentialContext {

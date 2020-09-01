@@ -23,20 +23,22 @@ private:
 
 public:
 	Nonlinear(NonlinearStrategy* strategy = nullptr);
-	// Nonlinear(const std::string& equation, const std::string& method = "bisection", int iterations = 10); // bisection by default
 	~Nonlinear();
 
-	void set_strategy(const NonLinearType& type);
+	void set_strategy(const NonLinearType& type, int it = 10);
 	void apply(int xl, int xh);
 	void set_type(const NonLinearType& type);
 	const NonLinearType get_type(void) const;
 	void show_grid(void);
 	void set_equation(const std::string& equation);
+	double get_result_d() const;
+	std::string get_result_s() const;
 	std::vector<std::vector<std::string>> get_grid_header() const;
 	std::vector<std::vector<double>> get_grid() const;
 private:
 	NonLinearType _type;
 	std::string _equation;
+	std::string _cmethod; // current method
 };
 
 #endif // !_MATH_CALC_NONLINEAR_H_

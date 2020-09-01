@@ -5,6 +5,7 @@
 #include <iostream> 
 #include <vector>
 #include <map>
+#include <iomanip>
 #include "../base_calc/base_calc.h"
 
 class CommonStrategy {
@@ -93,6 +94,34 @@ public:
 		return _resultd;
 	}
 
+	void print_grid(void)
+	{
+		auto hd = get_grid_header();
+		auto gd = get_grid();
+
+		print_head();
+		for (auto i : gd) {
+			for (int j = 0; j < i.size(); ++j)
+				std::cout << "| " << std::left << std::setw(14) << i.at(j);
+			std::cout << "|" << std::endl;
+			print_line(hd[0].size());
+		}
+	}
+
+	void print_gridd(void)
+	{
+		auto hd = get_grid_header();
+		auto gd = get_gridd();
+
+		print_head();
+		for (auto i : gd) {
+			for (int j = 0; j < i.size(); ++j)
+				std::cout << "| " << std::left << std::setw(14) << i.at(j);
+			std::cout << "|" << std::endl;
+			print_line(hd[0].size());
+		}
+	}
+
 protected:
 	BaseCalc _base_calc;
 	int _iterations;
@@ -100,6 +129,27 @@ protected:
 	grid_d_t _gridd;
 	std::string _result;
 	double _resultd;
+
+private:
+	inline void print_head()
+	{
+		auto head = get_grid_header();
+		// checks header != null
+		size_t h_size = (head.size() > 0) ? head[0].size() : 0;
+		print_line(h_size);
+		for (auto i : head)
+			for (auto j : i)
+				std::cout << std::left << std::setw(16) << j;
+		std::cout << "|" << std::endl;
+		print_line(h_size);
+	}
+
+	inline void print_line(size_t columns)
+	{
+		for (int i = 0; i < 16 * columns; ++i)
+			std::cout << '-';
+		std::cout << std::endl;
+	}
 };
 
 #endif // !_MATH_CALC_COMMON_STRATEGY_H_

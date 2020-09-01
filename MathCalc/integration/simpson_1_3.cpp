@@ -1,4 +1,5 @@
-#include "simpson1_3.h"
+#include "simpson_1_3.h"
+using namespace IntegrationMethods;
 
 Simpson1_3::Simpson1_3(int it)
 {
@@ -7,15 +8,15 @@ Simpson1_3::Simpson1_3(int it)
 
 Simpson1_3::~Simpson1_3() {}
 
-void Simpson1_3::apply(std::string& equation, double a, double b, int n)
+void Simpson1_3::apply(std::string& equation, double a, double b)
 {
-	double a_ = 0, h = (b - a) / n;
+	double a_ = 0, h = (b - a) / get_iterations();
 	std::vector<double> fa_acc;
-	for (int i = 0; i <= n; ++i) {
+	for (int i = 0; i <= get_iterations(); ++i) {
 		a_ = a + (h * i); // a + (h * n)
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_) ));
 		grid_insert_row({
-			std::to_string(n),				// it
+			std::to_string(i),				// it
 			std::to_string(a_),				// a
 			std::to_string(fa_acc.back())	// fa
 		});

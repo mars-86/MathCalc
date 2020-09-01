@@ -2,10 +2,12 @@
 #include "base_calc/base_calc.h"
 #include "nonlinear/nonlinear.h"
 #include "differential/differential.h"
+#include "integration/integration.h"
 #include "approximation/approximation.h"
 #include <string>
 #include "misc/misc.h"
 #include <iomanip>
+
 // TODO
 // float numbers
 // variables
@@ -27,6 +29,16 @@ int main(int argc, char* argv[])
     // "5^2^2^2" // FIX: This kind of expression or else 5^2^2^2 -> 625 BAD!
     // "((5^2)^(2^2))" // -> Throws error
     // "6*5+2*5^2" // FIX -> Bad parse
+    std::cout << std::setprecision(9);
+    // CHECK: simpson 1/3
+    Integration integ(IntegrationType::Simpson_1_3);
+    //integ.set_strategy(IntegrationType::Simpson_1_3);
+    integ.set_equation("2.718281^((x)^2)");
+    integ.apply(0, 1);
+    integ.show_grid();
+
+    std::cout << integ.get_result_d() << std::endl;
+    return 0;
 
     std::cout << std::fixed;
     std::cout << std::setprecision(9);
@@ -36,7 +48,8 @@ int main(int argc, char* argv[])
     // return 0;
     // Nonlinear nonlinear("2.718281^(-x)-x", "newton_raphson"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
-    Nonlinear nonlinear(new NonLinear::Open::Secant(10));
+    Nonlinear nonlinear;
+    nonlinear.set_strategy(NonLinearType::NewtonRaphson);
     nonlinear.set_equation("(-1/3)*(x)^2+(8/3)*(x)+4");
     // FIX: bisecction must throw exception because doesn't satisfy f(xi)*f(xs) < 0
     //nonlinear.set_strategy(NonLinearType::Bisection);

@@ -1,4 +1,5 @@
 #include "trapezoidal.h"
+using namespace IntegrationMethods;
 
 Trapezoidal::Trapezoidal(int n)
 	: _n(n)
@@ -9,17 +10,17 @@ Trapezoidal::Trapezoidal(int n)
 
 Trapezoidal::~Trapezoidal() {}
 
-void Trapezoidal::apply(std::string& equation, double a, double b, int n)
+void Trapezoidal::apply(std::string& equation, double a, double b)
 {
-	double a_ = a, h = (b - a) / _n;
+	double a_ = a, h = (b - a) / get_iterations();
 	std::vector<double> fa_acc;
 	fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a) ));
-	for (int i = 1; i < _n; ++i) {
+	for (int i = 1; i < get_iterations(); ++i) {
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_ += h) ));
 		grid_insert_row({
-			std::to_string(_n),				// it
-			std::to_string(i / _n),			// a
-			std::to_string(fa_acc.back())	// fa
+			std::to_string(i),						// it
+			std::to_string(i / get_iterations()),	// a
+			std::to_string(fa_acc.back())			// fa
 		});
 	}
 	fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", b)) ); // last
