@@ -69,6 +69,16 @@ void Integration::set_equation(const std::string& equation)
 	_equation = equation;
 }
 
+const grid_d_t Integration::get_grid_d(void)
+{
+	return _strategy->get_grid_d();
+}
+
+const grid_s_t Integration::get_grid_s(void)
+{
+	return _strategy->get_grid_s();
+}
+
 double Integration::get_result_d() const
 {
 	return _strategy->get_resultd();

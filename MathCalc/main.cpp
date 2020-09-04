@@ -31,32 +31,40 @@ int main(int argc, char* argv[])
     // "6*5+2*5^2" // FIX -> Bad parse
     std::cout << std::setprecision(9);
     // CHECK: simpson 1/3
-    Integration integ(IntegrationType::Simpson_1_3);
+/*    Integration integ(IntegrationType::Simpson_1_3);
     //integ.set_strategy(IntegrationType::Simpson_1_3);
     integ.set_equation("2.718281^((x)^2)");
     integ.apply(0, 1);
     integ.show_grid();
+    auto g = integ.get_grid();
+    std::cout << g.size() << std::endl;
 
     std::cout << integ.get_result_d() << std::endl;
     return 0;
 
     std::cout << std::fixed;
-    std::cout << std::setprecision(9);
+*/    std::cout << std::setprecision(9);
     // std::cout << std::scientific;
     // FIX: bad resuts with so much decimals i.e. 0.00000001 -> 0
     // std::cout << calc.resolv("((2.718281^(-(0.000000+0.00000001))-(0.000000+0.00000001))-(2.718281^(-0.000000)-0.000000))/0.00000001").get_result() << std::endl;
     // return 0;
     // Nonlinear nonlinear("2.718281^(-x)-x", "newton_raphson"); // TODO: calc lexer must analyse expresion, not an isolate function, this throws error
     // check this expression "(2.718281^(-1x)-1x" bad analysis because of x
-    Nonlinear nonlinear;
-    nonlinear.set_strategy(NonLinearType::NewtonRaphson);
-    nonlinear.set_equation("(-1/3)*(x)^2+(8/3)*(x)+4");
+    /*Nonlinear nonlinear;
+    nonlinear.set_strategy(NonLinearType::RegulaFalsi);
+    auto xy = nonlinear.set_equation("(-1/3)*(x)^2+(8/3)*(x)+4");
+    //auto xy = nonlinear.set_equation("2.718281^(x)-3*x");
+    //nonlinear.apply(0, 1);
     // FIX: bisecction must throw exception because doesn't satisfy f(xi)*f(xs) < 0
     //nonlinear.set_strategy(NonLinearType::Bisection);
     nonlinear.apply(-2, -1);
     nonlinear.show_grid();
 
-    return 0;
+    std::cout << "x " << "y" << std::endl;
+    for (int i = 0; i < xy.first.size(); ++i)
+        std::cout << xy.first[i] << "   " << xy.second[i] << std::endl;
+
+    return 0;*/
     // BaseCalc bc;
     // FIX: pass only a number throws error
     // std::cout << bc.resolv("2").get_result();
@@ -79,11 +87,12 @@ int main(int argc, char* argv[])
     approx.show_grid();
     std::cout << approx.get_result() << std::endl;
     return 0;
+    /*
     Differential dif("2.718281^((x)^2)");
 
     dif.apply(0, 1, 16);
 
     std::cout << std::stod(dif.get_result()) << std::endl;
 
-    return 0;
+    return 0;*/
 }

@@ -170,6 +170,7 @@
     <ClCompile Include="nonlinear\newton_raphson.cpp" />
     <ClCompile Include="nonlinear\nonlinear.cpp" />
     <ClCompile Include="nonlinear\regula_falsi.cpp" />
+    <ClCompile Include="nonlinear\roots_range.cpp" />
     <ClCompile Include="nonlinear\secant.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +208,7 @@
     <ClInclude Include="nonlinear\nonlinear.h" />
     <ClInclude Include="nonlinear\regula_falsi.h" />
     <ClInclude Include="nonlinear\nonlinear_strategy.h" />
+    <ClInclude Include="nonlinear\roots_range.h" />
     <ClInclude Include="nonlinear\secant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -7,6 +7,7 @@
 #include <map>
 #include "../base_calc/base_calc.h"
 #include "../common/common_strategy.h"
+#include "roots_range.h"
 
 class NonlinearStrategy : public CommonStrategy {
 public:

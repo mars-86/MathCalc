@@ -59,9 +59,10 @@ void Nonlinear::show_grid(void)
 	_strategy->print_gridd();
 }
 
-void Nonlinear::set_equation(const std::string& equation)
+std::pair<std::vector<double>, std::vector<double>> Nonlinear::set_equation(const std::string& equation)
 {
 	_equation = equation;
+	return _strategy->gen_function(_equation);
 }
 
 double Nonlinear::get_result_d() const

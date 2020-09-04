@@ -8,15 +8,28 @@
 #include <iomanip>
 #include "../base_calc/base_calc.h"
 
+template<typename T>
+struct _Grid {
+	std::vector<std::vector<std::string>> _header;
+	std::vector<std::vector<T>> _grid; // grid holds iterations
+};
+typedef struct _Grid<std::string> grid_s_t;
+typedef struct _Grid<double> grid_d_t;
+
+
 class CommonStrategy {
 private:
 	template<typename T>
-	struct _Grid {
-		std::vector<std::vector<std::string>> _header;
-		std::vector<std::vector<T>> _grid; // grid holds iterations
+	struct _Function2D {
+		std::vector<T> _x;
+		std::vector<T> _y;
+		void add_x(double x) { _x.push_back(x); };
+		void add_y(double y) { _y.push_back(y); };
+		std::vector<T> get_x(void) { return _x; };
+		std::vector<T> get_y(void) { return _y; };
 	};
-	typedef struct _Grid<std::string> grid_s_t;
-	typedef struct _Grid<double> grid_d_t;
+	typedef struct _Function2D<double> f2d_t;
+
 public:
 	virtual ~CommonStrategy() {};
 	void grid_set_header(const std::vector<std::string>& header)
@@ -94,6 +107,16 @@ public:
 		return _resultd;
 	}
 
+	const grid_d_t get_grid_d(void)
+	{
+		return _gridd;
+	}
+
+	const grid_s_t get_grid_s(void)
+	{
+		return _grid;
+	}
+
 	void print_grid(void)
 	{
 		auto hd = get_grid_header();
@@ -122,6 +145,15 @@ public:
 		}
 	}
 
+	std::pair<std::vector<double>, std::vector<double>> gen_function(const std::string& equation, int range = 10)
+	{
+		for (int i = 0 - range; i <= range; ++i) {
+			_func_2d.add_x(i);
+			_func_2d.add_y(resolv_eq(equation, _base_calc.gen_var_val_tab("x", i)));
+		}
+		return std::make_pair(_func_2d.get_x(), _func_2d.get_y());
+	}
+
 protected:
 	BaseCalc _base_calc;
 	int _iterations;
@@ -129,6 +161,7 @@ protected:
 	grid_d_t _gridd;
 	std::string _result;
 	double _resultd;
+	f2d_t _func_2d;
 
 private:
 	inline void print_head()

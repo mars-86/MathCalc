@@ -46,10 +46,10 @@
     <Filter Include="Archivos de origen\approximation">
       <UniqueIdentifier>{a5e18820-40e8-4f79-9a57-81a049650903}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\integration">
+    <Filter Include="Archivos de encabezado\integration">
       <UniqueIdentifier>{f54ba56b-16f6-421e-8d38-c029fa5dd2f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\integration">
+    <Filter Include="Archivos de origen\integration">
       <UniqueIdentifier>{f5237901-e3c4-416c-b89c-3db2190f2224}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -112,19 +112,22 @@
       <Filter>Archivos de origen\approximation</Filter>
     </ClCompile>
     <ClCompile Include="integration\integration.cpp">
-      <Filter>Archivos de encabezado\integration</Filter>
+      <Filter>Archivos de origen\integration</Filter>
     </ClCompile>
     <ClCompile Include="integration\romberg.cpp">
-      <Filter>Archivos de encabezado\integration</Filter>
+      <Filter>Archivos de origen\integration</Filter>
     </ClCompile>
     <ClCompile Include="integration\trapezoidal.cpp">
-      <Filter>Archivos de encabezado\integration</Filter>
+      <Filter>Archivos de origen\integration</Filter>
     </ClCompile>
     <ClCompile Include="integration\simpson_1_3.cpp">
-      <Filter>Archivos de encabezado\integration</Filter>
+      <Filter>Archivos de origen\integration</Filter>
     </ClCompile>
     <ClCompile Include="integration\simpson_3_8.cpp">
-      <Filter>Archivos de encabezado\integration</Filter>
+      <Filter>Archivos de origen\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\roots_range.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,22 +219,25 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="integration\integration.h">
-      <Filter>Archivos de origen\integration</Filter>
+      <Filter>Archivos de encabezado\integration</Filter>
     </ClInclude>
     <ClInclude Include="integration\integration_strategy.h">
-      <Filter>Archivos de origen\integration</Filter>
+      <Filter>Archivos de encabezado\integration</Filter>
     </ClInclude>
     <ClInclude Include="integration\romberg.h">
-      <Filter>Archivos de origen\integration</Filter>
+      <Filter>Archivos de encabezado\integration</Filter>
     </ClInclude>
     <ClInclude Include="integration\trapezoidal.h">
-      <Filter>Archivos de origen\integration</Filter>
+      <Filter>Archivos de encabezado\integration</Filter>
     </ClInclude>
     <ClInclude Include="integration\simpson_1_3.h">
-      <Filter>Archivos de origen\integration</Filter>
+      <Filter>Archivos de encabezado\integration</Filter>
     </ClInclude>
     <ClInclude Include="integration\simpson_3_8.h">
-      <Filter>Archivos de origen\integration</Filter>
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\roots_range.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
