@@ -40,7 +40,8 @@ Lexer::~Lexer()
 
 int Lexer::tokenize(const char* str)
 {
-	std::cout << str << std::endl;
+	// debug comment
+	// std::cout << str << std::endl;
 	const char* s = str;
 	char buff[128];
 	free_token_vector(); // clean token vector

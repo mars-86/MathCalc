@@ -2,78 +2,85 @@
 #include <iomanip>
 
 // TODO -> check structure of strategy, the context must save equation and then passed to method
-inline void print_line(void)
+Nonlinear::Nonlinear(NonlinearStrategy* strategy)
+	: _strategy(strategy), _type(NonLinearType::Secant)
 {
-	for (int i = 0; i < 16 * 7; ++i)
-		std::cout << '-';
-	std::cout << std::endl;
-}
-
-inline void print_head(void)
-{
-	print_line();
-	std::cout <<
-		std::left << std::setw(16) << "| xlo" <<
-		std::left << std::setw(16) << "| xhi" <<
-		std::left << std::setw(16) << "| f(xlo)" <<
-		std::left << std::setw(16) << "| f(xhi)" <<
-		std::left << std::setw(16) << "| xr" <<
-		std::left << std::setw(16) << "| f(xr)" <<
-		std::left << std::setw(16) << "| E" <<
-		"|" << std::endl;
-	print_line();
-}
-
-Nonlinear::Nonlinear(const std::string& equation, const std::string& method, int iterations)
-	: _equation(equation), _method(method)
-{
-	if (_method == "regula_falsi")
-		_context = new NonlinearContext(new RegulaFalsi(iterations));
-	else if (_method == "newton_raphson")
-		_context = new NonlinearContext(new NewtonRaphson(iterations));
-	else if (_method == "secant")
-		_context = new NonlinearContext(new Secant(iterations));
-	else
-		_context = new NonlinearContext(new Bisection(iterations));
+	set_strategy(get_type());
 }
 
 Nonlinear::~Nonlinear()
 {
-	delete _context;
+	delete _strategy;
+}
+
+void Nonlinear::set_strategy(const NonLinearType& type, int it)
+{
+	delete _strategy;
+	switch (type) {
+	case NonLinearType::Bisection:
+		_strategy = new NonLinear::Close::Bisection(it);
+		_cmethod = "bisection";
+		break;
+	case NonLinearType::RegulaFalsi:
+		_strategy = new NonLinear::Close::RegulaFalsi(it);
+		_cmethod = "regula falsi";
+		break;
+	case NonLinearType::NewtonRaphson:
+		_strategy = new NonLinear::Open::NewtonRaphson(it);
+		_cmethod = "newton raphson";
+		break;
+	case NonLinearType::Secant:
+		_strategy = new NonLinear::Open::Secant(it);
+		_cmethod = "secant";
+		break;
+	default:
+		;
+	}
 }
 
 void Nonlinear::apply(int xl, int xh)
 {
-	if (_method == "")
-		;
-	else
-		_context->apply(_equation, xl, xh);
+	std::cout << "Applying " << _cmethod << " method to " << _equation << std::endl;
+	_strategy->apply(_equation, xl, xh);
+}
+
+std::vector<std::vector<std::string>> Nonlinear::get_grid_header() const
+{
+	return _strategy->get_grid_header();
 }
 
 std::vector<std::vector<double>> Nonlinear::get_grid() const
 {
-	return _context->get_grid();
+	return _strategy->get_gridd();
 }
 
 void Nonlinear::show_grid(void)
 {
-	auto gd = get_grid();
-
-	print_head();
-	for (auto i : gd) {
-		for (int j = 0; j < i.size(); ++j)
-			std::cout << "| " << std::left << std::setw(14) << i.at(j);
-		std::cout << "|" << std::endl;
-		print_line();
-	}
+	_strategy->print_gridd();
 }
 
-void Nonlinear::set_method(const std::string& method)
+std::pair<std::vector<double>, std::vector<double>> Nonlinear::set_equation(const std::string& equation)
 {
-	_method = method;
+	_equation = equation;
+	return _strategy->gen_function(_equation);
 }
 
-const std::string& Nonlinear::get_method(void) const
+double Nonlinear::get_result_d() const
 {
-	return _method;
+	return _strategy->get_resultd();
+}
+
+std::string Nonlinear::get_result_s() const
+{
+	return _strategy->get_result();
+}
+
+void Nonlinear::set_type(const NonLinearType& type)
+{
+	_type = type;
+}
+
+const NonLinearType Nonlinear::get_type(void) const
+{
+	return _type;
 }

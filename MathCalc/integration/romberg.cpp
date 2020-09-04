@@ -1,5 +1,6 @@
 #include "romberg.h"
 #include "trapezoidal.h"
+using namespace IntegrationMethods;
 
 Romberg::Romberg(int n)
 	:_n(n)
@@ -9,14 +10,14 @@ Romberg::Romberg(int n)
 
 Romberg::~Romberg() {}
 
-void Romberg::apply(std::string& equation, double a, double b, int _)
+void Romberg::apply(std::string& equation, double a, double b)
 {
 	std::vector<double> lvl_acc;
 	for (int i = 0, j = 1; i < _n; i++, j *= 2) {
 		// TODO: make Trapezoidal a fixed var when the method set_iterations can be used
 		Trapezoidal trapezoidal(j);
-		trapezoidal.apply(equation, a, b, 1);
-		lvl_acc.push_back(std::stod(trapezoidal.get_result()));
+		trapezoidal.apply(equation, a, b);
+		lvl_acc.push_back(trapezoidal.get_resultd());
 	}
 	double lvl = 4;
 	while (lvl_acc.size() > 1) {
@@ -25,7 +26,7 @@ void Romberg::apply(std::string& equation, double a, double b, int _)
 		lvl_acc.pop_back(); // pop_last
 		lvl *= lvl; // pow
 	}
-	_result = std::to_string(lvl_acc[0]);
+	set_result(lvl_acc[0]);
 }
 
 /*

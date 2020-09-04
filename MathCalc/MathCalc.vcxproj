@@ -159,16 +159,18 @@
     <ClCompile Include="base_calc\tools.cpp" />
     <ClCompile Include="differential\differential.cpp" />
     <ClCompile Include="differential\differentiation.cpp" />
-    <ClCompile Include="differential\romberg.cpp" />
-    <ClCompile Include="differential\simpson1_3.cpp" />
-    <ClCompile Include="differential\simpson3_8.cpp" />
-    <ClCompile Include="differential\trapezoidal.cpp" />
+    <ClCompile Include="integration\integration.cpp" />
+    <ClCompile Include="integration\romberg.cpp" />
+    <ClCompile Include="integration\simpson_1_3.cpp" />
+    <ClCompile Include="integration\simpson_3_8.cpp" />
+    <ClCompile Include="integration\trapezoidal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="misc\arithmetic_geometric_mean.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
     <ClCompile Include="nonlinear\newton_raphson.cpp" />
     <ClCompile Include="nonlinear\nonlinear.cpp" />
     <ClCompile Include="nonlinear\regula_falsi.cpp" />
+    <ClCompile Include="nonlinear\roots_range.cpp" />
     <ClCompile Include="nonlinear\secant.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,21 +192,23 @@
     <ClInclude Include="differential\differential_context.h" />
     <ClInclude Include="differential\differential.h" />
     <ClInclude Include="differential\differentiation.h" />
-    <ClInclude Include="differential\romberg.h" />
-    <ClInclude Include="differential\simpson1_3.h" />
     <ClInclude Include="differential\differential_strategy.h" />
-    <ClInclude Include="differential\simpson3_8.h" />
-    <ClInclude Include="differential\trapezoidal.h" />
+    <ClInclude Include="integration\integration.h" />
+    <ClInclude Include="integration\integration_strategy.h" />
+    <ClInclude Include="integration\romberg.h" />
+    <ClInclude Include="integration\simpson_1_3.h" />
+    <ClInclude Include="integration\simpson_3_8.h" />
+    <ClInclude Include="integration\trapezoidal.h" />
     <ClInclude Include="math_calc.h" />
     <ClInclude Include="misc\arithmetic_geometric_mean.h" />
     <ClInclude Include="misc\misc.h" />
     <ClInclude Include="misc\misc_common.h" />
     <ClInclude Include="nonlinear\bisection.h" />
-    <ClInclude Include="nonlinear\context.h" />
     <ClInclude Include="nonlinear\newton_raphson.h" />
     <ClInclude Include="nonlinear\nonlinear.h" />
     <ClInclude Include="nonlinear\regula_falsi.h" />
     <ClInclude Include="nonlinear\nonlinear_strategy.h" />
+    <ClInclude Include="nonlinear\roots_range.h" />
     <ClInclude Include="nonlinear\secant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

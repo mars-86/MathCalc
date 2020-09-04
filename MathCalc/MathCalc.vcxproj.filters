@@ -46,6 +46,12 @@
     <Filter Include="Archivos de origen\approximation">
       <UniqueIdentifier>{a5e18820-40e8-4f79-9a57-81a049650903}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\integration">
+      <UniqueIdentifier>{f54ba56b-16f6-421e-8d38-c029fa5dd2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\integration">
+      <UniqueIdentifier>{f5237901-e3c4-416c-b89c-3db2190f2224}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -90,18 +96,6 @@
     <ClCompile Include="nonlinear\secant.cpp">
       <Filter>Archivos de origen\nonlinear</Filter>
     </ClCompile>
-    <ClCompile Include="differential\simpson1_3.cpp">
-      <Filter>Archivos de origen\differential</Filter>
-    </ClCompile>
-    <ClCompile Include="differential\simpson3_8.cpp">
-      <Filter>Archivos de origen\differential</Filter>
-    </ClCompile>
-    <ClCompile Include="differential\romberg.cpp">
-      <Filter>Archivos de origen\differential</Filter>
-    </ClCompile>
-    <ClCompile Include="differential\trapezoidal.cpp">
-      <Filter>Archivos de origen\differential</Filter>
-    </ClCompile>
     <ClCompile Include="misc\arithmetic_geometric_mean.cpp">
       <Filter>Archivos de origen\misc</Filter>
     </ClCompile>
@@ -117,15 +111,30 @@
     <ClCompile Include="approximation\exponential.cpp">
       <Filter>Archivos de origen\approximation</Filter>
     </ClCompile>
+    <ClCompile Include="integration\integration.cpp">
+      <Filter>Archivos de origen\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="integration\romberg.cpp">
+      <Filter>Archivos de origen\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="integration\trapezoidal.cpp">
+      <Filter>Archivos de origen\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="integration\simpson_1_3.cpp">
+      <Filter>Archivos de origen\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="integration\simpson_3_8.cpp">
+      <Filter>Archivos de origen\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="nonlinear\roots_range.cpp">
+      <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nonlinear\bisection.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
     <ClInclude Include="nonlinear\nonlinear.h">
-      <Filter>Archivos de encabezado\nonlinear</Filter>
-    </ClInclude>
-    <ClInclude Include="nonlinear\context.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
     <ClInclude Include="nonlinear\regula_falsi.h">
@@ -179,18 +188,6 @@
     <ClInclude Include="nonlinear\secant.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
-    <ClInclude Include="differential\simpson1_3.h">
-      <Filter>Archivos de encabezado\differential</Filter>
-    </ClInclude>
-    <ClInclude Include="differential\simpson3_8.h">
-      <Filter>Archivos de encabezado\differential</Filter>
-    </ClInclude>
-    <ClInclude Include="differential\romberg.h">
-      <Filter>Archivos de encabezado\differential</Filter>
-    </ClInclude>
-    <ClInclude Include="differential\trapezoidal.h">
-      <Filter>Archivos de encabezado\differential</Filter>
-    </ClInclude>
     <ClInclude Include="misc\misc.h">
       <Filter>Archivos de encabezado\misc</Filter>
     </ClInclude>
@@ -215,11 +212,32 @@
     <ClInclude Include="approximation\trigonometric.h">
       <Filter>Archivos de encabezado\approximation</Filter>
     </ClInclude>
+    <ClInclude Include="approximation\exponential.h">
+      <Filter>Archivos de encabezado\approximation</Filter>
+    </ClInclude>
     <ClInclude Include="math_calc.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="approximation\exponential.h">
-      <Filter>Archivos de encabezado\approximation</Filter>
+    <ClInclude Include="integration\integration.h">
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="integration\integration_strategy.h">
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="integration\romberg.h">
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="integration\trapezoidal.h">
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="integration\simpson_1_3.h">
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="integration\simpson_3_8.h">
+      <Filter>Archivos de encabezado\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="nonlinear\roots_range.h">
+      <Filter>Archivos de encabezado\nonlinear</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

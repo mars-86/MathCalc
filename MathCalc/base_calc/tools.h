@@ -5,8 +5,31 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 class Tools {
+private:
+	// Generates a pair of values of the type {variable : value}
+	inline std::pair<std::string, std::vector<long double>> gen_var_val_pair(std::string var, double val) const
+	{
+		return std::pair<std::string, std::vector<long double>>(var, { val });
+	}
+
+	inline std::pair<std::string, std::vector<std::string>> gen_var_val_pair(std::string var, const std::vector<std::string>& val) const
+	{
+		return std::pair<std::string, std::vector<std::string>>(var, val);
+	}
+
+	inline std::pair<std::string, std::vector<char*>> gen_var_val_pair(std::string var, const std::vector<char*>& val) const
+	{
+		return std::pair<std::string, std::vector<char*>>(var, val);
+	}
+
+	inline const std::vector<std::string> get_val_as_vec(double val) const
+	{
+		return { std::to_string(val) };
+	}
+
 public:
 	Tools();
 	~Tools();
@@ -33,10 +56,16 @@ public:
 	int bin_to_dec(std::string num);
 	int dec_to_oct(double num);
 	int oct_to_dec(double num);
-	std::pair<std::string, std::vector<std::string>> gen_var_val_pair(std::string var, const std::vector<std::string>& val) const;
-	std::pair<std::string, std::vector<char*>> gen_var_val_pair(std::string var, const std::vector<char*>& val) const;
-private:
+	
+	inline std::map<std::string, std::vector<std::string>> gen_var_val_tab(std::string var, std::string val) noexcept
+	{
+		return { gen_var_val_pair(var, { val }) };
+	}
 
+	inline std::map<std::string, std::vector<std::string>> gen_var_val_tab(std::string var, double val) noexcept
+	{
+		return { gen_var_val_pair(var, get_val_as_vec(val)) };
+	}
 };
 
 #endif // !_MATH_CALC_BASE_CALC_TOOLS_H

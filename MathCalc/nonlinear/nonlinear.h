@@ -4,22 +4,42 @@
 
 #include <iostream>
 #include <string>
-#include "context.h"
+#include "nonlinear_strategy.h"
+#include "bisection.h"
+#include "regula_falsi.h"
+#include "newton_raphson.h"
+#include "secant.h"
+
+enum class NonLinearType {
+	Bisection,
+	RegulaFalsi,
+	NewtonRaphson,
+	Secant
+};
 
 class Nonlinear {
+private:
+	NonlinearStrategy* _strategy;
+
 public:
-	Nonlinear(const std::string& equation, const std::string& method = "bisection", int iterations = 10); // bisection by default
+	Nonlinear(NonlinearStrategy* strategy = nullptr);
 	~Nonlinear();
 
+	void set_strategy(const NonLinearType& type, int it = 10);
 	void apply(int xl, int xh);
-	void set_method(const std::string& method);
-	const std::string& get_method(void) const;
+	void set_type(const NonLinearType& type);
+	const NonLinearType get_type(void) const;
 	void show_grid(void);
+	std::pair<std::vector<double>, std::vector<double>> set_equation(const std::string& equation);
+	double get_result_d() const;
+	std::string get_result_s() const;
+	std::vector<std::vector<std::string>> get_grid_header() const;
 	std::vector<std::vector<double>> get_grid() const;
+
 private:
-	NonlinearContext* _context;
-	std::string _method;
+	NonLinearType _type;
 	std::string _equation;
+	std::string _cmethod; // current method
 };
 
 #endif // !_MATH_CALC_NONLINEAR_H_
