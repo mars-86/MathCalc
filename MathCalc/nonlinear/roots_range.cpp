@@ -11,14 +11,13 @@ RootRange::~RootRange()
 {
 }
 
-const std::vector<std::pair<int, int>>& RootRange::get_ranges() const
+const std::vector<std::pair<double, double>>& RootRange::get_ranges() const
 {
 	return _ranges;
 }
 
 void RootRange::find_ranges(void)
 {
-
 	double p_val = 0, c_val = 0;
 	_base_calc.resolv(_equation, _base_calc.gen_var_val_tab("x", -100));
 	p_val = c_val = std::stod(_base_calc.get_result());

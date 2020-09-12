@@ -13,10 +13,10 @@ namespace NonLinear {
 		RootRange(const std::string& equation);
 		~RootRange();
 
-		const std::vector<std::pair<int, int>>& get_ranges() const;
+		const std::vector<std::pair<double, double>>& get_ranges() const;
 	private:
 		BaseCalc _base_calc;
-		std::vector<std::pair<int, int>> _ranges;
+		std::vector<std::pair<double, double>> _ranges;
 		std::string _equation;
 
 		void find_ranges(void);

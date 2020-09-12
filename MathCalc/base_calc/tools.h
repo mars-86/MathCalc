@@ -1,5 +1,5 @@
-#ifndef _MATH_CALC_BASE_CALC_TOOLS_H
-#define _MATH_CALC_BASE_CALC_TOOLS_H
+#ifndef _MATH_CALC_BASE_CALC_TOOLS_H_
+#define _MATH_CALC_BASE_CALC_TOOLS_H_
 #pragma once
 
 #include <iostream>
@@ -30,6 +30,19 @@ private:
 		return { std::to_string(val) };
 	}
 
+	inline const char get_hex_digit(unsigned char digit)
+	{
+		switch (digit) {
+		case 10: return 'A';
+		case 11: return 'B';
+		case 12: return 'C';
+		case 13: return 'D';
+		case 14: return 'E';
+		case 15: return 'F';
+		default: return '0' + digit;
+		}
+	}
+
 public:
 	Tools();
 	~Tools();
@@ -50,9 +63,30 @@ public:
 	double summation(const std::string& equation, int from, int to);
 	double prod_sec(const std::string& equation, int from, int to);
 	int shift(int num, int bits_count, const std::string type);
-	int dec_to_hex(double num);
-	int hex_to_dec(double num);
-	const std::string dec_to_bin(double num);
+	
+	inline const std::string dec_to_hex_str(unsigned int num)
+	{
+		std::string hex = { get_hex_digit(num & 15) };
+		while (num > 1)
+			hex.insert(hex.begin(), get_hex_digit((num >>= 4) & 15));
+		return hex;
+	}
+
+	inline const std::string dec_to_bin_str(unsigned int num)
+	{
+		std::string bin = { std::to_string((num & 1)) };
+		while (num > 1)	bin.insert(bin.begin(), ((num >>= 1) & 1));
+		return bin;
+	}
+
+	inline const std::vector<bool> dec_to_bin_arr(size_t num, int bits = 0)
+	{
+		std::vector<bool> bin = { (bool)(num & 1) };
+		while (num > 1) bin.insert(bin.begin(), ((num >>= 1) & 1));
+		while (bin.size() < bits) bin.insert(bin.begin(), 0);
+		return bin;
+	}
+
 	int bin_to_dec(std::string num);
 	int dec_to_oct(double num);
 	int oct_to_dec(double num);
@@ -68,4 +102,4 @@ public:
 	}
 };
 
-#endif // !_MATH_CALC_BASE_CALC_TOOLS_H
+#endif // !_MATH_CALC_BASE_CALC_TOOLS_H_

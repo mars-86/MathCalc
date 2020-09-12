@@ -79,26 +79,6 @@ int Tools::shift(int num, int bits_count, const std::string type)
         return num << bits_count;
 }
 
-int Tools::dec_to_hex(double num)
-{
-    return 0;
-}
-
-int Tools::hex_to_dec(double num)
-{
-    return 0;
-}
-
-const std::string Tools::dec_to_bin(double num)
-{
-    return "";
-}
-
-int Tools::bin_to_dec(std::string num)
-{
-    return 0;
-}
-
 int Tools::dec_to_oct(double num)
 {
     return 0;

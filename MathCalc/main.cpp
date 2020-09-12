@@ -4,6 +4,7 @@
 #include "differential/differential.h"
 #include "integration/integration.h"
 #include "approximation/approximation.h"
+#include "polynomial/polynomial.h"
 #include <string>
 #include "misc/misc.h"
 #include <iomanip>
@@ -43,7 +44,21 @@ int main(int argc, char* argv[])
     return 0;
 
     std::cout << std::fixed;
-*/    std::cout << std::setprecision(9);
+*/  
+    PolynomialCommon::PointSet xy = {
+        std::make_pair(1,2),
+        std::make_pair(3,3),
+        std::make_pair(4,2),
+        std::make_pair(8,10)
+    };
+    Polynomial newton;
+    newton.set_strategy(PolynomialType::Newton);
+    newton.set_points(xy);
+    newton.apply();
+    std::cout << newton.get_polynomial() << std::endl;
+
+    return 0;
+    
     // std::cout << std::scientific;
     // FIX: bad resuts with so much decimals i.e. 0.00000001 -> 0
     // std::cout << calc.resolv("((2.718281^(-(0.000000+0.00000001))-(0.000000+0.00000001))-(2.718281^(-0.000000)-0.000000))/0.00000001").get_result() << std::endl;

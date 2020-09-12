@@ -172,6 +172,8 @@
     <ClCompile Include="nonlinear\regula_falsi.cpp" />
     <ClCompile Include="nonlinear\roots_range.cpp" />
     <ClCompile Include="nonlinear\secant.cpp" />
+    <ClCompile Include="polynomial\newton.cpp" />
+    <ClCompile Include="polynomial\polynomial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="approximation\approximation.h" />
@@ -210,6 +212,9 @@
     <ClInclude Include="nonlinear\nonlinear_strategy.h" />
     <ClInclude Include="nonlinear\roots_range.h" />
     <ClInclude Include="nonlinear\secant.h" />
+    <ClInclude Include="polynomial\newton.h" />
+    <ClInclude Include="polynomial\polynomial.h" />
+    <ClInclude Include="polynomial\polynomial_strategy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
