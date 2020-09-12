@@ -7,6 +7,7 @@
 #include "differential/differential.h"
 #include "integration/integration.h"
 #include "approximation/approximation.h"
+#include "polynomial/polynomial.h"
 #include "misc/misc.h"
 
 #endif // !_MATH_CALC_H_

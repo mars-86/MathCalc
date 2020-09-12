@@ -52,6 +52,12 @@
     <Filter Include="Archivos de origen\integration">
       <UniqueIdentifier>{f5237901-e3c4-416c-b89c-3db2190f2224}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\polynomial">
+      <UniqueIdentifier>{3c87f4c6-9f78-4d71-bad7-45e219be3331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\polynomial">
+      <UniqueIdentifier>{09805608-bc86-463e-bd61-d995b6f73afe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -128,6 +134,12 @@
     </ClCompile>
     <ClCompile Include="nonlinear\roots_range.cpp">
       <Filter>Archivos de origen\nonlinear</Filter>
+    </ClCompile>
+    <ClCompile Include="polynomial\newton.cpp">
+      <Filter>Archivos de origen\polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="polynomial\polynomial.cpp">
+      <Filter>Archivos de origen\polynomial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +250,15 @@
     </ClInclude>
     <ClInclude Include="nonlinear\roots_range.h">
       <Filter>Archivos de encabezado\nonlinear</Filter>
+    </ClInclude>
+    <ClInclude Include="polynomial\newton.h">
+      <Filter>Archivos de encabezado\polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="polynomial\polynomial.h">
+      <Filter>Archivos de encabezado\polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="polynomial\polynomial_strategy.h">
+      <Filter>Archivos de encabezado\polynomial</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
