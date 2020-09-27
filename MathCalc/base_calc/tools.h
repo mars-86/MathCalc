@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <valarray>
 
 class Tools {
 private:
@@ -60,8 +61,40 @@ public:
 	int replace_v(const std::string& src, std::string& dest, int var, const std::string& val);
 	void replace_var(std::string& m, const char var, std::vector<char*>& val);
 	void replace_var(std::string& m, const char var, std::vector<std::string>& val);
-	double summation(const std::string& equation, int from, int to);
-	double prod_sec(const std::string& equation, int from, int to);
+	// we implement this summation inside calc so we can use resolving methods
+	virtual double summation_eq(const std::string& equation, int from, int to) = 0;
+	virtual double summation_eq(const std::string& equation, const std::vector<double>& val) = 0;
+	
+	template<typename T>
+	inline double summation(const std::vector<T> v)
+	{
+		std::valarray<T> varr(v.data(), v.size());
+		return varr.sum();
+	}
+
+	inline double prod_sec(const std::string& equation, int from, int to)
+	{
+	
+	}
+
+	template<typename T>
+	inline double prod_sec(const std::vector<T> v)
+	{
+		long double total = 1;
+		for (auto i : v)
+			total *= i;
+		return total;
+	}
+
+	inline std::string slope(size_t n, double sum_xi, double sum_yi, double sum_powx, double sum_xiyi)
+	{
+		std::string eq;
+		// Refac: change *x to x
+		eq += std::to_string((((n * sum_xiyi) - (sum_xi * sum_yi)) / ((n * sum_powx) - (sum_xi * sum_xi)))) + "*x";
+		eq += std::to_string((((sum_powx * sum_yi) - (sum_xi * sum_xiyi)) / ((n * sum_powx) - (sum_xi * sum_xi))));
+		return eq;
+	}
+
 	int shift(int num, int bits_count, const std::string type);
 	
 	inline const std::string dec_to_hex_str(unsigned int num)

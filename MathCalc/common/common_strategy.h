@@ -121,13 +121,14 @@ public:
 	{
 		auto hd = get_grid_header();
 		auto gd = get_grid();
+		size_t cols = (!hd.empty()) ? hd[0].size() : gd[0].size();
 
 		print_head();
 		for (auto i : gd) {
 			for (int j = 0; j < i.size(); ++j)
 				std::cout << "| " << std::left << std::setw(14) << i.at(j);
 			std::cout << "|" << std::endl;
-			print_line(hd[0].size());
+			print_line(cols);
 		}
 	}
 
@@ -135,13 +136,14 @@ public:
 	{
 		auto hd = get_grid_header();
 		auto gd = get_gridd();
+		size_t cols = (!hd.empty()) ? hd[0].size() : gd[0].size();
 
 		print_head();
 		for (auto i : gd) {
 			for (int j = 0; j < i.size(); ++j)
 				std::cout << "| " << std::left << std::setw(14) << i.at(j);
 			std::cout << "|" << std::endl;
-			print_line(hd[0].size());
+			print_line(cols);
 		}
 	}
 

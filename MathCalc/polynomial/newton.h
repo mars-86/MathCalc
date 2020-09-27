@@ -12,7 +12,7 @@ namespace PolynomialMethods {
 		Newton();
 		~Newton();
 
-		void apply(const PolynomialCommon::PointSet p) override;
+		void apply(const PolynomialCommon::PointSet& p) override;
 	};
 
 }

@@ -24,7 +24,7 @@ public:
 	void set_type(const PolynomialType& type);
 	const PolynomialType get_type(void) const;
 	void show_grid(void);
-	void set_points(const PolynomialCommon::PointSet p);
+	void set_points(const PolynomialCommon::PointSet& p);
 	double get_result_d() const;
 	std::string get_polynomial() const;
 	const grid_d_t get_grid_d(void);

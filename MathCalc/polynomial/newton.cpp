@@ -41,7 +41,7 @@ const std::string build_polynomial(const std::vector<std::vector<double>>& polyn
 
 // OPTIMTIZATION: Build iterations binary array at first, that way we don't need to repeat
 // binary convertions in every iteration of the previous steps
-void Newton::apply(const PolynomialCommon::PointSet p)
+void Newton::apply(const PolynomialCommon::PointSet& p)
 {
 	std::vector<std::vector<double>> gtemp;
 	for (int i = 0; i < p.size(); ++i)
