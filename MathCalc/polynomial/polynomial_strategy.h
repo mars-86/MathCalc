@@ -12,7 +12,7 @@ namespace PolynomialCommon {
 class PolynomialStrategy : public CommonStrategy {
 public:
 	virtual ~PolynomialStrategy() {};
-	virtual void apply(const PolynomialCommon::PointSet p) = 0;
+	virtual void apply(const PolynomialCommon::PointSet& p) = 0;
 
 };
 

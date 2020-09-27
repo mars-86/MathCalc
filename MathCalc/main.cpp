@@ -5,6 +5,7 @@
 #include "integration/integration.h"
 #include "approximation/approximation.h"
 #include "polynomial/polynomial.h"
+#include "least_squares/least_squares.h"
 #include <string>
 #include "misc/misc.h"
 #include <iomanip>
@@ -32,19 +33,20 @@ int main(int argc, char* argv[])
     // "6*5+2*5^2" // FIX -> Bad parse
     std::cout << std::setprecision(9);
     // CHECK: simpson 1/3
-/*    Integration integ(IntegrationType::Simpson_1_3);
+    Integration integ(IntegrationType::Simpson_1_3);
     //integ.set_strategy(IntegrationType::Simpson_1_3);
     integ.set_equation("2.718281^((x)^2)");
     integ.apply(0, 1);
     integ.show_grid();
-    auto g = integ.get_grid();
-    std::cout << g.size() << std::endl;
+    // auto g = integ.get_grid();
+    // std::cout << g.size() << std::endl;
 
     std::cout << integ.get_result_d() << std::endl;
     return 0;
 
     std::cout << std::fixed;
-*/  
+ 
+    /*
     PolynomialCommon::PointSet xy = {
         std::make_pair(1,2),
         std::make_pair(3,3),
@@ -56,6 +58,25 @@ int main(int argc, char* argv[])
     newton.set_points(xy);
     newton.apply();
     std::cout << newton.get_polynomial() << std::endl;
+
+    return 0;*/
+
+    LeastSquaresCommon::PointSet xy2 = {
+        std::make_pair(1, 1.3),
+        std::make_pair(2, 3.5),
+        std::make_pair(3, 4.2),
+        std::make_pair(4, 5),
+        std::make_pair(5, 7),
+        std::make_pair(6, 8.8),
+        std::make_pair(7, 10.1),
+        std::make_pair(8, 12.5),
+        std::make_pair(9, 13),
+        std::make_pair(10, 15.6)
+    };
+    LeastSquares ls;
+    ls.set_strategy(LeastSquaresType::LSApproximation);
+    ls.apply(xy2);
+    ls.show_grid();
 
     return 0;
     

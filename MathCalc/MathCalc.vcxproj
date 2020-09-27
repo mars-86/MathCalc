@@ -164,6 +164,8 @@
     <ClCompile Include="integration\simpson_1_3.cpp" />
     <ClCompile Include="integration\simpson_3_8.cpp" />
     <ClCompile Include="integration\trapezoidal.cpp" />
+    <ClCompile Include="least_squares\least_squares.cpp" />
+    <ClCompile Include="least_squares\ls_approximation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="misc\arithmetic_geometric_mean.cpp" />
     <ClCompile Include="nonlinear\bisection.cpp" />
@@ -201,6 +203,9 @@
     <ClInclude Include="integration\simpson_1_3.h" />
     <ClInclude Include="integration\simpson_3_8.h" />
     <ClInclude Include="integration\trapezoidal.h" />
+    <ClInclude Include="least_squares\least_squares.h" />
+    <ClInclude Include="least_squares\least_squares_strategy.h" />
+    <ClInclude Include="least_squares\ls_approximation.h" />
     <ClInclude Include="math_calc.h" />
     <ClInclude Include="misc\arithmetic_geometric_mean.h" />
     <ClInclude Include="misc\misc.h" />

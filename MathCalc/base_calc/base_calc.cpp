@@ -73,6 +73,28 @@ BaseCalc& BaseCalc::resolv(std::string& equation, const std::map<std::string, st
 	return *this;
 }
 
+double BaseCalc::summation_eq(const std::string& eq, int from, int to)
+{
+	std::string f = eq;
+	double sum = 0;
+	for (int i = from; i <= to; ++i) {
+		resolv(f, gen_var_val_tab("x", i)), f.clear();
+		sum += std::stod(get_result());
+	}
+	return sum;
+}
+
+double BaseCalc::summation_eq(const std::string& eq, const std::vector<double>& val)
+{
+	std::string f = eq;
+	double sum = 0;
+	for (auto i : val) {
+		resolv(f, gen_var_val_tab("x", i)), f.clear();
+		sum += std::stod(get_result());
+	}
+	return sum;
+}
+
 const std::string& BaseCalc::get_result(void) const
 {
 	return _result;

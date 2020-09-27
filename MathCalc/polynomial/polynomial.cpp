@@ -46,7 +46,7 @@ void Polynomial::show_grid(void)
 	_strategy->print_gridd();
 }
 
-void Polynomial::set_points(const PolynomialCommon::PointSet p)
+void Polynomial::set_points(const PolynomialCommon::PointSet& p)
 {
 	_points = p;
 }

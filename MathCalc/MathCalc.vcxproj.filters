@@ -58,6 +58,12 @@
     <Filter Include="Archivos de origen\polynomial">
       <UniqueIdentifier>{09805608-bc86-463e-bd61-d995b6f73afe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\least_squares">
+      <UniqueIdentifier>{22935bb6-5885-4840-b0f3-dd1683509867}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\least_squares">
+      <UniqueIdentifier>{a84c6870-ac94-40c9-989e-a40704f66b87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -140,6 +146,12 @@
     </ClCompile>
     <ClCompile Include="polynomial\polynomial.cpp">
       <Filter>Archivos de origen\polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="least_squares\ls_approximation.cpp">
+      <Filter>Archivos de origen\least_squares</Filter>
+    </ClCompile>
+    <ClCompile Include="least_squares\least_squares.cpp">
+      <Filter>Archivos de origen\least_squares</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +271,15 @@
     </ClInclude>
     <ClInclude Include="polynomial\polynomial_strategy.h">
       <Filter>Archivos de encabezado\polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="least_squares\least_squares_strategy.h">
+      <Filter>Archivos de encabezado\least_squares</Filter>
+    </ClInclude>
+    <ClInclude Include="least_squares\ls_approximation.h">
+      <Filter>Archivos de encabezado\least_squares</Filter>
+    </ClInclude>
+    <ClInclude Include="least_squares\least_squares.h">
+      <Filter>Archivos de encabezado\least_squares</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
