@@ -64,6 +64,9 @@
     <Filter Include="Archivos de origen\least_squares">
       <UniqueIdentifier>{a84c6870-ac94-40c9-989e-a40704f66b87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\common">
+      <UniqueIdentifier>{365357f6-f065-412c-a5cc-1a98fe038e02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -152,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="least_squares\least_squares.cpp">
       <Filter>Archivos de origen\least_squares</Filter>
+    </ClCompile>
+    <ClCompile Include="common\function_2d.cpp">
+      <Filter>Archivos de origen\common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +286,9 @@
     </ClInclude>
     <ClInclude Include="least_squares\least_squares.h">
       <Filter>Archivos de encabezado\least_squares</Filter>
+    </ClInclude>
+    <ClInclude Include="function_2d.h">
+      <Filter>Archivos de encabezado\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

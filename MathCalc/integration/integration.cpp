@@ -64,9 +64,15 @@ void Integration::show_grid(void)
 	_strategy->print_gridd();
 }
 
-void Integration::set_equation(const std::string& equation)
+/*void Integration::set_equation(const std::string& equation)
 {
 	_equation = equation;
+}*/
+
+const f2d_t Integration::set_equation(const std::string& equation)
+{
+	_equation = equation;
+	return _strategy->gen_function(_equation);
 }
 
 const grid_d_t Integration::get_grid_d(void)

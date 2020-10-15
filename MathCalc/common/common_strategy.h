@@ -7,6 +7,7 @@
 #include <map>
 #include <iomanip>
 #include "../base_calc/base_calc.h"
+#include "function_2d.h"
 
 template<typename T>
 struct _Grid {
@@ -16,8 +17,8 @@ struct _Grid {
 typedef struct _Grid<std::string> grid_s_t;
 typedef struct _Grid<double> grid_d_t;
 
-
 class CommonStrategy {
+/*
 private:
 	template<typename T>
 	struct _Function2D {
@@ -29,6 +30,7 @@ private:
 		std::vector<T> get_y(void) { return _y; };
 	};
 	typedef struct _Function2D<double> f2d_t;
+*/
 
 public:
 	virtual ~CommonStrategy() {};
@@ -121,14 +123,20 @@ public:
 	{
 		auto hd = get_grid_header();
 		auto gd = get_grid();
-		size_t cols = (!hd.empty()) ? hd[0].size() : gd[0].size();
+		try {
+			size_t cols = (!hd.empty()) ? hd[0].size() : gd[0].size();
 
-		print_head();
-		for (auto i : gd) {
-			for (int j = 0; j < i.size(); ++j)
-				std::cout << "| " << std::left << std::setw(14) << i.at(j);
-			std::cout << "|" << std::endl;
-			print_line(cols);
+			print_head();
+			for (auto i : gd) {
+				for (int j = 0; j < i.size(); ++j)
+					std::cout << "| " << std::left << std::setw(14) << i.at(j);
+				std::cout << "|" << std::endl;
+				print_line(cols);
+			}
+		}
+		catch (const std::out_of_range& oor) {
+			std::cerr << oor.what() << std::endl;
+			return;
 		}
 	}
 
@@ -136,34 +144,47 @@ public:
 	{
 		auto hd = get_grid_header();
 		auto gd = get_gridd();
-		size_t cols = (!hd.empty()) ? hd[0].size() : gd[0].size();
+		try {
+			size_t cols = (!hd.empty()) ? hd.at(0).size() : gd.at(0).size();
 
-		print_head();
-		for (auto i : gd) {
-			for (int j = 0; j < i.size(); ++j)
-				std::cout << "| " << std::left << std::setw(14) << i.at(j);
-			std::cout << "|" << std::endl;
-			print_line(cols);
+			print_head();
+			for (auto i : gd) {
+				for (int j = 0; j < i.size(); ++j)
+					std::cout << "| " << std::left << std::setw(14) << i.at(j);
+				std::cout << "|" << std::endl;
+				print_line(cols);
+			}
+		}
+		catch (const std::out_of_range& oor) {
+			std::cerr << oor.what() << std::endl;
+			return;
 		}
 	}
 
-	std::pair<std::vector<double>, std::vector<double>> gen_function(const std::string& equation, int range = 10)
+	/*std::pair<std::vector<double>, std::vector<double>> gen_function(const std::string& equation, int range = 10)
 	{
 		for (int i = 0 - range; i <= range; ++i) {
 			_func_2d.add_x(i);
 			_func_2d.add_y(resolv_eq(equation, _base_calc.gen_var_val_tab("x", i)));
 		}
 		return std::make_pair(_func_2d.get_x(), _func_2d.get_y());
+	}*/
+
+	f2d_t gen_function(const std::string& equation, int range = 10)
+	{
+		for (int i = 0 - range; i <= range; ++i)
+			_func_2d.add_point(i, resolv_eq(equation, _base_calc.gen_var_val_tab("x", i)));
+		return _func_2d.get_function();
 	}
 
 protected:
 	BaseCalc _base_calc;
+	Function2D _func_2d;
 	int _iterations;
 	grid_s_t _grid;
 	grid_d_t _gridd;
 	std::string _result;
 	double _resultd;
-	f2d_t _func_2d;
 
 private:
 	inline void print_head()

@@ -20,9 +20,9 @@ void LSApproximation::apply(const LeastSquaresCommon::PointSet& p)
 	double xpow_sum = _base_calc.summation<double>(xpow);
 	double xiyi_sum = _base_calc.summation<double>(xiyi);
 
-	const std::string slope_eq = _base_calc.slope(xi.size(), xi_sum, yi_sum, xpow_sum, xiyi_sum);
+	set_slope_eq(_base_calc.slope(xi.size(), xi_sum, yi_sum, xpow_sum, xiyi_sum));
 	for (auto i : xi)
-		pxi.push_back(resolv_eq(slope_eq, _base_calc.gen_var_val_tab("x", i)));
+		pxi.push_back(resolv_eq(get_slope_eq(), _base_calc.gen_var_val_tab("x", i)));
 	double pxi_sum = _base_calc.summation<double>(xiyi);
 
 	for (int i = 0; i < xi.size(); ++i)

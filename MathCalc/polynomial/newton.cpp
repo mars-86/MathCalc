@@ -33,7 +33,8 @@ const std::string build_polynomial(const std::vector<std::vector<double>>& polyn
 		for (int j = 0; j < polynomial[i].size(); ++j)
 			sum += polynomial[i][j];
 		poly += (sum < 0) ? std::to_string(sum) : '+' + std::to_string(sum);
-		poly += (i > 1) ? "x^" + std::to_string(i) : (i > 0) ? "x" : "";
+		// FIX: this convertion must be done by lexer
+		poly += (i > 1) ? "*(x)^" + std::to_string(i) : (i > 0) ? "*(x)" : "";
 	}
 	if (poly.size() > 0 && poly.front() == '+') poly.erase(poly.begin());
 	return poly;

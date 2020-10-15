@@ -64,6 +64,11 @@ double LeastSquares::get_result_d() const
 	return _strategy->get_resultd();
 }
 
+f2d_t LeastSquares::get_function(void) const
+{
+	return _strategy->gen_function(_strategy->get_slope_eq());
+}
+
 void LeastSquares::set_type(const LeastSquaresType& type)
 {
 	_type = type;

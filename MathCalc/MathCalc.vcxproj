@@ -157,6 +157,7 @@
     <ClCompile Include="base_calc\parcer.cpp" />
     <ClCompile Include="base_calc\parse_tree.cpp" />
     <ClCompile Include="base_calc\tools.cpp" />
+    <ClCompile Include="common\function_2d.cpp" />
     <ClCompile Include="differential\differential.cpp" />
     <ClCompile Include="differential\differentiation.cpp" />
     <ClCompile Include="integration\integration.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="differential\differential.h" />
     <ClInclude Include="differential\differentiation.h" />
     <ClInclude Include="differential\differential_strategy.h" />
+    <ClInclude Include="function_2d.h" />
     <ClInclude Include="integration\integration.h" />
     <ClInclude Include="integration\integration_strategy.h" />
     <ClInclude Include="integration\romberg.h" />
