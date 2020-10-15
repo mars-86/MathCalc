@@ -4,6 +4,7 @@ using namespace IntegrationMethods;
 Simpson3_8::Simpson3_8(int it)
 {
 	set_iterations(it);
+	grid_set_header({ "| it", "| x", "| f(x)" });
 }
 
 Simpson3_8::~Simpson3_8() {}
@@ -16,9 +17,9 @@ void Simpson3_8::apply(std::string& equation, double a, double b)
 		a_ = a + (h * i); // a + (h * n)
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_) ));
 		grid_insert_row({
-			std::to_string(i),				// it
-			std::to_string(a_),							// a
-			std::to_string(fa_acc.back())	// fa
+			(double)i,		// it
+			a_,				// a
+			fa_acc.back()	// fa
 		});
 	}
 	// 3/8 * h * (fa_i0 + 3 * fa_i1 + 3 * fa_i2 + fa_i3)

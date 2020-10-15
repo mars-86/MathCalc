@@ -26,7 +26,7 @@ public:
 	Integration(const IntegrationType& type, int it);
 	~Integration();
 
-	void set_strategy(const IntegrationType& type, int it = 10);
+	void set_strategy(const IntegrationType& type, int it = 8);
 	void apply(int a, int b);
 	void set_type(const IntegrationType& type);
 	const IntegrationType get_type(void) const;

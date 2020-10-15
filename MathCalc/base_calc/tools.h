@@ -8,6 +8,9 @@
 #include <map>
 #include <valarray>
 
+constexpr auto NLOG2 = 0.693147180559945;
+constexpr auto PI =	3.141592653589793;
+
 class Tools {
 private:
 	// Generates a pair of values of the type {variable : value}
