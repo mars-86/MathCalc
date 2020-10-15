@@ -31,7 +31,8 @@ public:
 	void set_type(const IntegrationType& type);
 	const IntegrationType get_type(void) const;
 	void show_grid(void);
-	void set_equation(const std::string& equation);
+	// void set_equation(const std::string& equation);
+	const f2d_t set_equation(const std::string& equation);
 	double get_result_d() const;
 	std::string get_result_s() const;
 	const grid_d_t get_grid_d(void);

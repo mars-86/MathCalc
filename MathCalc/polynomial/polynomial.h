@@ -26,7 +26,7 @@ public:
 	void show_grid(void);
 	void set_points(const PolynomialCommon::PointSet& p);
 	double get_result_d() const;
-	std::string get_polynomial() const;
+	std::string get_polynomial(f2d_t& f) const;
 	const grid_d_t get_grid_d(void);
 	const grid_s_t get_grid_s(void);
 	std::vector<std::vector<std::string>> get_grid_header() const;

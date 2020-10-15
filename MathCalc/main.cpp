@@ -33,19 +33,19 @@ int main(int argc, char* argv[])
     // "6*5+2*5^2" // FIX -> Bad parse
     std::cout << std::setprecision(9);
     // CHECK: simpson 1/3
-    Integration integ(IntegrationType::Simpson_1_3);
+    Integration integ(IntegrationType::Romberg);
     //integ.set_strategy(IntegrationType::Simpson_1_3);
-    integ.set_equation("2.718281^((x)^2)");
+    auto func = integ.set_equation("2.718281^((x)^2)");
     integ.apply(0, 1);
+    std::cout << func.size() << std::endl;
+    for (int i = 0; i < func.size(); ++i)
+        std::cout << "x = " << func.at(i).x << " " << "y = " << func.at(i).y << std::endl;
     integ.show_grid();
     // auto g = integ.get_grid();
     // std::cout << g.size() << std::endl;
 
     std::cout << integ.get_result_d() << std::endl;
     return 0;
-
-    std::cout << std::fixed;
- 
     /*
     PolynomialCommon::PointSet xy = {
         std::make_pair(1,2),
@@ -57,10 +57,15 @@ int main(int argc, char* argv[])
     newton.set_strategy(PolynomialType::Newton);
     newton.set_points(xy);
     newton.apply();
-    std::cout << newton.get_polynomial() << std::endl;
+    newton.show_grid();
+    f2d_t fu;
+    std::cout << newton.get_polynomial(fu) << std::endl;
 
-    return 0;*/
+    for (int i = 0; i < fu.size(); ++i)
+        std::cout << "x = " << fu.at(i).x << " " << "y = " << fu.at(i).y << std::endl;
 
+    return 0;
+    */
     LeastSquaresCommon::PointSet xy2 = {
         std::make_pair(1, 1.3),
         std::make_pair(2, 3.5),
@@ -77,7 +82,9 @@ int main(int argc, char* argv[])
     ls.set_strategy(LeastSquaresType::LSApproximation);
     ls.apply(xy2);
     ls.show_grid();
-
+    auto fu = ls.get_function();
+    for (int i = 0; i < fu.size(); ++i)
+        std::cout << "x = " << fu.at(i).x << " " << "y = " << fu.at(i).y << std::endl;
     return 0;
     
     // std::cout << std::scientific;

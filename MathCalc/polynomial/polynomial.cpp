@@ -66,9 +66,11 @@ double Polynomial::get_result_d() const
 	return _strategy->get_resultd();
 }
 
-std::string Polynomial::get_polynomial() const
+std::string Polynomial::get_polynomial(f2d_t& f) const
 {
-	return _strategy->get_result();
+	std::string eq = _strategy->get_result();
+	f = _strategy->gen_function(eq);
+	return eq;
 }
 
 void Polynomial::set_type(const PolynomialType& type)

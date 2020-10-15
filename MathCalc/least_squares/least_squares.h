@@ -26,7 +26,7 @@ public:
 	void show_grid(void);
 
 	double get_result_d() const;
-
+	f2d_t get_function(void) const;
 	const grid_d_t get_grid_d(void);
 	const grid_s_t get_grid_s(void);
 	std::vector<std::vector<std::string>> get_grid_header() const;

@@ -89,8 +89,8 @@ public:
 	inline std::string slope(size_t n, double sum_xi, double sum_yi, double sum_powx, double sum_xiyi)
 	{
 		std::string eq;
-		// Refac: change *x to x
-		eq += std::to_string((((n * sum_xiyi) - (sum_xi * sum_yi)) / ((n * sum_powx) - (sum_xi * sum_xi)))) + "*x";
+		// Refac: change *(x) to x
+		eq += std::to_string((((n * sum_xiyi) - (sum_xi * sum_yi)) / ((n * sum_powx) - (sum_xi * sum_xi)))) + "*(x)";
 		eq += std::to_string((((sum_powx * sum_yi) - (sum_xi * sum_xiyi)) / ((n * sum_powx) - (sum_xi * sum_xi))));
 		return eq;
 	}
