@@ -2,6 +2,7 @@
 
 Trigonometric::Trigonometric()
 {
+	grid_set_header({ "| it", "| x" });
 }
 
 Trigonometric::~Trigonometric() {}

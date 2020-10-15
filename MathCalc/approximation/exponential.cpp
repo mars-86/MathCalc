@@ -2,6 +2,7 @@
 
 Exponential::Exponential()
 {
+	grid_set_header({ "| it", "| x" });
 }
 
 Exponential::~Exponential() {}

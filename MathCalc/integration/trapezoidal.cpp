@@ -5,7 +5,7 @@ Trapezoidal::Trapezoidal(int n)
 	: _n(n)
 {
 	if (_n < 1) _n = 1;
-	grid_set_header({ "| it", "| a", "| f(a)" });
+	grid_set_header({ "| it", "| x", "| f(x)" });
 	set_iterations(n);
 }
 
@@ -19,9 +19,9 @@ void Trapezoidal::apply(std::string& equation, double a, double b)
 	for (int i = 1; i < get_iterations(); ++i) {
 		fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", a_ += h) ));
 		grid_insert_row({
-			std::to_string(i),						// it
-			std::to_string(i / get_iterations()),	// a
-			std::to_string(fa_acc.back())			// fa
+			(double)i,						// it
+			(double)i / get_iterations(),	// a
+			fa_acc.back()					// fa
 		});
 	}
 	fa_acc.push_back(resolv_eq(equation, _base_calc.gen_var_val_tab("x", b)) ); // last
