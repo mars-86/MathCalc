@@ -1,9 +1,11 @@
 #include "logarithmic.h"
 #include <cmath>
+using namespace ApproximationMethods;
 
-Logarithmic::Logarithmic()
+Logarithmic::Logarithmic(const LogType& log_type)
+	: _log_type(log_type)
 {
-	grid_set_header({ "| it", "| x" });
+	grid_set_header({});
 }
 
 Logarithmic::~Logarithmic() {}

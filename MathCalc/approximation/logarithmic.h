@@ -6,20 +6,24 @@
 #include "approximation_strategy.h"
 #include "../misc/arithmetic_geometric_mean.h"
 
-enum class LogType {
-	LogN
-};
+namespace ApproximationMethods {
 
-class Logarithmic : public ApproximationStrategy {
-public:
-	Logarithmic();
-	~Logarithmic();
+	enum class LogType {
+		LogN
+	};
 
-	void apply(std::string& equation, double x) override;
+	class Logarithmic : public ApproximationStrategy {
+	public:
+		Logarithmic(const LogType& log_type = LogType::LogN);
+		~Logarithmic();
 
-private:
-	LogType _log_type;
-	ArithmeticGeometricMean agm;
-};
+		void apply(std::string& equation, double x) override;
+
+	private:
+		LogType _log_type;
+		ArithmeticGeometricMean agm;
+	};
+
+}
 
 #endif // !_MATH_CALC_LOGARITHMIC_H_
