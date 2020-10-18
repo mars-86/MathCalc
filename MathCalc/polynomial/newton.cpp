@@ -9,6 +9,13 @@ Newton::Newton()
 
 Newton::~Newton() {}
 
+const std::vector<std::string> generate_header(size_t order)
+{
+	std::vector<std::string> head = { "| x", "| y" };
+	for (int i = 1; i < order; ++i) head.push_back("| yD" + std::to_string(i));
+	return head;
+}
+
 int zero_count(const std::vector<bool> v)
 {
 	int ctr = 0;
@@ -44,9 +51,12 @@ const std::string build_polynomial(const std::vector<std::vector<double>>& polyn
 // binary convertions in every iteration of the previous steps
 void Newton::apply(const PolynomialCommon::PointSet& p)
 {
+	grid_set_header(generate_header(p.size()));
 	std::vector<std::vector<double>> gtemp;
 	for (int i = 0; i < p.size(); ++i)
 		gtemp.push_back({ (double)p[i].first, (double)p[i].second });
+		// DEBUG
+		// std::cout << gtemp[i][0] << " " << gtemp[i][1] << " " << std::endl;
 
 	// lets apply newton polynomial
 	int n = 0;
@@ -57,9 +67,13 @@ void Newton::apply(const PolynomialCommon::PointSet& p)
 			gtemp[prev].insert(gtemp[prev].end(), {
 				(gtemp[i][x_offset] - gtemp[prev][x_offset]) / (gtemp[y_offset][0] - gtemp[prev][0])
 			});
+			// DEBUG
+			// std::cout << (gtemp[i][x_offset] - gtemp[prev][x_offset]) / (gtemp[y_offset][0] - gtemp[prev][0]) << " ";
 		}
 
 	} while (++n < p.size());
+
+	for (auto i : gtemp) grid_insert_row(i);
 
 	std::vector<std::vector<double>> polynomial(p.size());
 	// lets build the multiplication tables

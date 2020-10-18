@@ -65,9 +65,6 @@ int main(int argc, char* argv[])
     f2d_t fu;
     std::cout << newton.get_polynomial(fu) << std::endl;
 
-    for (int i = 0; i < fu.size(); ++i)
-        std::cout << "x = " << fu.at(i).x << " " << "y = " << fu.at(i).y << std::endl;
-
     return 0;
 
     /*
