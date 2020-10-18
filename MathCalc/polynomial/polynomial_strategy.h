@@ -13,7 +13,8 @@ class PolynomialStrategy : public CommonStrategy {
 public:
 	virtual ~PolynomialStrategy() {};
 	virtual void apply(const PolynomialCommon::PointSet& p) = 0;
-
+protected:
+	PolynomialCommon::PointSet _xy;
 };
 
 #endif // !_MATH_CALC_POLYNOMIAL_STRATEGY_H_
