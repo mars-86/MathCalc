@@ -60,6 +60,14 @@ public:
 		return x_;
 	}
 
+	inline std::vector<unsigned long long int> factorial_array(int x)
+	{
+		std::vector<unsigned long long int> x_ = { 1 };
+		if (x > 0)
+			for (int i = 1; i <= x; ++i) x_.push_back(x_[i - 1] * i);
+		return x_;
+	}
+
 	int replace_v(const char* src, char* dest, int var, const char* val);
 	int replace_v(const std::string& src, std::string& dest, int var, const std::string& val);
 	void replace_var(std::string& m, const char var, std::vector<char*>& val);

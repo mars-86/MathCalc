@@ -20,7 +20,8 @@ private:
 	ApproximationStrategy* _strategy;
 
 public:
-	Approximation(ApproximationStrategy* strategy = nullptr);
+	// Approximation(ApproximationStrategy* strategy = nullptr);
+	Approximation(const ApproximationType& type);
 	// Approximation(const std::string& equation, const ApproximationType& type, int iterations = 10);
 	~Approximation();
 
@@ -30,13 +31,15 @@ public:
 	const ApproximationType get_type(void) const;
 	void show_grid(void);
 	void set_equation(const std::string& equation);
+	std::vector<std::vector<std::string>> get_grid_header() const;
 	std::vector<std::vector<double>> get_grid() const;
-	double get_result(void) const;
-	std::string get_result_as_string(void) const;
+	double get_result_d(void) const;
+	std::string get_result_s(void) const;
 
 private:
 	ApproximationType _type;
 	std::string _equation;
+	std::string _cmethod; // current method
 };
 
 #endif // !_MATH_CALC_APPROXIMATION_H_

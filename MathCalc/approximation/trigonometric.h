@@ -6,21 +6,25 @@
 #include "approximation_strategy.h"
 #include "../misc/arithmetic_geometric_mean.h"
 
-enum class TrgType {
-	Sin,
-	Cos
-};
+namespace ApproximationMethods {
 
-class Trigonometric : public ApproximationStrategy {
-public:
-	Trigonometric();
-	~Trigonometric();
+	enum class TrgType {
+		Sin,
+		Cos
+	};
 
-	void apply(std::string& equation, double x) override;
+	class Trigonometric : public ApproximationStrategy {
+	public:
+		Trigonometric(const TrgType& trg_type = TrgType::Sin);
+		~Trigonometric();
 
-private:
-	TrgType _trg_type;
-	const int _it = 10;
-};
+		void apply(std::string& equation, double x) override;
+
+	private:
+		TrgType _trg_type;
+		const int _it = 10;
+	};
+
+}
 
 #endif // !_MATH_CALC_TRIGONOMETRIC_H_

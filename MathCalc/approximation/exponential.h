@@ -6,15 +6,19 @@
 #include "approximation_strategy.h"
 #include "../misc/arithmetic_geometric_mean.h"
 
-class Exponential : public ApproximationStrategy {
-public:
-	Exponential();
-	~Exponential();
+namespace ApproximationMethods {
 
-	void apply(std::string& equation, double x) override;
+	class Exponential : public ApproximationStrategy {
+	public:
+		Exponential();
+		~Exponential();
 
-private:
-	const int _it = 25;
-};
+		void apply(std::string& equation, double x) override;
+
+	private:
+		const int _it = 21;
+	};
+
+}
 
 #endif // !_MATH_CALC_EXPONENTIAL_H_

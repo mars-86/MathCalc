@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     std::cout << integ.get_result_d() << std::endl;
     return 0;
     */
-    /*
+
     PolynomialCommon::PointSet xy = {
         std::make_pair(1,2),
         std::make_pair(3,3),
@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
         std::cout << "x = " << fu.at(i).x << " " << "y = " << fu.at(i).y << std::endl;
 
     return 0;
-    */
+
     /*
     LeastSquaresCommon::PointSet xy2 = {
         std::make_pair(1, 1.3),
@@ -127,14 +127,16 @@ int main(int argc, char* argv[])
     //std::cout << n;
 
     //return 0;
-
-    Approximation approx(new Logarithmic());
+    
+    /*
+    Approximation approx(ApproximationType::Trigonometric);
     approx.apply(5);
     // std::cout << approx.get_result() << std::endl;
     // std::cout << std::setprecision(9);
     approx.show_grid();
-    std::cout << approx.get_result() << std::endl;
+    std::cout << approx.get_result_d() << std::endl;
     return 0;
+    */
     /*
     Differential dif("2.718281^((x)^2)");
 

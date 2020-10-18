@@ -1,8 +1,10 @@
 #include "trigonometric.h"
+using namespace ApproximationMethods;
 
-Trigonometric::Trigonometric()
+Trigonometric::Trigonometric(const TrgType& trg_type)
+	: _trg_type(trg_type)
 {
-	grid_set_header({ "| it", "| x" });
+	grid_set_header({ "| it", "| y" });
 }
 
 Trigonometric::~Trigonometric() {}
